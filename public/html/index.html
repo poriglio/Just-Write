@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="storyApp">
 	<head>
 		<meta charset="utf-8">
-		<!-- BOOTSTRAP -->
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/js/bootstrap.min.js" rel="stylesheet" type="text/css">
 		<link href="/css/styles.css" rel="stylesheet" type="text/css">
-		<link href="/css/styles.css" rel="stylesheet" type="text/css">
-		<!-- main.js, angular, angular route -->
-		<script src=""></script>
-		<script src=""></script>
-		<script src=""></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+		<script src="/js/main.js"></script>
 	</head>
 	<body>
 		<h1>Story Scouts</h1>
 		<button type="button">Sign Up</button>
-		<form>
+		<form method="POST" action="auth/login">
 			<b>Username:</b>
 			<input type="text">
 			<b>Password:</b>
@@ -21,11 +19,13 @@
 			<input type="submit" value="Log In">
 		</form>
 		<ul>
-			<li>Submission Guidelines</li>
-			<li>FAQs</li>
-			<li>About</li>
+			<li><a href="/#/">Home</a></li>
+			<li><a href="/#/guidelines">Submission Guidelines</a></li>
+			<li><a href="/#/faqs">FAQs</a></li>
+			<li><a href="/#/about">About</a></li>
+			<li><a href="/#/contact">Contact</a></li>
 		</ul>
-		<div ngview>
+		<div ng-view>
 		</div>
 	</body>
 </html>
