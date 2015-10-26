@@ -1,0 +1,20 @@
+html * {
+	padding: 0px;
+	margin: 0px;
+}
+
+/*-=-=-=-=-=-=-
+BADGE STYLING
+-=-=-=-=-=-=-*/
+
+.badge{
+	margin: 1rem;
+}
+
+.badge h2,div,img{
+	margin: 1rem;
+}
+
+.badge img{
+	border-radius: 50%;
+}
