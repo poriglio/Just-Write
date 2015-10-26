@@ -11,6 +11,7 @@ var createPoem = function(request,response){
 		comments        : [],
 		matureContent   : request.body.mature,
 		content         : request.body.content,
+		type            : "poem",
 	})
 
 	newPoem.save(function(error){
@@ -24,7 +25,7 @@ var createPoem = function(request,response){
 
 }
 
-var getPoems = function(request,response){
+var getPoem = function(request,response){
 	Poem.find({},function(error,docs){
 		if(error){
 			console.log("Error!",error)
@@ -34,6 +35,6 @@ var getPoems = function(request,response){
 }
 
 module.exports = {
-	getPoems    : getPoems,
+	getPoem    : getPoem,
 	createPoem  : createPoem,
 }

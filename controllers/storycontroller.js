@@ -11,6 +11,7 @@ var createStory = function(request,response){
 		comments        : [],
 		matureContent   : request.body.mature,
 		content         : request.body.content,
+		type            : "story",
 	})
 
 	newStory.save(function(error){
@@ -24,16 +25,13 @@ var createStory = function(request,response){
 
 }
 
-var getStories = function(request,response){
-	Story.find({},function(error,docs){
-		if(error){
-			console.log("Error!",error)
-		}
-		response.send(docs)
-	})
+var getStory = function(request,response){
+	var id = request.params.submissionID
+	console.log(id)
+	Story.findOne({_id : id})
 }
 
 module.exports = {
-	getStories    : getStories,
+	getStory    : getStory,
 	createStory  : createStory,
 }

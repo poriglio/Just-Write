@@ -11,6 +11,7 @@ var createEssay = function(request,response){
 		comments        : [],
 		matureContent   : request.body.mature,
 		content         : request.body.content,
+		type            : "essay",
 	})
 
 	newEssay.save(function(error){
@@ -24,7 +25,7 @@ var createEssay = function(request,response){
 
 }
 
-var getEssays = function(request,response){
+var getEssay = function(request,response){
 	Essay.find({},function(error,docs){
 		if(error){
 			console.log("Error!",error)
@@ -34,6 +35,6 @@ var getEssays = function(request,response){
 }
 
 module.exports = {
-	getEssays    : getEssays,
+	getEssay    : getEssay,
 	createEssay  : createEssay,
 }

@@ -1,4 +1,4 @@
-var Comment = require("../modles/commentmodel.js")
+var Comment = require("../models/commentmodel.js")
 
 var createComment = function (request,response){
 
@@ -6,7 +6,7 @@ var createComment = function (request,response){
 
 		date            : request.body.date,
 		username        : request.body.username,
-		submissionType  : request.body.submissionType,
+		comment         : request.body.comment,
 		submissionId    : request.body.submissionId,
 
 	})

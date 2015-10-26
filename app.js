@@ -19,7 +19,7 @@ app.use(express.static(__dirname + "/public"))
 var poemController = require("./controllers/poemcontroller.js")
 var storyController = require("./controllers/storycontroller.js")
 var essayController = require("./controllers/essaycontroller.js")
-// var commentController = require("./controllers/commentcontroller.js")
+var commentController = require("./controllers/commentcontroller.js")
 
 // -=-=-=-=-=-=-
 // PUBLIC ROUTES
@@ -32,6 +32,17 @@ app.get("/",function(request,response){
 // -=-=-=-=-=-=-=
 // PRIVATE ROUTES
 // -=-=-=-=-=-=-=
+
+app.get("/story/:submissionID", storyController.getStory)
+
+app.get("/poem/:submissionID", poemController.getPoem)
+
+app.get("/essay/:submissionID", essayController.getEssay)
+
+app.post("/api/comment",function(request,response){
+	commentController.createComment(request,response)
+	response.send("Thank you for your comment!")
+})
 
 app.post("/api/submission",function(request,response){
 	if(request.body.submissionType==="story"){
