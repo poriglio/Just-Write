@@ -7,14 +7,15 @@ var createEssay = function(request,response){
 		title           : request.body.title,
 		description     : request.body.description,
 		dateAdded       : request.body.added,
-		lastRevised     : request.body.revised,
+		lastRevised     : "not yet revised",
 		comments        : [],
 		matureContent   : request.body.mature,
+		content         : request.body.content,
 	})
 
-	newEssay.save(function(error,doc){
+	newEssay.save(function(error){
 		if(!error){
-			response.send(docs)
+			response.send("Thanks for your submission!")
 		}
 		else{
 			console.log("Error!",error)

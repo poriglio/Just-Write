@@ -8,6 +8,7 @@ var poemSchema = mongoose.Schema({
 	lastRevised     : {type: String},
 	comments        : {type: Array},
 	matureContent   : {type: Boolean},
+	content         : {type: String},
 })
 
-module.exports = mongoose.Schema({"Poem",poemSchema})
+module.exports = mongoose.model("Poem",poemSchema)
