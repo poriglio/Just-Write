@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="storyApp">
+	<head>
+		<meta charset="utf-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+		<script src="/js/main.js"></script>
+		<script src="/js/badgefactory.js"></script>
+	</head>
+	<body ng-controller="mainController">
+		<h1>Badges</h1>
+		<div ng-repeat="badge in badges">
+			<h2>{{badge.name}}</h2>
+			<div>{{badge.description}}</div>
+			<img ng-src="{{badge.image}}">
+		</div>
+	</body>
+</html>

@@ -33,11 +33,9 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 
 }])
 
-angular.module("storyApp").controller("mainController",["$scope","$http",function($scope,$http){
+angular.module("storyApp").controller("mainController",["$scope","$http","badgeFactory",function($scope,$http,badgeFactory){
 
-}])
-
-angular.module("storyApp").controller("privateController",["$scope","$http",function($scope,$http){
+	$scope.badges = badgeFactory.badges
 
 }])
 
