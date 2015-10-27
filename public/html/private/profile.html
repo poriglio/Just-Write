@@ -1,50 +1,39 @@
-<!DOCTYPE html>
-<html ng-app="storyApp">
-	<head>
-		<meta charset="utf-8">
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
-		<script src="../../js/main.js"></script>
-	</head>
-	<body ng-controller="userController">
-		<div ng-repeat="user in users">
-			<h1>{{user.username}}</h1>
-			<p>{{user.bio}}</p>
-			<span>{{user.age}} years old - born {{user.birthday}}</span>
-			<h2>Favorites</h2>
-				<ul>
-				<li><b>Books: </b><span ng-repeat="book in user.favBooks">{{book}}, </span></li>
-				<li><b>Writers: </b><span ng-repeat="writer in user.favWriters">{{writer}}, </span></li>
-			</ul>
-			<h2>Stats</h2>
-			<ul>
-				<li><b>Stories: </b>{{user.numStories}}</li>
-				<li><b>Poems: </b>{{user.numPoems}}</li>
-				<li><b>Essays: </b>{{user.numEssays}}</li>
-				<li><b>Total submissions: </b>{{user.numSubmissions}}</li>
-			</ul>
-			<h2>Badges</h2>
-				<div class="badge col-lg-2 col-md-3 col-sm-4 col-xs-6" ng-repeat="badge in user.badges">
-					<h2>{{badge.name}}</h2>
-					<div>{{badge.description}}</div>
-					<img ng-src="{{badge.image}}">
-				</div>
-			<h2>Submissions</h2>
-			<h3>Stories</h3>
-				<div ng-repeat="story in user.stories">
-					<h4>{{story.title}}</h4>
-					<p>{{story.description}}</p>
-				</div>
-			<h3>Essays</h3>
-				<div ng-repeat="essay in user.essays">
-					<h4>{{essay.title}}</h4>
-					<p>{{essay.description}}</p>
-				</div>
-			<h3>Poems</h3>
-				<div ng-repeat="poem in user.poems">
-					<h4>{{poem.title}}</h4>
-					<p>{{poem.description}}</p>
-				</div>
+<div ng-repeat="user in users">
+	<h1>{{user.username}}</h1>
+	<p>{{user.bio}}</p>
+	<span>{{user.age}} years old - born {{user.birthday}}</span>
+	<h2>Favorites</h2>
+		<ul>
+		<li><b>Books: </b><span ng-repeat="book in user.favBooks">{{book}}, </span></li>
+		<li><b>Writers: </b><span ng-repeat="writer in user.favWriters">{{writer}}, </span></li>
+	</ul>
+	<h2>Stats</h2>
+	<ul>
+		<li><b>Stories: </b>{{user.numStories}}</li>
+		<li><b>Poems: </b>{{user.numPoems}}</li>
+		<li><b>Essays: </b>{{user.numEssays}}</li>
+		<li><b>Total submissions: </b>{{user.numSubmissions}}</li>
+	</ul>
+	<h2>Badges</h2>
+		<div class="badge col-lg-2 col-md-3 col-sm-4 col-xs-6" ng-repeat="badge in user.badges">
+			<h2>{{badge.name}}</h2>
+			<div>{{badge.description}}</div>
+			<img ng-src="{{badge.image}}">
 		</div>
-	</body>
-</html>
+	<h2>Submissions</h2>
+	<h3>Stories</h3>
+		<div ng-repeat="story in user.stories">
+			<h4>{{story.title}}</h4>
+			<p>{{story.description}}</p>
+		</div>
+	<h3>Essays</h3>
+		<div ng-repeat="essay in user.essays">
+			<h4>{{essay.title}}</h4>
+			<p>{{essay.description}}</p>
+		</div>
+	<h3>Poems</h3>
+		<div ng-repeat="poem in user.poems">
+			<h4>{{poem.title}}</h4>
+			<p>{{poem.description}}</p>
+		</div>
+</div>

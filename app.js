@@ -104,7 +104,7 @@ app.post("/auth/signup",function(request,response){
 // 	response.send("Thank you for your comment!")
 // })
 
-app.get("/profile/:username",function(request,response){
+app.get("/#/profile/:username",function(request,response){
 	response.sendFile("/html/private/profile.html",{root:"./public"})
 })
 

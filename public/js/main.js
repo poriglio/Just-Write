@@ -28,11 +28,11 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 	})
 	.when("/submit",{
 		templateUrl : "/html/private/submissionform.html",
-		controller  : "privateController",
+		controller  : "mainController",
 	})
 	.when("/profile/:username",{
 		templateUrl : "/html/private/profile.html",
-		controller  : "mainController"
+		controller  : "userController"
 	})
 	.when("/browse",{
 		templateUrl : "/html/private/browse.html",
@@ -40,7 +40,11 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 	})
 	.when("/submission",{
 		templateUrl : "/html/private/submission.html",
-		controller  : "privateController",
+		controller  : "mainController",
+	})
+	.when("/submission/:username",{
+		templateUrl : "/html/private/profile.html",
+		controller  : "userController"
 	})
 
 
@@ -77,7 +81,7 @@ angular.module("storyApp").controller("userController",["$scope","$http",functio
 
 	$scope.users = []
 
-	var user = window.location.pathname.split("/")[2]
+	var user = window.location.hash.split("/")[2]
 
 	$http.get("/api/users/" + user).then(function(returnData){
 		$scope.users.push(returnData.data)
