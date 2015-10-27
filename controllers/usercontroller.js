@@ -4,6 +4,7 @@ var createUser = function(request,response){
 
 	var newUser = new User({
 		username        : request.body.username,
+		usernameLower   : request.body.username.toLowerCase(),
 		password        : request.body.password,
 		email           : request.body.email,
 		age             : +request.body.age,
@@ -36,7 +37,8 @@ var createUser = function(request,response){
 
 var findUser = function(request,response){
 	if(request.params.username){
-		User.findOne({username : request.params.username},function(error,doc){
+		var name = request.params.username.toLowerCase()
+		User.findOne({usernameLower : name},function(error,doc){
 			response.send(doc)
 		})
 	}

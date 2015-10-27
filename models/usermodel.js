@@ -3,6 +3,7 @@ var bcrypt = require("bcryptjs")
 
 var userSchema = mongoose.Schema({
 	username        : {type:String, unique:true, required:true},
+	usernameLower   : {type:String},
 	password        : {type:String, required:true},
 	email           : {type:String, required:true, unique:true},
 	age             : {type:Number, required:true},
