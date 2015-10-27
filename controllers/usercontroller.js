@@ -17,9 +17,9 @@ var createUser = function(request,response){
 		numStories      : 0,
 		numEssays       : 0,
 		badges          : [],
-		poems           : [],
-		stories         : [],
-		essays          : [],
+		// poems           : [],
+		// stories         : [],
+		// essays          : [],
 		admin           : false,
 		private         : false,
 	})
@@ -45,6 +45,7 @@ var findUser = function(request,response){
 	else{
 		response.send("error")
 	}
+	
 }
 
 module.exports = {

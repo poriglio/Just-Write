@@ -16,9 +16,9 @@ var userSchema = mongoose.Schema({
 	numStories      : {type:Number, default:0},
 	numEssays       : {type:Number, default:0},
 	badges          : {type:Array, default:[]},
-	poems           : {type:Array, default:[]},
-	stories         : {type:Array, default:[]},
-	essays          : {type:Array, default:[]},
+	// poems           : {type:Array, default:[]},
+	// stories         : {type:Array, default:[]},
+	// essays          : {type:Array, default:[]},
 	admin           : {type:Boolean, default: false},
 	private         : {type:Boolean, default: false},
 })

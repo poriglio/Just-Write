@@ -1,6 +1,69 @@
 html * {
 	padding: 0px;
 	margin: 0px;
+	font-size: 18px;
+	box-sizing: border-box;
+	text-decoration: none;
+}
+
+/*-=-=-=-=-=-=-=-=-
+MAIN PAGE STYLING
+-=-=-=-=-=-=-=-=-*/
+
+.static-header{
+	background-color: purple;
+	position: fixed;
+	width: 100vw;
+	top: 0px;
+	left: 0px;
+	float: left;
+	z-index: 10;
+	height: 6rem;
+	padding: 1rem;
+}
+
+.static-header *{
+	color: white;
+}
+
+.static-header>h1{
+	display: inline-block;
+	font-size: 2.5rem;
+}
+
+.static-header form{
+	display: inline-block;
+	float: right;
+}
+
+.static-header>ul{
+	clear: right;
+}
+
+.nav{
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	width: 600px;
+	text-align: center;
+	list-style-type: none;
+}
+
+.nav li{
+	display: inline-block;
+}
+
+.user-nav{
+	top: 7rem;
+}
+
+/*-=-=-=-=-=-=
+VIEW STYLING
+-=-=-=-=-=-=*/
+
+.view{
+	position: relative;
+	top: 8rem;
 }
 
 /*-=-=-=-=-=-=-
@@ -11,7 +74,7 @@ BADGE STYLING
 	margin: 1rem;
 }
 
-.badge h2,div,img{
+.badge h2,img{
 	margin: 1rem;
 }
 

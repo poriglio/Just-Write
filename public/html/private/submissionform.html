@@ -1,22 +1,24 @@
-<h1>Submission Form</h1>
-<form method="POST" action="api/submission">
-	<div>Title</div>
-	<input type="text" name="title" placeholder="title...">
-	<div>Type</div>
-	<span>Story</span>
-	<input type="radio" name="submissionType" value="story">
-	<span>Poem</span>
-	<input type="radio" name="submissionType" value="poem">
-	<span>Essay</span>
-	<input type="radio" name="submissionType" value="essay">
-	<div>Description</div>
-	<input type="text" name="description">
-	<div>Does your submission contain mature content?</div>
-	<div>No, all ages can read it!</div>
-	<input type="radio" name="matureContent" value="false">
-	<div>Yes, it does.</div>
-	<input type="radio" name="matureContent" value="true">
-	<div>Share your writing below!</div>
-	<input type="textarea" name="content" placeholder="Your writing goes here!">
-	<input type="submit" value="submit">
-</form>
+<div class="view">
+	<h1>Submission Form</h1>
+	<form method="POST" action="api/submission">
+		<div>Title</div>
+		<input type="text" name="title" placeholder="title...">
+		<div>Type</div>
+		<span>Story</span>
+		<input type="radio" name="submissionType" value="story">
+		<span>Poem</span>
+		<input type="radio" name="submissionType" value="poem">
+		<span>Essay</span>
+		<input type="radio" name="submissionType" value="essay">
+		<div>Description</div>
+		<input type="text" name="description">
+		<div>Does your submission contain mature content?</div>
+		<div>No, all ages can read it!</div>
+		<input type="radio" name="matureContent" value="false">
+		<div>Yes, it does.</div>
+		<input type="radio" name="matureContent" value="true">
+		<div>Share your writing below!</div>
+		<input type="textarea" name="content" placeholder="Your writing goes here!">
+		<input type="submit" value="submit">
+	</form>
+</div>

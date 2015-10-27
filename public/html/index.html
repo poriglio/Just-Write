@@ -2,7 +2,6 @@
 <html ng-app="storyApp">
 	<head>
 		<meta charset="utf-8">
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet" type="text/css">
 		<link href="/css/styles.css" rel="stylesheet" type="text/css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
@@ -10,24 +9,25 @@
 		<script src="/js/badgefactory.js"></script>
 	</head>
 	<body>
-		<h1>Story Scouts</h1>
-		<button type="button"><a href="/#/signup">Sign Up</a></button>
-		<form method="POST" action="auth/login">
-			<b>Username:</b>
-			<input type="text">
-			<b>Password:</b>
-			<input type="text">
-			<input type="submit" value="Log In">
-		</form>
-		<ul>
-			<li><a href="/#/">Home</a></li>
-			<li><a href="/#/guidelines">Submission Guidelines</a></li>
-			<li><a href="/#/faqs">FAQs</a></li>
-			<li><a href="/#/about">About</a></li>
-			<li><a href="/#/contact">Contact</a></li>
-		</ul>
-		<ul>
-			<li><b>The following routes will ultimately be for logged in users...</b></li>
+		<div class="static-header">
+			<h1>Story Scouts</h1>
+			<form method="POST" action="auth/login">
+				<b>Username:</b>
+				<input type="text">
+				<b>Password:</b>
+				<input type="text">
+				<input type="submit" value="Log In">
+			</form>
+			<ul class="nav">
+				<li><a href="/#/">Home</a></li>
+				<li><a href="/#/guidelines">Submission Guidelines</a></li>
+				<li><a href="/#/faqs">FAQs</a></li>
+				<li><a href="/#/about">About</a></li>
+				<li><a href="/#/contact">Contact</a></li>
+				<li><a href="/#/signup">Sign Up</a></li>
+			</ul>
+		</div>
+		<ul class="user-nav nav">
 			<li><a href="/#/browse">Browse</a></li>
 			<li><a href="/#/profile/paulanator">Profile</a></li>
 			<li><a href="/#/submit">Submit</a></li>
