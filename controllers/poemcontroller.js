@@ -32,7 +32,16 @@ var findPoem = function(request,response){
 	})
 }
 
+var findPoems = function(request,response){
+	var username = request.params.username
+	console.log(username)
+	Poem.find({username: username},function(error,docs){
+		response.send(docs)
+	})
+}
+
 module.exports = {
 	findPoem    : findPoem,
 	createPoem  : createPoem,
+	findPoems   : findPoems,
 }

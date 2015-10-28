@@ -130,11 +130,17 @@ app.get("/#/essays/:submission",function(request,response){
 
 app.get("/api/users/:username",userController.findUser)
 
-app.get("/api/stories/:submission",storyController.findStory)
+app.get("/api/story/:submission",storyController.findStory)
 
-app.get("/api/poems/:submission",poemController.findPoem)
+app.get("/api/poem/:submission",poemController.findPoem)
 
-app.get("/api/essays/:submission",essayController.findEssay)
+app.get("/api/essay/:submission",essayController.findEssay)
+
+app.get("/api/stories/:username",storyController.findStories)
+
+app.get("/api/essays/:username",essayController.findEssays)
+
+app.get("/api/poems/:username",poemController.findPoems)
 
 app.post("/api/submission",function(request,response){
 	if(request.body.submissionType==="story"){

@@ -63,10 +63,27 @@ angular.module("storyApp").controller("userController",["$scope","$http",functio
 
 	$scope.users = []
 
+	$scope.poems   = []
+	$scope.stories = []
+	$scope.essays  = []
+
 	var user = window.location.hash.split("/")[2]
 
 	$http.get("/api/users/" + user).then(function(returnData){
 		$scope.users.push(returnData.data)
+	})
+
+	$http.get("/api/stories/" + user).then(function(returnData){
+		$scope.stories.push(returnData.data)
+		console.log($scope.stories)
+	})
+
+	$http.get("/api/poems/" + user).then(function(returnData){
+		$scope.poems.push(returnData.data)
+	})
+
+	$http.get("/api/essays/" + user).then(function(returnData){
+		$scope.essays.push(returnData.data)
 	})
 
 }])
@@ -80,17 +97,17 @@ angular.module("storyApp").controller("submissionController",["$scope","$http",f
 	var id = window.location.hash.split("/")[2]
 
 	if(type==="stories"){
-		$http.get("/api/stories/" + id).then(function(returnData){
+		$http.get("/api/story/" + id).then(function(returnData){
 			$scope.submissions.push(returnData.data)
 		})
 	}
 	else if(type==="poems"){
-		$http.get("/api/poems/" + id).then(function(returnData){
+		$http.get("/api/poem/" + id).then(function(returnData){
 			$scope.submissions.push(returnData.data)
 		})
 	}
 	else if(type==="essays"){
-		$http.get("/api/essays/" + id).then(function(returnData){
+		$http.get("/api/essay/" + id).then(function(returnData){
 			$scope.submissions.push(returnData.data)
 		})
 	}
