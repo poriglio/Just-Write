@@ -16,11 +16,35 @@ var userSchema = mongoose.Schema({
 	numStories      : {type:Number, default:0},
 	numEssays       : {type:Number, default:0},
 	badges          : {type:Array, default:[]},
-	// poems           : {type:Array, default:[]},
-	// stories         : {type:Array, default:[]},
-	// essays          : {type:Array, default:[]},
 	admin           : {type:Boolean, default: false},
 	private         : {type:Boolean, default: false},
 })
 
-module.exports = mongoose.model("User", userSchema)
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+// THE CODE BELOW ENCRYPTS A PASSWORD:
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+
+userSchema.pre("save",function(next){
+	if(!this.isModified("password")) return next()
+	var user = this
+	bcrypt.genSalt(10,function(error,salt){
+		if(error) return next(error)
+		bcrypt.hash(user.password,salt,function(error,hash){
+			if(error) return next(error)
+			user.password = hash
+			return next()
+		})
+	})
+})
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+// THE CODE BELOW ENCRYPTS THE PASSWORD ENTERED AT LOGIN AND COMPARES IT TO THE STORED ENCRYPTION:
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+userSchema.methods.comparePassword = function(candidatePassword,next){
+	bcrypt.compare(candidatePassword,this.password,function(error,isMatch){
+		if(error) return next(error)
+		return next(null, isMatch)
+	})
+}
+
+var User = mongoose.model("User",userSchema)
+module.exports = User

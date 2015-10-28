@@ -1,111 +1,77 @@
 var bodyParser = require("body-parser")
 var express = require("express")
 
-var app = express()
-
 var mongoose = require("mongoose")
 mongoose.connect("mongodb://localhost/storyscouts")
 
-// -=-=-=-=-=-=-=-=-=-=-=
-// AUTHORIZATION REQUIRES
-// -=-=-=-=-=-=-=-=-=-=-=
+var session = require("express-session")
+var passport = require("passport")
 
-// var session = require("express-session")
-// var passport = require("passport")
+var passportConfig = require("./config/passport.js")
 
-// // This loads in our passport configuration that decides how passport actually runs and authenticates.
-// var passportConfig = require("./config/passport")
+var app = express()
 
-// // -=-=-=-=-=-=-
-// // Session Setup
-// // -=-=-=-=-=-=-
-// app.use(session({
-// 	secret            : "wordonfire",
-// 	resave            : false,
-// 	saveUninitialized : true
-// }))
+app.use(session({
+	secret            : "campfirestories",
+	resave            : true,
+	saveUninitialized : true
+}))
 
-// // Hook passport and passport sessions into the middleware chain...
-// app.use(passport.initialize())
-// app.use(passport.session())
+app.use(passport.initialize())
+
+app.use(passport.session())
+
+app.use(express.static(__dirname + "/public"))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
-app.use(express.static(__dirname + "/public"))
+
+var authenticationController = require("./controllers/authentication.js")
+
+app.get("/",function(request,response){
+	response.sendFile("/html/index.html",{root:"./public"})
+})
+
+app.post("/auth/login",authenticationController.processLogin)
+
+app.get("/auth/logout",authenticationController.logout)
+
+app.get("/api/me",function(request,response){
+	response.send(request.user)
+})
+
+app.use(passportConfig.ensureAuthenticated)
 
 // -=-=-=-=-=-
 // CONTROLLERS
 // -=-=-=-=-=-
 
+
+
+// -=-=-=-=-=-=-=-=-=-=-
+// PUBLIC ROUTES
+// -=-=-=-=-=-=-=-=-=-=-
+
+
+// -=-=-=-=-=-=-=-=-=
+// AUTHORIZATION ROUTES
+// -=-=-=-=-=-=-=-=-=
 var userController = require("./controllers/usercontroller.js")
 var poemController = require("./controllers/poemcontroller.js")
 var storyController = require("./controllers/storycontroller.js")
 var essayController = require("./controllers/essaycontroller.js")
 var commentController = require("./controllers/commentcontroller.js")
 
-// -=-=-=-=-=-=-
-// PUBLIC ROUTES
-// -=-=-=-=-=-=-
-
-app.get("/",function(request,response){
-	response.sendFile("/html/index.html",{root:"./public"})
-})
-
 app.post("/auth/signup",function(request,response){
 	userController.createUser(request,response)
 })
 
-// -=-=-=-=-=-=-=-=-=-=-
-// AUTHENTICATION ROUTES
-// -=-=-=-=-=-=-=-=-=-=-
-
-// var authenticationController = require("./controllers/authentication")
-
-// Our request for viewing the login page...
-// (I don't think I need this part, because the login is always visible at the top, but I'm putting it here just in case...)
-
-// app.get("/auth/login",authenticationController.login)
-
-// Post received from submitting the login form...
-// app.post("/auth/login",authenticationController.processLogin)
-
-// // Post received from submitting the signup form...
-// // Note that you have a similar one above and may need to switch it around.
-// app.post("/auth/signup",authenticationController.processSignup)
-
-// // This route handles requests to log out...
-// app.get("/auth/logout",authenticationController.logout)
-
-// // This route will send back the logged in user (or undefined user if they are not logged in)
-
-// app.get("/api/me",function(request,response){
-// 	response.send(request.user)
-// })
-
-// // Now, we have prevented access to any route handler defined after this call. Magical!
-// app.use(passportConfig.ensureAuthenticated)
-
-// -=-=-=-=-=-=-=-=-=-=-=-=-
-// END AUTHENTICATION ROUTES
-// -=-=-=-=-=-=-=-=-=-=-=-=-
-
-// -=-=-=-=-=-=-=
-// PRIVATE ROUTES
-// -=-=-=-=-=-=-=
-
-// app.get("/story/:submissionID", storyController.getStory)
-
-// app.get("/poem/:submissionID", poemController.getPoem)
-
-// app.get("/essay/:submissionID", essayController.getEssay)
-
-// app.post("/api/comment",function(request,response){
-// 	commentController.createComment(request,response)
-// 	response.send("Thank you for your comment!")
+// app.post("/auth/login",function(request,response){
+// 	userController.
 // })
 
 // -=-=-=-=-=-=-=-=-=-=
-// PARAMETERIZED ROUTES
+// LOGGED IN ROUTES
 // -=-=-=-=-=-=-=-=-=-=
 
 app.get("/#/profile/:username",function(request,response){
@@ -127,7 +93,6 @@ app.get("/#/essays/:submission",function(request,response){
 // -=-=-=-=-=
 // API ROUTES
 // -=-=-=-=-=
-
 
 app.get("/api/story/:submission",storyController.findStory)
 
