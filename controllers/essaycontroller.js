@@ -25,16 +25,14 @@ var createEssay = function(request,response){
 
 }
 
-var getEssay = function(request,response){
-	Essay.find({},function(error,docs){
-		if(error){
-			console.log("Error!",error)
-		}
-		response.send(docs)
+var findEssay = function(request,response){
+	var id = request.params.submission
+	Essay.findOne({_id : id},function(error,doc){
+		response.send(doc)
 	})
 }
 
 module.exports = {
-	getEssay    : getEssay,
+	findEssay    : findEssay,
 	createEssay  : createEssay,
 }

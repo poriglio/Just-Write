@@ -38,42 +38,24 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 		templateUrl : "/html/private/browse.html",
 		controller  : "mainController"
 	})
-	.when("/submission",{
+	.when("/stories/:submission",{
 		templateUrl : "/html/private/submission.html",
-		controller  : "mainController",
+		controller  : "submissionController"
 	})
-	.when("/submission/:username",{
-		templateUrl : "/html/private/profile.html",
-		controller  : "userController"
+	.when("/essays/:submission",{
+		templateUrl : "/html/private/submission.html",
+		controller  : "submissionController"
 	})
-
+	.when("/poems/:submission",{
+		templateUrl : "/html/private/submission.html",
+		controller  : "submissionController"
+	})
 
 }])
 
 angular.module("storyApp").controller("mainController",["$scope","$http","badgeFactory",function($scope,$http,badgeFactory){
 
 	$scope.badges = badgeFactory.badges
-
-}])
-
-angular.module("storyApp").controller("submissionController",["$scope","$http",function($scope,$http){
-
-	var submissionID = windown.location.pathname.split("/")[2]
-
-	$http.get("/api/story/" + submissionID)
-		.then(function(returnData){
-			$scope.submission = returnData.data
-		})
-
-	$http.get("/api/poem/" + submissionID)
-		.then(function(returnData){
-			$scope.submission = returnData.data
-		})
-
-	$http.get("/api/essay/" + submissionID)
-		.then(function(returnData){
-			$scope.submission = returnData.data
-		})
 
 }])
 
@@ -86,5 +68,31 @@ angular.module("storyApp").controller("userController",["$scope","$http",functio
 	$http.get("/api/users/" + user).then(function(returnData){
 		$scope.users.push(returnData.data)
 	})
+
+}])
+
+angular.module("storyApp").controller("submissionController",["$scope","$http",function($scope,$http){
+
+	$scope.submissions = []
+
+	var type = window.location.hash.split("/")[1]
+
+	var id = window.location.hash.split("/")[2]
+
+	if(type==="stories"){
+		$http.get("/api/stories/" + id).then(function(returnData){
+			$scope.submissions.push(returnData.data)
+		})
+	}
+	else if(type==="poems"){
+		$http.get("/api/poems/" + id).then(function(returnData){
+			$scope.submissions.push(returnData.data)
+		})
+	}
+	else if(type==="essays"){
+		$http.get("/api/essays/" + id).then(function(returnData){
+			$scope.submissions.push(returnData.data)
+		})
+	}
 
 }])

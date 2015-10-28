@@ -1,27 +1,29 @@
-<div ng-repeat="submission in submissions">
-	<h1>{{submission.title}}</h1>
-	<h2>by {{submission.username}}</h2>
-	<ul>
-		<li>{{submission.type}}</li>
-		<li>{{submission.dateAdded}}</li>
-		<li>{{submission.lastRevised}}</li>
-		<li>{{submission.matureContent}}</li>
-	</ul>
-	<div>
-		{{submission.description}}
+<div class="view">
+	<div ng-repeat="submission in submissions">
+		<h1>{{submission.title}}</h1>
+		<h2>by {{submission.username}}</h2>
+		<ul>
+			<li>{{submission.type}}</li>
+			<li>{{submission.dateAdded}}</li>
+			<li>{{submission.lastRevised}}</li>
+			<li>{{submission.matureContent}}</li>
+		</ul>
+		<div>
+			{{submission.description}}
+		</div>
+		<div>
+			{{submission.content}}
+		</div>
+		<h2>Comments</h2>
+		<div ng-repeat="comment in submission.comments">
+			<h3>{{comment.username}}</h3>
+			<div><b>{{comment.date}}</b></div>
+			<div>{{comment.comment}}</div>
+		</div>
 	</div>
-	<div>
-		{{submission.content}}
-	</div>
-	<h2>Comments</h2>
-	<div ng-repeat="comment in submission.comments">
-		<h3>{{comment.username}}</h3>
-		<div><b>{{comment.date}}</b></div>
-		<div>{{comment.comment}}</div>
-	</div>
-</div>
 	<form method="POST" action="/api/comment">
 		<div>Let the author know what you think!</div>
 		<input type="textarea" placeholder="Add a comment..." name="comment">
 		<input type="submit">
 	</form>
+</div>

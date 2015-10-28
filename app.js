@@ -104,11 +104,37 @@ app.post("/auth/signup",function(request,response){
 // 	response.send("Thank you for your comment!")
 // })
 
+// -=-=-=-=-=-=-=-=-=-=
+// PARAMETERIZED ROUTES
+// -=-=-=-=-=-=-=-=-=-=
+
 app.get("/#/profile/:username",function(request,response){
 	response.sendFile("/html/private/profile.html",{root:"./public"})
 })
 
+app.get("/#/stories/:submission",function(request,response){
+	response.sendFile("/html/private/submission.html",{root:"./public"})
+})
+
+app.get("/#/poems/:submission",function(request,response){
+	response.sendFile("/html/private/submission.html",{root:"./public"})
+})
+
+app.get("/#/essays/:submission",function(request,response){
+	response.sendFile("/html/private/submission.html",{root:"./public"})
+})
+
+// -=-=-=-=-=
+// API ROUTES
+// -=-=-=-=-=
+
 app.get("/api/users/:username",userController.findUser)
+
+app.get("/api/stories/:submission",storyController.findStory)
+
+app.get("/api/poems/:submission",poemController.findPoem)
+
+app.get("/api/essays/:submission",essayController.findEssay)
 
 app.post("/api/submission",function(request,response){
 	if(request.body.submissionType==="story"){

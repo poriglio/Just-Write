@@ -25,16 +25,14 @@ var createPoem = function(request,response){
 
 }
 
-var getPoem = function(request,response){
-	Poem.find({},function(error,docs){
-		if(error){
-			console.log("Error!",error)
-		}
-		response.send(docs)
+var findPoem = function(request,response){
+	var id = request.params.submission
+	Poem.findOne({_id : id},function(error,doc){
+		response.send(doc)
 	})
 }
 
 module.exports = {
-	getPoem    : getPoem,
+	findPoem    : findPoem,
 	createPoem  : createPoem,
 }

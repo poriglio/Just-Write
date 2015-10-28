@@ -25,13 +25,15 @@ var createStory = function(request,response){
 
 }
 
-var getStory = function(request,response){
-	var id = request.params.submissionID
+var findStory = function(request,response){
+	var id = request.params.submission
 	console.log(id)
-	Story.findOne({_id : id})
+	Story.findOne({_id : id},function(error,doc){
+		response.send(doc)
+	})
 }
 
 module.exports = {
-	getStory    : getStory,
+	findStory    : findStory,
 	createStory  : createStory,
 }
