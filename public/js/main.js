@@ -36,7 +36,7 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 	})
 	.when("/browse",{
 		templateUrl : "/html/private/browse.html",
-		controller  : "mainController"
+		controller  : "userController"
 	})
 	.when("/stories/:submission",{
 		templateUrl : "/html/private/submission.html",
@@ -62,12 +62,16 @@ angular.module("storyApp").controller("mainController",["$scope","$http","badgeF
 angular.module("storyApp").controller("userController",["$scope","$http",function($scope,$http){
 
 	$scope.users = []
-
 	$scope.poems   = []
 	$scope.stories = []
 	$scope.essays  = []
 
-	var user = window.location.hash.split("/")[2]
+	if(window.location.hash.split("/")[1]==="browse"){
+		var user = "returnAll"
+	}
+	else{
+		var user = window.location.hash.split("/")[2]
+	}
 
 	$http.get("/api/users/" + user).then(function(returnData){
 		$scope.users.push(returnData.data)
@@ -75,15 +79,23 @@ angular.module("storyApp").controller("userController",["$scope","$http",functio
 
 	$http.get("/api/stories/" + user).then(function(returnData){
 		$scope.stories.push(returnData.data)
-		console.log($scope.stories)
+		if($scope.stories[0].length===0){
+			$scope.storyMessage = "This user has not yet submitted a story."
+		}
 	})
 
 	$http.get("/api/poems/" + user).then(function(returnData){
 		$scope.poems.push(returnData.data)
+		if($scope.poems[0].length===0){
+			$scope.poemMessage = "This user has not yet submitted a poem."
+		}
 	})
 
 	$http.get("/api/essays/" + user).then(function(returnData){
 		$scope.essays.push(returnData.data)
+		if($scope.essays[0].length===0){
+			$scope.essayMessage = "This user has not yet submitted a story."
+		}
 	})
 
 }])

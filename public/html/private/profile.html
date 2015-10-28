@@ -22,18 +22,21 @@
 		</div>
 	<h2>Submissions</h2>
 	<h3>Stories</h3>
+		<div>{{storyMessage}}</div>
 		<div ng-repeat="story in stories[0]">
-			<h4>{{story.title}}</h4>
+			<h4><a ng-href="/#/stories/{{story._id}}">{{story.title}}</a></h4>
 			<p>{{story.description}}</p>
 		</div>
 	<h3>Essays</h3>
+		<div>{{essayMessage}}</div>
 		<div ng-repeat="essay in essays[0]">
-			<h4>{{essay.title}}</h4>
+			<h4><a ng-href="/#/essays/{{essay._id}}">{{essay.title}}</a></h4>
 			<p>{{essay.description}}</p>
 		</div>
 	<h3>Poems</h3>
+		<div>{{poemMessage}}</div>
 		<div ng-repeat="poem in poems[0]">
-			<h4>{{poem.title}}</h4>
+			<h4><a ng-href="/#/poems/{{poem._id}}">{{poem.title}}</a></h4>
 			<p>{{poem.description}}</p>
 		</div>
 </div>

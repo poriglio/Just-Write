@@ -32,12 +32,26 @@ var findEssay = function(request,response){
 	})
 }
 
+// var findEssays = function(request,response){
+// 	var username = request.params.username
+// 	console.log(username)
+// 	Essay.find({username: username},function(error,docs){
+// 		response.send(docs)
+// 	})
+// }
+
 var findEssays = function(request,response){
-	var username = request.params.username
-	console.log(username)
-	Essay.find({username: username},function(error,docs){
-		response.send(docs)
-	})
+	if(request.params.username!=="returnAll"){
+		var username = request.params.username
+		Essay.find({username: username},function(error,docs){
+			response.send(docs)
+		})
+	}
+	else if(request.params.username==="returnAll"){
+		Essay.find({},function(error,docs){
+			response.send(docs)
+		})
+	}
 }
 
 module.exports = {

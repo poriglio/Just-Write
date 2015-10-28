@@ -36,9 +36,15 @@ var createUser = function(request,response){
 }
 
 var findUser = function(request,response){
-	if(request.params.username){
+	if(request.params.username !== "returnAll"){
 		var name = request.params.username.toLowerCase()
 		User.findOne({usernameLower : name},function(error,doc){
+			response.send(doc)
+		})
+	}
+	else if(request.params.username === "returnAll"){
+		User.find({},function(error,doc){
+			console.log(doc)
 			response.send(doc)
 		})
 	}

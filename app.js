@@ -128,13 +128,14 @@ app.get("/#/essays/:submission",function(request,response){
 // API ROUTES
 // -=-=-=-=-=
 
-app.get("/api/users/:username",userController.findUser)
 
 app.get("/api/story/:submission",storyController.findStory)
 
 app.get("/api/poem/:submission",poemController.findPoem)
 
 app.get("/api/essay/:submission",essayController.findEssay)
+
+app.get("/api/users/:username",userController.findUser)
 
 app.get("/api/stories/:username",storyController.findStories)
 

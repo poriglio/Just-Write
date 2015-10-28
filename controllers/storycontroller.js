@@ -33,11 +33,17 @@ var findStory = function(request,response){
 }
 
 var findStories = function(request,response){
-	var username = request.params.username
-	console.log(username)
-	Story.find({username: username},function(error,docs){
-		response.send(docs)
-	})
+	if(request.params.username!=="returnAll"){
+		var username = request.params.username
+		Story.find({username: username},function(error,docs){
+			response.send(docs)
+		})
+	}
+	else if(request.params.username==="returnAll"){
+		Story.find({},function(error,docs){
+			response.send(docs)
+		})
+	}
 }
 
 module.exports = {

@@ -36,6 +36,10 @@ MAIN PAGE STYLING
 	float: right;
 }
 
+.static-header input{
+	color: black;
+}
+
 .static-header>ul{
 	clear: right;
 }

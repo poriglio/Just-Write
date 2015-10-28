@@ -1,16 +1,23 @@
 <div class="view">
 	<h1>Here is the place for a logged in user to browse users, stories, poems, and essays...</h1>
 
-	<div ng-repeat="user in users">
+	<h2>Users</h2>
+	<div ng-repeat="user in users[0]">
+	<a ng-href="/#/profile/{{user.username}}">{{user.username}}</a>
 	</div>
 
-
-	<div ng-repeat="story in stories">
+	<h2>Stories</h2>
+	<div ng-repeat="story in stories[0]">
+	<a ng-href="/#/stories/{{story._id}}">{{story.title}}</a>
 	</div>
 
-	<div ng-repeat="poem in poems">
+	<h2>Poems</h2>
+	<div ng-repeat="poem in poems[0]">
+	<a ng-href="/#/poems/{{poem._id}}">{{poem.title}}</a>
 	</div>
 
-	<div ng-repeat="essay in essays">
+	<h2>Essays</h2>
+	<div ng-repeat="essay in essays[0]">
+	<a ng-href="/#/essays/{{essay._id}}">{{essay.title}}</a>
 	</div>
 </div>
