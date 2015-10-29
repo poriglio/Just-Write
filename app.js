@@ -32,6 +32,10 @@ app.get("/",function(request,response){
 	response.sendFile("/html/index.html",{root:"./public"})
 })
 
+app.post("/auth/signup",function(request,response){
+	userController.createUser(request,response)
+})
+
 app.post("/auth/login",authenticationController.processLogin)
 
 app.get("/auth/logout",authenticationController.logout)
@@ -40,35 +44,15 @@ app.get("/api/me",function(request,response){
 	response.send(request.user)
 })
 
+
 app.use(passportConfig.ensureAuthenticated)
 
-// -=-=-=-=-=-
-// CONTROLLERS
-// -=-=-=-=-=-
-
-
-
-// -=-=-=-=-=-=-=-=-=-=-
-// PUBLIC ROUTES
-// -=-=-=-=-=-=-=-=-=-=-
-
-
-// -=-=-=-=-=-=-=-=-=
-// AUTHORIZATION ROUTES
-// -=-=-=-=-=-=-=-=-=
 var userController = require("./controllers/usercontroller.js")
 var poemController = require("./controllers/poemcontroller.js")
 var storyController = require("./controllers/storycontroller.js")
 var essayController = require("./controllers/essaycontroller.js")
 var commentController = require("./controllers/commentcontroller.js")
 
-app.post("/auth/signup",function(request,response){
-	userController.createUser(request,response)
-})
-
-// app.post("/auth/login",function(request,response){
-// 	userController.
-// })
 
 // -=-=-=-=-=-=-=-=-=-=
 // LOGGED IN ROUTES
@@ -109,6 +93,7 @@ app.get("/api/essays/:username",essayController.findEssays)
 app.get("/api/poems/:username",poemController.findPoems)
 
 app.post("/api/submission",function(request,response){
+	console.log(request.user)
 	if(request.body.submissionType==="story"){
 		storyController.createStory(request,response)
 	}

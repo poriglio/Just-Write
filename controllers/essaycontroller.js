@@ -3,7 +3,7 @@ var Essay = require("../models/essaymodel.js")
 var createEssay = function(request,response){
 
 	var newEssay = new Essay({
-		username        : request.body.username,
+		username        : request.user.username,
 		title           : request.body.title,
 		description     : request.body.description,
 		dateAdded       : request.body.added,

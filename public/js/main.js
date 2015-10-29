@@ -34,6 +34,10 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 		templateUrl : "/html/private/profile.html",
 		controller  : "userController"
 	})
+	.when("/profile",{
+		templateUrl : "/html/private/profile.html",
+		controller  : "mainController"
+	})
 	.when("/browse",{
 		templateUrl : "/html/private/browse.html",
 		controller  : "userController"
@@ -56,6 +60,18 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 angular.module("storyApp").controller("mainController",["$scope","$http","badgeFactory",function($scope,$http,badgeFactory){
 
 	$scope.badges = badgeFactory.badges
+
+	$scope.users = []
+
+	$http.get("/api/me").then(function(returnData){
+		var user = returnData.data.username
+		return user
+	})
+
+	$http.get("/api/users/" + user).then(function(returnData){
+		$scope.users.push(returnData.data)
+	})
+
 
 }])
 

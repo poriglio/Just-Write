@@ -3,7 +3,7 @@ var Story = require("../models/storymodel.js")
 var createStory = function(request,response){
 	
 	var newStory = new Story({
-		username        : request.body.username,
+		username        : request.user.username,
 		title           : request.body.title,
 		description     : request.body.description,
 		dateAdded       : request.body.added,

@@ -3,7 +3,7 @@ var Poem = require("../models/poemmodel.js")
 var createPoem = function(request,response){
 
 	var newPoem = new Poem({
-		username        : request.body.username,
+		username        : request.user.username,
 		title           : request.body.title,
 		description     : request.body.description,
 		dateAdded       : request.body.added,
