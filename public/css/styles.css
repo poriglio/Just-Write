@@ -4,6 +4,12 @@ html * {
 	font-size: 18px;
 	box-sizing: border-box;
 	text-decoration: none;
+	list-style-type: none;
+	font-family: ;
+}
+
+body{
+	background: linear-gradient(to left, hsl(130,100%,8%), hsl(130,90%,16%));
 }
 
 /*-=-=-=-=-=-=-=-=-
@@ -11,63 +17,115 @@ MAIN PAGE STYLING
 -=-=-=-=-=-=-=-=-*/
 
 .static-header{
-	background-color: purple;
 	position: fixed;
-	width: 100vw;
+	width: 100%;
 	top: 0px;
 	left: 0px;
-	float: left;
 	z-index: 10;
-	height: 6rem;
-	padding: 1rem;
-}
-
-.static-header *{
-	color: white;
+	height: 7rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	background: linear-gradient(to right, hsl(130,100%,8%), hsl(130,90%,16%));
 }
 
 .static-header>h1{
 	display: inline-block;
-	font-size: 2.5rem;
+	font-size: 3rem;
+	font-family: 'Patrick Hand', sans-serif;
+	color: white;
+	line-height: 7rem;
+	letter-spacing: 3px;
 }
 
 .static-header form{
 	display: inline-block;
 	float: right;
+	font-size: 0.8rem;
+	height: 2rem;
+	line-height: 10rem;
 }
 
 .static-header input{
-	color: black;
+	height: 1.75rem;
+	width: 9rem;
+	padding: 0.3rem;
+	border-radius: 4px;
+	margin-right: 0.3rem;
+	border-style: none;
+	font-size: 0.9rem;
 }
 
-.static-header>ul{
-	clear: right;
+.static-header button{
+	height: 1.75rem;
+	color: white;
+	border: none;
+	background-color: hsl(130,35%,47%);
+	border-radius: 4px;
+	padding: 0.2rem 1.5rem;
 }
+
+.static-header button:hover{
+	color: hsl(130,90%,16%);
+}
+
+/*-=-=-=-=-=-=-=-=-
+NAVIGATION STYLES
+-=-=-=-=-=-=-=-=-*/
 
 .nav{
 	position: relative;
 	display: block;
 	margin: 0 auto;
-	width: 600px;
+	width: 100%;
 	text-align: center;
 	list-style-type: none;
 }
 
 .nav li{
 	display: inline-block;
+	padding: 0.5rem;
 }
 
-.user-nav{
+.main-nav{
 	top: 7rem;
+	z-index: 10;
+	position: fixed;
+	color: white;
+	box-shadow: 0px 5px 19px hsl(130,90%,8%);
+	background: linear-gradient(to right, hsl(130,35%,60%), hsl(130,35%,47%), hsl(130,35%,35%));
+}
+
+.main-nav a{
+	color: white;
+}
+
+.main-nav a:hover{
+	color: hsl(130,90%,16%);
 }
 
 /*-=-=-=-=-=-=
 VIEW STYLING
 -=-=-=-=-=-=*/
 
+h1{
+	font-size: 2rem;
+	text-align: center;
+}
+
+h2{
+	font-size: 1.5rem;
+}
+
 .view{
 	position: relative;
-	top: 8rem;
+	top: 9rem;
+	max-width: 800px;
+	margin: auto;
+	background-color: hsl(130,60%,94%);
+	height: 100vh;
+	padding: 1rem;
+	margin-bottom: 1.5rem;
+	box-shadow: -8px 9px 19px hsl(130,90%,8%);
 }
 
 /*-=-=-=-=-=-=-
@@ -84,4 +142,12 @@ BADGE STYLING
 
 .badge img{
 	border-radius: 50%;
+}
+
+/*-=-=-=-=-=-=-=
+MEDIA QUERIES
+-=-=-=-=-=-=-=*/
+
+@media screen and (max-width: 850px){
+
 }

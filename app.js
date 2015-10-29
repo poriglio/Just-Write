@@ -45,7 +45,7 @@ app.get("/api/me",function(request,response){
 })
 
 
-app.use(passportConfig.ensureAuthenticated)
+// app.use(passportConfig.ensureAuthenticated)
 
 var userController = require("./controllers/usercontroller.js")
 var poemController = require("./controllers/poemcontroller.js")
@@ -93,7 +93,6 @@ app.get("/api/essays/:username",essayController.findEssays)
 app.get("/api/poems/:username",poemController.findPoems)
 
 app.post("/api/submission",function(request,response){
-	console.log(request.user)
 	if(request.body.submissionType==="story"){
 		storyController.createStory(request,response)
 	}
@@ -104,6 +103,8 @@ app.post("/api/submission",function(request,response){
 		essayController.createEssay(request,response)
 	}
 })
+
+app.post("/api/comment",commentController.createComment)
 
 var port = 3000
 

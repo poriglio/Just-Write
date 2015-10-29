@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<link href="/css/styles.css" rel="stylesheet" type="text/css">
+<link href='https://fonts.googleapis.com/css?family=Patrick+Hand' rel='stylesheet' type='text/css'>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
 		<script src="/js/main.js"></script>
@@ -10,30 +11,25 @@
 	</head>
 	<body>
 		<div class="static-header">
-			<h1>Writing Rangers</h1>
+			<h1>Writing Rangers &#9788;</h1>
 			<form method="POST" action="auth/login">
-				<b>Username:</b>
-				<input name="username" type="text">
-				<b>Password:</b>
-				<input type="text" name="password">
-				<input type="submit" value="Log In">
+				<input name="username" type="text" placeholder="username...">
+				<input type="text" name="password" placeholder="password...">
+				<button type="submit">log in</button>
 			</form>
-			<ul class="nav">
-				<li><a href="/#/">Home</a></li>
-				<li><a href="/#/guidelines">Submission Guidelines</a></li>
-				<li><a href="/#/faqs">FAQs</a></li>
-				<li><a href="/#/about">About</a></li>
-				<li><a href="/#/contact">Contact</a></li>
-				<li><a href="/#/signup">Sign Up</a></li>
-			</ul>
 		</div>
-		<ul class="user-nav nav">
-			<li><a href="/#/browse">Browse</a></li>
-			<li><a href="/#/profile/paulanator">Profile</a></li>
-			<li><a href="/#/submit">Submit</a></li>
-			<li><form method="GET" action="auth/logout">
-				<input type="submit" value="Log Out">
-			</form></li>
+		<ul class="nav main-nav">
+			<li><a href="/#/">home</a></li>
+			 <span style="font-size: 0.8rem;">&#9650;</span>
+			<li><a href="/#/browse">browse</a></li>
+			 <span style="font-size: 0.8rem;">&#9650;</span>
+			<li><a href="/#/profile/paulanator">profile</a></li>
+			<span style="font-size: 0.8rem;">&#9650;</span>
+			<li><a href="/#/submit">submit</a></li>
+			 <span style="font-size: 0.8rem;">&#9650;</span>
+			<li><a href="/#/signup">sign up</a></li>
+			 <span style="font-size: 0.8rem;">&#9650;</span>
+			<li><a href="/auth/logout">log out</a></li>
 		</ul>
 		<div ng-view>
 		</div>

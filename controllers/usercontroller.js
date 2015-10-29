@@ -44,7 +44,6 @@ var findUser = function(request,response){
 	}
 	else if(request.params.username === "returnAll"){
 		User.find({},function(error,doc){
-			console.log(doc)
 			response.send(doc)
 		})
 	}

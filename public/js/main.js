@@ -61,16 +61,16 @@ angular.module("storyApp").controller("mainController",["$scope","$http","badgeF
 
 	$scope.badges = badgeFactory.badges
 
-	$scope.users = []
+	// $scope.users = []
 
-	$http.get("/api/me").then(function(returnData){
-		var user = returnData.data.username
-		return user
-	})
+	// $http.get("/api/me").then(function(returnData){
+	// 	var user = returnData.data.username
+	// 	return user
+	// })
 
-	$http.get("/api/users/" + user).then(function(returnData){
-		$scope.users.push(returnData.data)
-	})
+	// $http.get("/api/users/" + user).then(function(returnData){
+	// 	$scope.users.push(returnData.data)
+	// })
 
 
 }])
@@ -121,6 +121,8 @@ angular.module("storyApp").controller("submissionController",["$scope","$http",f
 	$scope.submissions = []
 
 	var type = window.location.hash.split("/")[1]
+
+	console.log(type)
 
 	var id = window.location.hash.split("/")[2]
 

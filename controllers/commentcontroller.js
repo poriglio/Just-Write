@@ -2,18 +2,22 @@ var Comment = require("../models/commentmodel.js")
 
 var createComment = function (request,response){
 
+	var d = new Date();
+	var n = d.getTime();
+
+	console.log(request.body)
+
 	var newComment = new Comment({
 
-		date            : request.body.date,
-		username        : request.body.username,
+		date            : n,
+		username        : request.user.username,
 		comment         : request.body.comment,
 		submissionId    : request.body.submissionId,
-
 	})
 
 	newComment.save(function(error,doc){
 		if(!error){
-			response.send(doc)
+			response.send("Thank you for commenting!")
 		}
 		else{
 			console.log("Error!",error)
@@ -24,7 +28,7 @@ var createComment = function (request,response){
 var getComments = function(request,response){
 	Comment.find({},function(error,docs){
 		if(!error){
-			response.send(docs)
+			response.send("Thank you for commenting!")
 		}
 		else{
 			console.log("Error!",error)

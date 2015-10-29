@@ -1,7 +1,7 @@
 var mongoose = require("mongoose")
 
 var commentSchema = mongoose.Schema({
-	date           : {type: String},
+	date           : {type: Number},
 	username       : {type: String},
 	comment        : {type: String},
 	submissionId   : {type: String},
