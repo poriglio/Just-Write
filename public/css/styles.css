@@ -5,7 +5,7 @@ html * {
 	box-sizing: border-box;
 	text-decoration: none;
 	list-style-type: none;
-	font-family: ;
+	font-family: Lato;
 }
 
 body{
@@ -46,16 +46,20 @@ MAIN PAGE STYLING
 }
 
 .static-header input{
-	height: 1.75rem;
 	width: 9rem;
-	padding: 0.3rem;
-	border-radius: 4px;
 	margin-right: 0.3rem;
-	border-style: none;
-	font-size: 0.9rem;
 }
 
-.static-header button{
+input,textarea{
+	padding: 0.3rem;
+	height: 1.75rem;
+	border-radius: 4px;
+	border-style: none;
+	font-size: 0.9rem;
+	
+}
+
+.button{
 	height: 1.75rem;
 	color: white;
 	border: none;
@@ -64,8 +68,42 @@ MAIN PAGE STYLING
 	padding: 0.2rem 1.5rem;
 }
 
-.static-header button:hover{
-	color: hsl(130,90%,16%);
+.button:hover{
+	color: hsl(130,100%,8%);;
+}
+
+.form-button{
+	margin: auto;
+	display: block;
+}
+
+textarea{
+	display: block;
+	margin-bottom: 1.5rem;
+	width: 100%;
+	padding: 0.2rem;
+	margin-top: 0.5rem;
+}
+
+.small-area{
+	height: 5rem;
+}
+
+.medium-area{
+	height: 10rem;	
+}
+
+.large-area{
+	height: 30rem;
+}
+
+.radio{
+	display: block;
+	height: 2rem;
+}
+
+.radio-end{
+	margin-bottom: 2.5rem;
 }
 
 /*-=-=-=-=-=-=-=-=-
@@ -100,7 +138,7 @@ NAVIGATION STYLES
 }
 
 .main-nav a:hover{
-	color: hsl(130,90%,16%);
+	color: hsl(130,100%,8%);
 }
 
 /*-=-=-=-=-=-=
@@ -110,10 +148,19 @@ VIEW STYLING
 h1{
 	font-size: 2rem;
 	text-align: center;
+	margin-bottom: 1rem;
 }
 
 h2{
 	font-size: 1.5rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+h3{
+	margin-top: 1rem; 
+	margin-bottom: 1rem;
+	font-size: 1.25rem;
 }
 
 .view{
@@ -122,10 +169,16 @@ h2{
 	max-width: 800px;
 	margin: auto;
 	background-color: hsl(130,60%,94%);
-	height: 100vh;
-	padding: 1rem;
+	height: 100%;
+	padding: 3rem;
 	margin-bottom: 1.5rem;
 	box-shadow: -8px 9px 19px hsl(130,90%,8%);
+	color: hsl(130,100%,8%);
+}
+
+.view input{
+	margin-top: 0.5rem;
+	margin-bottom: 1.5rem;
 }
 
 /*-=-=-=-=-=-=-

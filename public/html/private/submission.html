@@ -14,12 +14,12 @@
 		<div>
 			{{submission.content}}
 		</div>
-		<form method="POST" action="/api/comment">
-			<div>Let the author know what you think!</div>
-			<input type="textarea" placeholder="Add a comment..." name="comment">
-			<input type="submit">
-		</form>
 		<h2>Comments</h2>
+		<form method="POST" action="/api/comment">
+			<div>Let the author know what you think!</div><br>
+			<textarea class="medium-area" placeholder="Add a comment..." name="comment"></textarea>
+			<input class="button form-button" type="submit">
+		</form>
 		<div ng-repeat="comment in submission.comments">
 			<h3>{{comment.username}}</h3>
 			<div><b>{{comment.date}}</b></div>
