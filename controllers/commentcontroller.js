@@ -1,11 +1,12 @@
 var Comment = require("../models/commentmodel.js")
+var User = require("../models/usermodel.js")
 
 var createComment = function (request,response){
 
 	var d = new Date();
 	var n = d.getTime();
 
-	console.log(request.body)
+	var username = request.user.username
 
 	var newComment = new Comment({
 
@@ -17,7 +18,12 @@ var createComment = function (request,response){
 
 	newComment.save(function(error,doc){
 		if(!error){
-			response.send("Thank you for commenting!")
+			User.update({username: username},{$inc:{numComments : 1}},function(error,docs){
+				if(error){
+					return error
+				}
+			})
+			response.redirect("/#/confirm/comment")
 		}
 		else{
 			console.log("Error!",error)

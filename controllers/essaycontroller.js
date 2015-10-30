@@ -5,8 +5,6 @@ var createEssay = function(request,response){
 
 	var username = request.user.username
 
-	console.log(username)
-
 	var newEssay = new Essay({
 		username        : request.user.username,
 		title           : request.body.title,
@@ -30,7 +28,7 @@ var createEssay = function(request,response){
 					return error
 				}
 			})
-			response.send("Thanks for your submission!")
+			response.redirect("/#/confirm/submission")
 		}
 		else{
 			console.log("Error!",error)

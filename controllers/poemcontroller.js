@@ -28,7 +28,7 @@ var createPoem = function(request,response){
 					return error
 				}
 			})
-			response.send("Thanks for your submission!")
+			response.redirect("/#/confirm/submission")
 		}
 		else{
 			console.log("Error!",error)

@@ -10,6 +10,30 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 		templateUrl : "/html/public/newuser.html",
 		controller  : "mainController"
 	})
+	.when("/confirm/comment",{
+		templateUrl : "/html/confirmation/comment.html",
+		controller  : "mainController"
+	})
+	.when("/confirm/login",{
+		templateUrl : "/html/confirmation/login.html",
+		controller  : "mainController"
+	})
+	// .when("/confirm/loginerror",{
+	// 	templateUrl : "/html/confirmation/loginerror.html",
+	// 	controller  : "mainController"
+	// })
+	.when("/confirm/logout",{
+		templateUrl : "/html/confirmation/logout.html",
+		controller  : "mainController"
+	})
+	.when("/confirm/registration",{
+		templateUrl : "/html/confirmation/registration.html",
+		controller  : "mainController"
+	})
+	.when("/confirm/submission",{
+		templateUrl : "/html/confirmation/submission.html",
+		controller  : "mainController"
+	})
 
 	// var viewFullSite = function(){
 		$routeProvider.when("/submit",{

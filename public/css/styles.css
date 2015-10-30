@@ -165,10 +165,11 @@ h3{
 
 .view{
 	position: relative;
-	top: 9rem;
+	top: 11.5rem;
 	max-width: 800px;
 	margin: auto;
-	background-color: hsl(130,60%,94%);
+	/*background-color: hsl(130,60%,94%);*/
+	background: radial-gradient(hsl(130,60%,96%), hsl(130,60%,94%), hsl(130,60%,88%));
 	height: 100%;
 	padding: 3rem;
 	margin-bottom: 1.5rem;

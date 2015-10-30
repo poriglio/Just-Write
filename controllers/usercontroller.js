@@ -24,13 +24,12 @@ var createUser = function(request,response){
 
 	newUser.save(function(error){
 		if(!error){
-			response.send("Thanks for registering! You can now share your writing!")
+			response.redirect("/#/confirm/registration")
 		}
 		else{
 			console.log("Error!",error)
 		}
 	})
-
 }
 
 var findUser = function(request,response){
