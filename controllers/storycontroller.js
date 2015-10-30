@@ -1,6 +1,10 @@
 var Story = require("../models/storymodel.js")
+var User = require("../models/usermodel.js")
+
 
 var createStory = function(request,response){
+
+	var username = request.user.username
 	
 	var newStory = new Story({
 		username        : request.user.username,
@@ -8,14 +12,23 @@ var createStory = function(request,response){
 		description     : request.body.description,
 		dateAdded       : request.body.added,
 		lastRevised     : "not yet revised",
-		comments        : [],
 		matureContent   : request.body.mature,
-		content         : request.body.content,
+		content         : request.body.content.split("[p]"),
 		type            : "story",
 	})
 
 	newStory.save(function(error){
 		if(!error){
+			User.update({username: username},{$inc:{numSubmissions : 1}},function(error,docs){
+				if(error){
+					return error
+				}
+			})
+			User.update({username: username},{$inc:{numStories : 1}},function(error,docs){
+				if(error){
+					return error
+				}
+			})
 			response.send("Thanks for your submission!")
 		}
 		else{

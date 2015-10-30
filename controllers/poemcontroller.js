@@ -1,6 +1,9 @@
 var Poem = require("../models/poemmodel.js")
+var User = require("../models/usermodel.js")
 
 var createPoem = function(request,response){
+
+	var username = request.user.username
 
 	var newPoem = new Poem({
 		username        : request.user.username,
@@ -8,14 +11,23 @@ var createPoem = function(request,response){
 		description     : request.body.description,
 		dateAdded       : request.body.added,
 		lastRevised     : "not yet revised",
-		comments        : [],
 		matureContent   : request.body.mature,
-		content         : request.body.content,
+		content         : request.body.content.split("[p]"),
 		type            : "poem",
 	})
 
 	newPoem.save(function(error){
 		if(!error){
+			User.update({username: username},{$inc:{numPoems : 1}},function(error,docs){
+				if(error){
+					return error
+				}
+			})
+			User.update({username: username},{$inc:{numSubmissions : 1}},function(error,docs){
+				if(error){
+					return error
+				}
+			})
 			response.send("Thanks for your submission!")
 		}
 		else{

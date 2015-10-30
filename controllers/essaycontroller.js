@@ -1,6 +1,11 @@
 var Essay = require("../models/essaymodel.js")
+var User = require("../models/usermodel.js")
 
 var createEssay = function(request,response){
+
+	var username = request.user.username
+
+	console.log(username)
 
 	var newEssay = new Essay({
 		username        : request.user.username,
@@ -8,14 +13,23 @@ var createEssay = function(request,response){
 		description     : request.body.description,
 		dateAdded       : request.body.added,
 		lastRevised     : "not yet revised",
-		comments        : [],
 		matureContent   : request.body.mature,
-		content         : request.body.content,
+		content         : request.body.content.split("[p]"),
 		type            : "essay",
 	})
 
 	newEssay.save(function(error){
 		if(!error){
+			User.update({username: username},{$inc:{numSubmissions : 1}},function(error,docs){
+				if(error){
+					return error
+				}
+			})
+			User.update({username: username},{$inc:{numEssays : 1}},function(error,docs){
+				if(error){
+					return error
+				}
+			})
 			response.send("Thanks for your submission!")
 		}
 		else{

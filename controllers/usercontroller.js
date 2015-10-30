@@ -16,10 +16,8 @@ var createUser = function(request,response){
 		numPoems        : 0,
 		numStories      : 0,
 		numEssays       : 0,
+		numComments     : 0,
 		badges          : [],
-		// poems           : [],
-		// stories         : [],
-		// essays          : [],
 		admin           : false,
 		private         : false,
 	})

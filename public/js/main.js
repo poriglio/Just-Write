@@ -6,60 +6,59 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 		templateUrl : "/html/public/intro.html",
 		controller  : "mainController"
 	})
-	.when("/guidelines",{
-		templateUrl : "/html/public/guidelines.html",
-		controller  : "mainController"
-	})
-	.when("/faqs",{
-		templateUrl : "/html/public/faqs.html",
-		controller  : "mainController"
-	})
-	.when("/about",{
-		templateUrl : "/html/public/about.html",
-		controller  : "mainController"
-	})
-	.when("/contact",{
-		templateUrl : "/html/public/contact.html",
-		controller  : "mainController"
-	})
 	.when("/signup",{
 		templateUrl : "/html/public/newuser.html",
 		controller  : "mainController"
 	})
-	.when("/submit",{
-		templateUrl : "/html/private/submissionform.html",
-		controller  : "mainController",
-	})
-	.when("/profile/:username",{
-		templateUrl : "/html/private/profile.html",
-		controller  : "userController"
-	})
-	.when("/profile",{
-		templateUrl : "/html/private/profile.html",
-		controller  : "userController"
-	})
-	.when("/browse",{
-		templateUrl : "/html/private/browse.html",
-		controller  : "userController"
-	})
-	.when("/stories/:submission",{
-		templateUrl : "/html/private/submission.html",
-		controller  : "submissionController"
-	})
-	.when("/essays/:submission",{
-		templateUrl : "/html/private/submission.html",
-		controller  : "submissionController"
-	})
-	.when("/poems/:submission",{
-		templateUrl : "/html/private/submission.html",
-		controller  : "submissionController"
-	})
+
+	// var viewFullSite = function(){
+		$routeProvider.when("/submit",{
+			templateUrl : "/html/private/submissionform.html",
+			controller  : "mainController",
+		})
+		.when("/profile/:username",{
+			templateUrl : "/html/private/profile.html",
+			controller  : "userController"
+		})
+		.when("/profile",{
+			templateUrl : "/html/private/profile.html",
+			controller  : "userController"
+		})
+		.when("/browse",{
+			templateUrl : "/html/private/browse.html",
+			controller  : "userController"
+		})
+		.when("/stories/:submission",{
+			templateUrl : "/html/private/submission.html",
+			controller  : "submissionController"
+		})
+		.when("/essays/:submission",{
+			templateUrl : "/html/private/submission.html",
+			controller  : "submissionController"
+		})
+		.when("/poems/:submission",{
+			templateUrl : "/html/private/submission.html",
+			controller  : "submissionController"
+		})
+	// }
 
 }])
 
 angular.module("storyApp").controller("mainController",["$scope","$http","badgeFactory",function($scope,$http,badgeFactory){
 
 	$scope.badges = badgeFactory.badges
+
+	// var loggedIn = function(){
+	// 	$http.get("/api/me").then(function(returnData){		
+
+	// 		if(returnData.data){
+	// 			viewFullSite()
+	// 		}
+	// 		else(console.log("log in prease"))
+	// 	})
+	// }
+
+	// loggedIn()
 
 }])
 

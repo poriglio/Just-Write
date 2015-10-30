@@ -1,19 +1,26 @@
 <div class="view">
 	<div ng-repeat="submission in submissions">
 		<h1>{{submission.title}}</h1>
-		<h2>by {{submission.username}}</h2>
+		<h2 style="text-align: center;">{{submission.type}} by {{submission.username}}</h2>
 		<ul>
-			<li>{{submission.type}}</li>
-			<li>{{submission.dateAdded}}</li>
-			<li>{{submission.lastRevised}}</li>
-			<li>{{submission.matureContent}}</li>
+			<!-- <li>{{submission.type}}</li> -->
+			<!-- <li>{{submission.dateAdded}}</li> -->
+			<!-- <li>{{submission.lastRevised}}</li> -->
+			<!-- <li>{{submission.matureContent}}</li> -->
 		</ul>
-		<div>
+		<p>
 			{{submission.description}}
+		</p>
+		<br>
+		<hr>
+		<br>
+		<div ng-repeat="paragraph in submission.content">
+			<p>
+			{{paragraph}}
+			</p>
+			<br>
 		</div>
-		<div>
-			{{submission.content}}
-		</div>
+		<hr>
 		<h2>Comments</h2>
 		<form method="POST" action="/api/comment">
 			<div>Let the author know what you think!</div><br>

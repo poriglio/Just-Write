@@ -6,9 +6,8 @@ var poemSchema = mongoose.Schema({
 	description     : {type: String},
 	dateAdded       : {type: String},
 	lastRevised     : {type: String},
-	comments        : {type: Array},
 	matureContent   : {type: Boolean},
-	content         : {type: String},
+	content         : {type: Array},
 	type            : {type: String},
 })
 
