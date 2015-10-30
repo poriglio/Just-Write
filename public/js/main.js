@@ -163,4 +163,33 @@ angular.module("storyApp").controller("submissionController",["$scope","$http",f
 		})
 	}
 
+	var Comment = function (type,username,comment,submissionId) {
+		this.type         = type
+		this.username     = username
+		this.comment      = comment
+		this.submissionID = submissionId
+	}
+
+	$scope.submitComment = function(){
+		var comment = $scope.comment
+		$scope.users = []
+		var type = window.location.hash.split("/")[1]
+		var submissionId = window.location.hash.split("/")[2]
+		$http.get("/api/me").then(function(returnData){
+			$scope.users.push(returnData.data.username)
+		}).then(function(){
+			$scope.newComment = new Comment(type,$scope.users[0],comment,submissionId)
+		}).then(
+			$http({
+            method : 'POST',
+            url    : '/api/comment',
+            data   : $scope.newComment
+        }).then(function(returnData){
+
+        })
+		)
+
+		
+	}
+
 }])

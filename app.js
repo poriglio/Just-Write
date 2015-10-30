@@ -104,9 +104,9 @@ app.post("/api/submission",function(request,response){
 	}
 })
 
-app.post("/api/comment",commentController.createComment)
+app.post("/api/comment",function(request,response){console.log(request.body)})
 
-var port = 3000
+var port = 80
 
 app.listen(port, function(){
 	console.log("The server is listening on port " + port + "...")

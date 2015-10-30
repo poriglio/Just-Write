@@ -1,4 +1,7 @@
 var Comment = require("../models/commentmodel.js")
+var StoryComment = require("../models/storycommentmodel.js")
+var EssayComment = require("../models/essaycommentmodel.js")
+var PoemComment = require("../models/poemcommentmodel.js")
 var User = require("../models/usermodel.js")
 
 var createComment = function (request,response){
