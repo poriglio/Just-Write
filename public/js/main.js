@@ -36,7 +36,7 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 	})
 	.when("/profile",{
 		templateUrl : "/html/private/profile.html",
-		controller  : "mainController"
+		controller  : "userController"
 	})
 	.when("/browse",{
 		templateUrl : "/html/private/browse.html",
@@ -61,18 +61,6 @@ angular.module("storyApp").controller("mainController",["$scope","$http","badgeF
 
 	$scope.badges = badgeFactory.badges
 
-	// $scope.users = []
-
-	// $http.get("/api/me").then(function(returnData){
-	// 	var user = returnData.data.username
-	// 	return user
-	// })
-
-	// $http.get("/api/users/" + user).then(function(returnData){
-	// 	$scope.users.push(returnData.data)
-	// })
-
-
 }])
 
 angular.module("storyApp").controller("userController",["$scope","$http",function($scope,$http){
@@ -82,37 +70,47 @@ angular.module("storyApp").controller("userController",["$scope","$http",functio
 	$scope.stories = []
 	$scope.essays  = []
 
+	var buildProfile = function(user){
+		$http.get("/api/users/" + user).then(function(returnData){
+			$scope.users.push(returnData.data)
+		})
+
+		$http.get("/api/stories/" + user).then(function(returnData){
+			$scope.stories.push(returnData.data)
+			if($scope.stories[0].length===0){
+				$scope.storyMessage = "This user has not yet submitted a story."
+			}
+		})
+
+		$http.get("/api/poems/" + user).then(function(returnData){
+			$scope.poems.push(returnData.data)
+			if($scope.poems[0].length===0){
+				$scope.poemMessage = "This user has not yet submitted a poem."
+			}
+		})
+
+		$http.get("/api/essays/" + user).then(function(returnData){
+			$scope.essays.push(returnData.data)
+			if($scope.essays[0].length===0){
+				$scope.essayMessage = "This user has not yet submitted a story."
+			}
+		})
+	}
+
 	if(window.location.hash.split("/")[1]==="browse"){
 		var user = "returnAll"
+		buildProfile(user)
+	}
+	else if(window.location.hash.split("/")[2]==undefined){
+		$http.get("api/me").then(function(returnData){
+			var user = returnData.data.username
+			buildProfile(user)
+		})
 	}
 	else{
 		var user = window.location.hash.split("/")[2]
+		buildProfile(user)
 	}
-
-	$http.get("/api/users/" + user).then(function(returnData){
-		$scope.users.push(returnData.data)
-	})
-
-	$http.get("/api/stories/" + user).then(function(returnData){
-		$scope.stories.push(returnData.data)
-		if($scope.stories[0].length===0){
-			$scope.storyMessage = "This user has not yet submitted a story."
-		}
-	})
-
-	$http.get("/api/poems/" + user).then(function(returnData){
-		$scope.poems.push(returnData.data)
-		if($scope.poems[0].length===0){
-			$scope.poemMessage = "This user has not yet submitted a poem."
-		}
-	})
-
-	$http.get("/api/essays/" + user).then(function(returnData){
-		$scope.essays.push(returnData.data)
-		if($scope.essays[0].length===0){
-			$scope.essayMessage = "This user has not yet submitted a story."
-		}
-	})
 
 }])
 
