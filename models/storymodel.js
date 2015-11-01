@@ -2,13 +2,13 @@ var mongoose = require("mongoose")
 
 var storySchema = mongoose.Schema({
 	username        : {type: String},
-	title           : {type: String},
+	title           : {type: String, default: "Untitled"},
 	description     : {type: String},
 	dateAdded       : {type: String},
 	lastRevised     : {type: String},
-	matureContent   : {type: Boolean},
-	content         : {type: Array},
-	type            : {type: String},
+	matureContent   : {type: Boolean, required: true},
+	content         : {type: Array, required: true},
+	type            : {type: String, required: true},
 })
 
 module.exports = mongoose.model("Story",storySchema)

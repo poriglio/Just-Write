@@ -92,10 +92,12 @@ angular.module("storyApp").controller("userController",["$scope","$http",functio
 	$scope.poems   = []
 	$scope.stories = []
 	$scope.essays  = []
+	$scope.badges = []
 
 	var buildProfile = function(user){
 		$http.get("/api/users/" + user).then(function(returnData){
 			$scope.users.push(returnData.data)
+			console.log($scope.users)
 		})
 
 		$http.get("/api/stories/" + user).then(function(returnData){
@@ -163,32 +165,31 @@ angular.module("storyApp").controller("submissionController",["$scope","$http",f
 		})
 	}
 
-	var Comment = function (type,username,comment,submissionId) {
+	var Comment = function (type,comment,submissionId) {
 		this.type         = type
-		this.username     = username
 		this.comment      = comment
 		this.submissionID = submissionId
 	}
 
 	$scope.submitComment = function(){
-		var comment = $scope.comment
-		$scope.users = []
-		var type = window.location.hash.split("/")[1]
+
+		var comment 	 = $scope.comment
+		var type 		 = window.location.hash.split("/")[1]
 		var submissionId = window.location.hash.split("/")[2]
-		$http.get("/api/me").then(function(returnData){
-			$scope.users.push(returnData.data.username)
-		}).then(function(){
-			$scope.newComment = new Comment(type,$scope.users[0],comment,submissionId)
-		}).then(
-			$http({
-            method : 'POST',
-            url    : '/api/comment',
-            data   : $scope.newComment
-        }).then(function(returnData){
 
-        })
-		)
+		var newComment = new Comment(type,comment,submissionId)
 
+		console.log(newComment)
+
+		$scope.submitComment = function(){
+
+	        $http({
+	            method : 'POST',
+	            url    : '/api/comment',
+	            data   : newComment
+	        })
+
+	    }
 		
 	}
 

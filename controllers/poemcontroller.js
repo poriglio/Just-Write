@@ -5,9 +5,18 @@ var createPoem = function(request,response){
 
 	var username = request.user.username
 
+	var title
+
+	if(request.body.title===""){
+		title = "Untitled"
+	}
+	else{
+		title = request.body.title
+	}
+
 	var newPoem = new Poem({
 		username        : request.user.username,
-		title           : request.body.title,
+		title           : title,
 		description     : request.body.description,
 		dateAdded       : request.body.added,
 		lastRevised     : "not yet revised",

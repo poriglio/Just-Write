@@ -8,7 +8,7 @@ var createUser = function(request,response){
 		password        : request.body.password,
 		email           : request.body.email,
 		age             : +request.body.age,
-		birthday        : +request.body.birthday,
+		birthday        : request.body.birthday,
 		bio             : request.body.bio,
 		favBooks        : request.body.favBooks.split(", "),
 		favWriters      : request.body.favWriters.split(", "),

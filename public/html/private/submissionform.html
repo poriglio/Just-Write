@@ -3,7 +3,7 @@
 	<form method="POST" action="/api/submission">
 		<h3>Title</h3>
 		<input type="text" name="title" placeholder="title...">
-		<h3>Type</h3>
+		<h3>Type <span style="color: red; font-size: 0.8rem;">Required!</span></h3>
 		<div class="radio">
 			<input type="radio" name="submissionType" value="story">
 			<span>Story   </span>
@@ -18,16 +18,7 @@
 		</div>
 		<h3>Description</h3>
 		<textarea class="medium-area" name="description"></textarea>
-		<h3>Does your submission contain mature content?</h3>
-		<div class="radio">
-			<input type="radio" name="matureContent" value="false">
-			<span>No, all ages can read it!</span>
-		</div>
-		<div>
-			<input type="radio" name="matureContent" value="true">
-			<span>Yes, it does.</span>
-		</div>
-		<h3>Share your writing below! Type [p] wherever you would like to insert a line break.</h3>
+		<h3>Share your writing below! Type [p] wherever you would like to insert a line break. <span style="color: red; font-size: 0.8rem;">Required!</span></h3>
 		<textarea class="large-area" name="content" placeholder="Your writing goes here!"></textarea>
 		<input class="button form-button" type="submit" value="submit">
 	</form>

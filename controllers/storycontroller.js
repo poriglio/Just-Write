@@ -5,10 +5,19 @@ var User = require("../models/usermodel.js")
 var createStory = function(request,response){
 
 	var username = request.user.username
+
+	var title
+
+	if(request.body.title===""){
+		title = "Untitled"
+	}
+	else{
+		title = request.body.title
+	}
 	
 	var newStory = new Story({
 		username        : request.user.username,
-		title           : request.body.title,
+		title           : title,
 		description     : request.body.description,
 		dateAdded       : request.body.added,
 		lastRevised     : "not yet revised",

@@ -7,7 +7,7 @@ var userSchema = mongoose.Schema({
 	password        : {type:String, required:true},
 	email           : {type:String, required:true, unique:true},
 	age             : {type:Number, required:true},
-	birthday        : {type:Number, required:true},
+	birthday        : {type:String, required:true},
 	bio             : {type:String},
 	favBooks        : {type:Array},
 	favWriters      : {type:Array},

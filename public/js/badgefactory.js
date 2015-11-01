@@ -33,12 +33,12 @@ angular.module("storyApp").factory("badgeFactory",function(){
 	var total4 = new Badge("Stars","https://placeholdit.imgix.net/~text?txtsize=33&txt=150%C3%97150&w=150&h=150","Earned by having 100 total submissions.")
 
 	var types2 = new Badge("New Leaf","https://placeholdit.imgix.net/~text?txtsize=33&txt=150%C3%97150&w=150&h=150","Earned by having submissions of two different types.")
-	var types3 = new Badge("Branching Out","https://placeholdit.imgix.net/~text?txtsize=33&txt=150%C3%97150&w=150&h=150","Earned by having submissions of all three types.")
+	var types3 = new Badge("Branching Out","../images/branchingout.jpg","Earned by having submissions of all three types.")
 
-	var comment1 = new Badge("Hive","https://placeholdit.imgix.net/~text?txtsize=33&txt=150%C3%97150&w=150&h=150","Earned by writing 10 comments on others' submissions.")
+	var comment1 = new Badge("Hive","../images/beehive.jpg","Earned by writing 10 comments on others' submissions.")
 	var comment2 = new Badge("Run","https://placeholdit.imgix.net/~text?txtsize=33&txt=150%C3%97150&w=150&h=150","Earned by writing 25 comments on others' submissions.")
 	var comment3 = new Badge("Flock","https://placeholdit.imgix.net/~text?txtsize=33&txt=150%C3%97150&w=150&h=150","Earned by writing 50 comments on others' submissions.")
-	var comment4 = new Badge("Pack","https://placeholdit.imgix.net/~text?txtsize=33&txt=150%C3%97150&w=150&h=150","Earned by writing 100 comments on others' submissions.")
+	var comment4 = new Badge("Pack","../images/pack.jpg","Earned by writing 100 comments on others' submissions.")
 	var comment5 = new Badge("Herd","https://placeholdit.imgix.net/~text?txtsize=33&txt=150%C3%97150&w=150&h=150","Earned by writing 200 comments on others' submissions.")
 
 	return {

@@ -2,12 +2,6 @@
 	<div ng-repeat="submission in submissions">
 		<h1>{{submission.title}}</h1>
 		<h2 style="text-align: center;">{{submission.type}} by {{submission.username}}</h2>
-		<ul>
-			<!-- <li>{{submission.type}}</li> -->
-			<!-- <li>{{submission.dateAdded}}</li> -->
-			<!-- <li>{{submission.lastRevised}}</li> -->
-			<!-- <li>{{submission.matureContent}}</li> -->
-		</ul>
 		<p>
 			{{submission.description}}
 		</p>
@@ -22,10 +16,10 @@
 		</div>
 		<hr>
 		<h2>Comments</h2>
-		<form ng-submit="submitComment()">
+		<form>
 			<div>Let the author know what you think!</div><br>
 			<textarea class="medium-area" placeholder="Add a comment..." ng-model="$parent.comment"></textarea>
-			<input class="button form-button" type="submit">
+			<input ng-click="submitComment()" class="button form-button" type="submit">
 		</form>
 		<div ng-repeat="comment in comments">
 			<h3>{{comment.username}}</h3>

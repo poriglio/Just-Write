@@ -1,7 +1,6 @@
 <div class="view" ng-repeat="user in users">
 	<h1>{{user.username}}</h1>
 	<p>{{user.bio}}</p>
-	<span>{{user.age}} years old - born {{user.birthday}}</span>
 	<h2>Favorites</h2>
 		<ul>
 		<li><b>Books: </b><span ng-repeat="book in user.favBooks">{{book}}, </span></li>
