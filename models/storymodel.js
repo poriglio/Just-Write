@@ -6,7 +6,7 @@ var storySchema = mongoose.Schema({
 	description     : {type: String},
 	dateAdded       : {type: String},
 	lastRevised     : {type: String},
-	matureContent   : {type: Boolean, required: true},
+	matureContent   : {type: Boolean},
 	content         : {type: Array, required: true},
 	type            : {type: String, required: true},
 })

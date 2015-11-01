@@ -38,7 +38,6 @@ var createStory = function(request,response){
 					return error
 				}
 			})
-			response.redirect("/#/confirm/submission")
 		}
 		else{
 			console.log("Error!",error)

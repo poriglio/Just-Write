@@ -14,17 +14,17 @@
 			</p>
 			<br>
 		</div>
-		<hr>
-		<h2>Comments</h2>
-		<form>
-			<div>Let the author know what you think!</div><br>
-			<textarea class="medium-area" placeholder="Add a comment..." ng-model="$parent.comment"></textarea>
-			<input ng-click="submitComment()" class="button form-button" type="submit">
-		</form>
-		<div ng-repeat="comment in comments">
-			<h3>{{comment.username}}</h3>
-			<div><b>{{comment.date}}</b></div>
-			<div>{{comment.comment}}</div>
-		</div>
+	</div>
+	<hr>
+	<h2>Comments</h2>
+	<form ng-submit="submitComment()">
+		<div>Let the author know what you think!</div><br>
+		<textarea class="medium-area" placeholder="Add a comment..." ng-model="$parent.comment"></textarea>
+		<input class="button form-button" type="submit">
+	</form>
+	<div ng-repeat="comment in comments">
+		<h3>{{comment.username}}</h3>
+		<div><b>{{comment.date}}</b></div>
+		<div>{{comment.comment}}</div>
 	</div>
 </div>

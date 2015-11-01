@@ -104,7 +104,9 @@ app.post("/api/submission",function(request,response){
 	}
 })
 
-app.post("/api/comment",function(request,response){console.log(request.body, request.user.username)})
+app.post("/api/comment",function(request,response){
+	commentController.createComment(request,response)
+})
 
 var port = 3000
 

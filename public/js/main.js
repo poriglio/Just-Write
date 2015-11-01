@@ -18,10 +18,6 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 		templateUrl : "/html/confirmation/login.html",
 		controller  : "mainController"
 	})
-	// .when("/confirm/loginerror",{
-	// 	templateUrl : "/html/confirmation/loginerror.html",
-	// 	controller  : "mainController"
-	// })
 	.when("/confirm/logout",{
 		templateUrl : "/html/confirmation/logout.html",
 		controller  : "mainController"
@@ -72,18 +68,6 @@ angular.module("storyApp").controller("mainController",["$scope","$http","badgeF
 
 	$scope.badges = badgeFactory.badges
 
-	// var loggedIn = function(){
-	// 	$http.get("/api/me").then(function(returnData){		
-
-	// 		if(returnData.data){
-	// 			viewFullSite()
-	// 		}
-	// 		else(console.log("log in prease"))
-	// 	})
-	// }
-
-	// loggedIn()
-
 }])
 
 angular.module("storyApp").controller("userController",["$scope","$http",function($scope,$http){
@@ -97,7 +81,6 @@ angular.module("storyApp").controller("userController",["$scope","$http",functio
 	var buildProfile = function(user){
 		$http.get("/api/users/" + user).then(function(returnData){
 			$scope.users.push(returnData.data)
-			console.log($scope.users)
 		})
 
 		$http.get("/api/stories/" + user).then(function(returnData){
@@ -139,13 +122,11 @@ angular.module("storyApp").controller("userController",["$scope","$http",functio
 
 }])
 
-angular.module("storyApp").controller("submissionController",["$scope","$http",function($scope,$http){
+angular.module("storyApp").controller("submissionController",["$scope","$http","$location",function($scope,$http,$location){
 
 	$scope.submissions = []
 
 	var type = window.location.hash.split("/")[1]
-
-	console.log(type)
 
 	var id = window.location.hash.split("/")[2]
 
@@ -179,18 +160,13 @@ angular.module("storyApp").controller("submissionController",["$scope","$http",f
 
 		var newComment = new Comment(type,comment,submissionId)
 
-		console.log(newComment)
-
-		$scope.submitComment = function(){
-
-	        $http({
+	    $http({
 	            method : 'POST',
 	            url    : '/api/comment',
 	            data   : newComment
-	        })
-
+	        }).success(
+	        	$location.path("/confirm/comment")
+	        )
 	    }
-		
-	}
 
 }])
