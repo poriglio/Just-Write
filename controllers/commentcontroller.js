@@ -41,6 +41,7 @@ var createComment = function (request,response){
 
 	newComment.save(function(error){
 		if(!error){
+			console.log("it works")
 			User.update({username: username},{$inc:{numComments : 1}},function(error){
 				if(error){
 					return error
@@ -54,14 +55,43 @@ var createComment = function (request,response){
 }
 
 var getComments = function(request,response){
-	Comment.find({},function(error,docs){
-		if(!error){
-			response.send("Thank you for commenting!")
-		}
-		else{
-			console.log("Error!",error)
-		}
-	})
+
+	console.log(request.params.type)
+	console.log(request.params.submissionID)
+
+	var type = request.params.type
+	var id = request.params.submissionID
+
+	if(type==="stories"){
+		StoryComment.find({submissionId:id},function(error,docs){
+			if(!error){
+				response.send(docs)
+			}
+			else{
+				console.log("Error!")
+			}
+		})
+	}
+	else if(type==="poems"){
+		PoemComment.find({submissionId:id},function(error,docs){
+			if(!error){
+				response.send(docs)
+			}
+			else{
+				console.log("Error!")
+			}
+		})
+	}
+	else if(type==="essays"){
+		EssayComment.find({submissionId:id},function(error,docs){
+			if(!error){
+				response.send(docs)
+			}
+			else{
+				console.log("Error!")
+			}
+		})
+	}
 }
 
 module.exports = {

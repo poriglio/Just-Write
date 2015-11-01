@@ -104,6 +104,10 @@ app.post("/api/submission",function(request,response){
 	}
 })
 
+app.get("/api/comments/:type/:submissionID",function(request,response){
+	commentController.getComments(request,response)
+})
+
 app.post("/api/comment",function(request,response){
 	commentController.createComment(request,response)
 })

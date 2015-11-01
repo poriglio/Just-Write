@@ -125,10 +125,17 @@ angular.module("storyApp").controller("userController",["$scope","$http",functio
 angular.module("storyApp").controller("submissionController",["$scope","$http","$location",function($scope,$http,$location){
 
 	$scope.submissions = []
+	$scope.comments = []
+
 
 	var type = window.location.hash.split("/")[1]
 
 	var id = window.location.hash.split("/")[2]
+
+	$http.get("/api/comments/"+type+"/"+id).then(function(returnData){
+		$scope.comments.push(returnData.data)
+		console.log($scope.comments)
+	})
 
 	if(type==="stories"){
 		$http.get("/api/story/" + id).then(function(returnData){
@@ -160,13 +167,14 @@ angular.module("storyApp").controller("submissionController",["$scope","$http","
 
 		var newComment = new Comment(type,comment,submissionId)
 
+		$scope.comment = ""
+	    
 	    $http({
 	            method : 'POST',
 	            url    : '/api/comment',
 	            data   : newComment
 	        }).success(
 	        	$location.path("/confirm/comment")
-	        )
-	    }
-
+	    )
+	}
 }])
