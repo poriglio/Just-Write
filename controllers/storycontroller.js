@@ -4,6 +4,9 @@ var User = require("../models/usermodel.js")
 
 var createStory = function(request,response){
 
+	var d = new Date();
+	var n = d.getTime();
+
 	var username = request.user.username
 
 	var title
@@ -24,6 +27,8 @@ var createStory = function(request,response){
 		matureContent   : request.body.mature,
 		content         : request.body.content.split("[p]"),
 		type            : "story",
+		dateAdded       : n,
+		numComments     : +0,
 	})
 
 	newStory.save(function(error){

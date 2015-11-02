@@ -3,6 +3,9 @@ var User = require("../models/usermodel.js")
 
 var createEssay = function(request,response){
 
+	var d = new Date();
+	var n = d.getTime();
+
 	var username = request.user.username
 
 	var title
@@ -23,6 +26,8 @@ var createEssay = function(request,response){
 		matureContent   : request.body.mature,
 		content         : request.body.content.split("[p]"),
 		type            : "essay",
+		dateAdded       : n,
+		numComments     : +0,
 	})
 
 	newEssay.save(function(error){

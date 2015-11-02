@@ -1,6 +1,9 @@
 var PoemComment = require("../models/poemcomment.js")
 var StoryComment = require("../models/storycomment.js")
 var EssayComment = require("../models/essaycomment.js")
+var Poem = require("../models/poemmodel.js")
+var Story = require("../models/storymodel.js")
+var Essay = require("../models/essaymodel.js")
 var User = require("../models/usermodel.js")
 
 var createComment = function (request,response){
@@ -47,6 +50,27 @@ var createComment = function (request,response){
 					return error
 				}
 			})
+			if(request.body.type === "stories"){
+				Story.update({_id: request.body.submissionID},{$inc:{numComments:1}},function(error,docs){
+					if(error){
+						return error
+					}
+				})
+			}
+			else if(request.body.type==="poems"){
+				Poem.update({_id: request.body.submissionID},{$inc:{numComments:1}},function(error,docs){
+					if(error){
+						return error
+					}
+				})
+			}
+			else if(request.body.type==="essays"){
+				Essay.update({_id: request.body.submissionID},{$inc:{numComments:1}},function(error,docs){
+					if(error){
+						return error
+					}
+				})
+			}
 		}
 		else{
 			console.log("Error!",error)

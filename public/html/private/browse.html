@@ -1,22 +1,88 @@
-<div class="view">
+<div class="view container">
 	<h1>Browse</h1>
 	<h2>Users</h2>
-	<div ng-repeat="user in users[0]">
-	<a ng-href="/#/profile/{{user.username}}">{{user.username}}</a>
+	<div class="row">
+		<div class="col-xs-12 col-sm-4">
+			<h3>Newest</h3>
+			<div ng-repeat="user in users[0] | limitTo: 8">
+			<a ng-href="/#/profile/{{user.username}}"><b>{{user.username}}</b></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<h3>Prolific</h3>
+			<div ng-repeat="user in users[0] | limitTo: 8">
+			<a ng-href="/#/profile/{{user.username}}"><b>{{user.username}}</b></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<h3>Random</h3>
+			<div ng-repeat="user in users[0] | limitTo: 8">
+			<a ng-href="/#/profile/{{user.username}}"><b>{{user.username}}</b></a>
+			</div>
+		</div>
 	</div>
-
 	<h2>Stories</h2>
-	<div ng-repeat="story in stories[0]">
-	<a ng-href="/#/stories/{{story._id}}">{{story.title}}</a>
+	<div class="row">
+		<div class="col-xs-12 col-sm-4">
+			<h3>Newest</h3>
+			<div ng-repeat="story in stories[0] | limitTo: 8">
+			<a ng-href="/#/stories/{{story._id}}"><b>{{story.title}}</b></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<h3>Popular</h3>
+			<div ng-repeat="story in stories[0] | limitTo: 8">
+			<a ng-href="/#/stories/{{story._id}}"><b>{{story.title}}</b></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<h3>Random</h3>
+			<div ng-repeat="story in stories[0] | limitTo: 8">
+			<a ng-href="/#/stories/{{story._id}}"><b>{{story.title}}</b></a>
+		</div>
 	</div>
 
+	</div>
 	<h2>Poems</h2>
-	<div ng-repeat="poem in poems[0]">
-	<a ng-href="/#/poems/{{poem._id}}">{{poem.title}}</a>
+	<div class="row">
+		<div class="col-xs-12 col-sm-4">
+			<h3>Newest</h3>
+			<div ng-repeat="poem in poems[0] | limitTo: 8">
+			<a ng-href="/#/poems/{{poem._id}}"><b>{{poem.title}}</b></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<h3>Popular</h3>
+			<div ng-repeat="poem in poems[0] | limitTo: 8">
+			<a ng-href="/#/poems/{{poem._id}}"><b>{{poem.title}}</b></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<h3>Random</h3>
+			<div ng-repeat="poem in poems[0] | limitTo: 8">
+			<a ng-href="/#/poems/{{poem._id}}"><b>{{poem.title}}</b></a>
+			</div>
+		</div>
 	</div>
-
 	<h2>Essays</h2>
-	<div ng-repeat="essay in essays[0]">
-	<a ng-href="/#/essays/{{essay._id}}">{{essay.title}}</a>
+	<div class="row">
+		<div class="col-xs-12 col-sm-4">
+			<h3>Newest</h3>
+			<div ng-repeat="essay in essays[0] | limitTo: 8">
+			<a ng-href="/#/essays/{{essay._id}}"><b>{{essay.title}}</b></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<h3>Prolific</h3>
+			<div ng-repeat="essay in essays[0] | limitTo: 8">
+			<a ng-href="/#/essays/{{essay._id}}"><b>{{essay.title}}</b></a>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			<h3>Random</h3>
+			<div ng-repeat="essay in essays[0] | limitTo: 8">
+			<a ng-href="/#/essays/{{essay._id}}"><b>{{essay.title}}</b></a>
+			</div>	
+		</div>
 	</div>
 </div>

@@ -9,6 +9,8 @@ var essaySchema = mongoose.Schema({
 	matureContent   : {type: Boolean},
 	content         : {type: Array, required: true},
 	type            : {type: String, required: true},
+	dateAdded       : {type:Number},
+	numComments     : {type: Number, default: 0},
 })
 
 module.exports = mongoose.model("Essay",essaySchema)

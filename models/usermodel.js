@@ -19,6 +19,7 @@ var userSchema = mongoose.Schema({
 	badges          : {type:Array, default:[]},
 	admin           : {type:Boolean, default: false},
 	private         : {type:Boolean, default: false},
+	dateJoined      : {type:Number},
 })
 
 // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-

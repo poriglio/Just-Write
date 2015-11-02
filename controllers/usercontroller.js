@@ -2,6 +2,9 @@ var User = require("../models/usermodel.js")
 
 var createUser = function(request,response){
 
+	var d = new Date();
+	var n = d.getTime();
+
 	var newUser = new User({
 		username        : request.body.username,
 		usernameLower   : request.body.username.toLowerCase(),
@@ -20,6 +23,7 @@ var createUser = function(request,response){
 		badges          : [],
 		admin           : false,
 		private         : false,
+		dateJoined      : n,
 	})
 
 	newUser.save(function(error){

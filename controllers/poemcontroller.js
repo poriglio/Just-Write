@@ -3,6 +3,9 @@ var User = require("../models/usermodel.js")
 
 var createPoem = function(request,response){
 
+	var d = new Date();
+	var n = d.getTime();
+
 	var username = request.user.username
 
 	var content = request.body.content.split("[p]")
@@ -27,6 +30,8 @@ var createPoem = function(request,response){
 		matureContent   : request.body.mature,
 		content         : content,
 		type            : "poem",
+		dateAdded       : d,
+		numComments     : +0,
 	})
 
 	newPoem.save(function(error){

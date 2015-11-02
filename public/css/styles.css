@@ -18,7 +18,7 @@ h1{
 	font-size: 4.5rem;
 	background: linear-gradient(#EDA2D8 20%,#C853A8 100%,#EDA2D8 20%);
 	height: 7rem;
-	width: 500px;
+	width: 425px;
 	color: white;
 	line-height: 7rem;
 	border-radius: 5px;
@@ -36,7 +36,7 @@ h3{
 }
 
 .view{
-	max-width: 800px;
+	max-width: 950px;
 	margin: auto;
 	display: block;
 }
@@ -69,3 +69,26 @@ h3{
 	border-radius: 25%;
 }
 
+textarea{
+	display: block;
+	margin-bottom: 1.5rem;
+	width: 100%;
+	padding: 0.2rem;
+	margin-top: 0.5rem;
+}
+
+.small-area{
+	height: 5rem;
+}
+
+.medium-area{
+	height: 10rem;	
+}
+
+.large-area{
+	height: 30rem;
+}
+
+@media screen and (max-width: 500px){
+
+}
