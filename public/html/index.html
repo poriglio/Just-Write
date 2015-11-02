@@ -11,10 +11,8 @@
 		<script src="/js/badgefactory.js"></script>
 	</head>
 	<body ng-controller="mainController">
-		<div class="container">
-			<div class="row">
-				<h1 class="col-xs-12 title text-center">Just Write</h1>
-			</div>
+		<div class="view container text-center nav-list">
+			<h1 class="title">Just Write</h1>
 		</div>
 		<ul ng-show="loggedIn" class="view container text-center nav-list">
 			<li><a class="btn btn-default" href="/#/">home</a></li>
@@ -29,7 +27,7 @@
 			 <span style="font-size: 0.8rem;"></span>
 			<li><a class="btn btn-default" href="/auth/logout">log out</a></li>
 		</ul>
-		<form ng-hide="loggedIn" class="view login-form" method="POST" action="auth/login">
+		<form ng-hide="loggedIn" class="view container text-center nav-list login-form" method="POST" action="auth/login">
 			<input name="username" type="text" placeholder="username...">
 			<input type="password" name="password" placeholder="password...">
 			<input class="btn-default btn" type="submit">

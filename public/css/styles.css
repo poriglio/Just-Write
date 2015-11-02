@@ -1,25 +1,71 @@
 html * {
 	font-family: 'Khula', sans-serif;
 	list-style-type: none;
+	font-size: 18px;
+	color: rgb(4,0,14);
+}
+
+body{
+	background-color: hsl(254,32%,91%);
+}
+
+h1{
+	font-size: 3rem;
 }
 
 .title{
 	font-family: 'Shadows Into Light', cursive;
 	font-size: 4.5rem;
+	background: linear-gradient(#EDA2D8 20%,#C853A8 100%,#EDA2D8 20%);
+	height: 7rem;
+	width: 500px;
+	color: white;
+	line-height: 7rem;
+	border-radius: 5px;
+	text-align: center;
+	display: inline-block;
+}
+
+
+h2{
+	font-size: 3rem;
+}
+
+h3{
+	font-size: 3rem;
 }
 
 .view{
 	max-width: 800px;
 	margin: auto;
 	display: block;
-	text-align: center;
 }
 
 .login-form{
-	width: 400px;
+	width: 500px;
 }
 
 .nav-list li{
 	display: inline;
+}
+
+.btn{
+	background: linear-gradient(#EDA2D8 20%,#C853A8 100%,#EDA2D8 20%);
+	color: white;
+}
+
+.btn:hover{
+	background: linear-gradient(hsl(254,32%,80%) 20%,#9082BE 100%,hsl(254,32%,80%) 20%);
+	color: white;
+}
+
+/*intro page*/
+
+.intro-page{
+	text-align: center;
+}
+
+.intro-page img{
+	border-radius: 25%;
 }
 
