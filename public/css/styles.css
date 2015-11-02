@@ -20,6 +20,7 @@ MAIN PAGE STYLING
 	height: 7rem;
 	padding-left: 1rem;
 	padding-right: 1rem;
+	background-color: purple;
 }
 
 .static-header>h1{
@@ -95,6 +96,7 @@ NAVIGATION STYLES
 -=-=-=-=-=-=-=-=-*/
 
 .nav{
+	background-color: green;
 	position: relative;
 	display: block;
 	margin: 0 auto;
@@ -144,11 +146,44 @@ h3{
 	height: 100%;
 	padding: 3rem;
 	margin-bottom: 1.5rem;
+	background-color: #FFADD9;
 }
 
 .view input{
 	margin-top: 0.5rem;
 	margin-bottom: 1.5rem;
+}
+
+/*-=-=-=-=-=-=-
+INTRO STYLING
+-=-=-=-=-=-=-*/
+
+.box{
+	margin: 1rem;
+	padding: 1rem;
+	border: dotted 4px purple;
+	text-align: center;
+}
+
+.centering-container{
+	margin: auto;
+	vertical-align: top;
+}
+
+.dummy-container{
+	width: 100%;
+	text-align: right;
+}
+
+.tip-box{
+	width: 28%;
+	display: inline-block;
+	height: 350px;
+}
+
+.view img{
+	margin: auto;
+	border-radius: 50%;
 }
 
 /*-=-=-=-=-=-=-
