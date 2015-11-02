@@ -1,211 +1,25 @@
 html * {
-	padding: 0px;
-	margin: 0px;
-	font-size: 18px;
-	box-sizing: border-box;
-	text-decoration: none;
+	font-family: 'Khula', sans-serif;
 	list-style-type: none;
 }
 
-/*-=-=-=-=-=-=-=-=-
-MAIN PAGE STYLING
--=-=-=-=-=-=-=-=-*/
-
-.static-header{
-	position: fixed;
-	width: 100%;
-	top: 0px;
-	left: 0px;
-	z-index: 10;
-	height: 7rem;
-	padding-left: 1rem;
-	padding-right: 1rem;
-	background-color: purple;
-}
-
-.static-header>h1{
-	display: inline-block;
-	font-size: 3rem;
-	line-height: 7rem;
-	letter-spacing: 3px;
-}
-
-.static-header form{
-	display: inline-block;
-	float: right;
-	font-size: 0.8rem;
-	height: 2rem;
-	line-height: 10rem;
-}
-
-.static-header input{
-	width: 9rem;
-	margin-right: 0.3rem;
-}
-
-input,textarea{
-	padding: 0.3rem;
-	height: 1.75rem;
-	border-radius: 4px;
-	border-style: none;
-	font-size: 0.9rem;
-}
-
-.button{
-	height: 1.75rem;
-	border: none;
-	border-radius: 4px;
-	padding: 0.2rem 1.5rem;
-}
-
-.button:hover{
-	color: hsl(130,100%,8%);;
-}
-
-textarea{
-	display: block;
-	margin-bottom: 1.5rem;
-	width: 100%;
-	padding: 0.2rem;
-	margin-top: 0.5rem;
-}
-
-.small-area{
-	height: 5rem;
-}
-
-.medium-area{
-	height: 10rem;	
-}
-
-.large-area{
-	height: 30rem;
-}
-
-.radio{
-	display: block;
-	height: 2rem;
-}
-
-.radio-end{
-	margin-bottom: 2.5rem;
-}
-
-/*-=-=-=-=-=-=-=-=-
-NAVIGATION STYLES
--=-=-=-=-=-=-=-=-*/
-
-.nav{
-	background-color: green;
-	position: relative;
-	display: block;
-	margin: 0 auto;
-	width: 100%;
-	text-align: center;
-	list-style-type: none;
-}
-
-.nav li{
-	display: inline-block;
-	padding: 0.5rem;
-}
-
-.main-nav{
-	top: 7rem;
-	z-index: 10;
-	position: fixed;
-}
-
-/*-=-=-=-=-=-=
-VIEW STYLING
--=-=-=-=-=-=*/
-
-h1{
-	font-size: 2rem;
-	text-align: center;
-	margin-bottom: 1rem;
-}
-
-h2{
-	font-size: 1.5rem;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
-}
-
-h3{
-	margin-top: 1rem; 
-	margin-bottom: 1rem;
-	font-size: 1.25rem;
+.title{
+	font-family: 'Shadows Into Light', cursive;
+	font-size: 4.5rem;
 }
 
 .view{
-	position: relative;
-	top: 11.5rem;
 	max-width: 800px;
 	margin: auto;
-	height: 100%;
-	padding: 3rem;
-	margin-bottom: 1.5rem;
-	background-color: #FFADD9;
-}
-
-.view input{
-	margin-top: 0.5rem;
-	margin-bottom: 1.5rem;
-}
-
-/*-=-=-=-=-=-=-
-INTRO STYLING
--=-=-=-=-=-=-*/
-
-.box{
-	margin: 1rem;
-	padding: 1rem;
-	border: dotted 4px purple;
+	display: block;
 	text-align: center;
 }
 
-.centering-container{
-	margin: auto;
-	vertical-align: top;
+.login-form{
+	width: 400px;
 }
 
-.dummy-container{
-	width: 100%;
-	text-align: right;
+.nav-list li{
+	display: inline;
 }
 
-.tip-box{
-	width: 28%;
-	display: inline-block;
-	height: 350px;
-}
-
-.view img{
-	margin: auto;
-	border-radius: 50%;
-}
-
-/*-=-=-=-=-=-=-
-BADGE STYLING
--=-=-=-=-=-=-*/
-
-.badge{
-	margin: 1rem;
-}
-
-.badge h2,img{
-	margin: 1rem;
-}
-
-.badge img{
-	border-radius: 50%;
-}
-
-/*-=-=-=-=-=-=-=
-MEDIA QUERIES
--=-=-=-=-=-=-=*/
-
-@media screen and (max-width: 850px){
-
-}

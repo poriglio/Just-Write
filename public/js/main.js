@@ -68,6 +68,18 @@ angular.module("storyApp").controller("mainController",["$scope","$http","badgeF
 
 	$scope.badges = badgeFactory.badges
 
+	$scope.loggedIn = false
+
+	$http.get("/api/me").then(function(returnData){
+			if(returnData.data.username){
+				$scope.loggedIn = true
+				return true
+			}
+			else{
+				$scope.loggedIn = false
+				return false
+			}
+		})
 }])
 
 angular.module("storyApp").controller("userController",["$scope","$http",function($scope,$http){
