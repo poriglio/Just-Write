@@ -1,15 +1,14 @@
 <div class="view container">
-	<h1>Browse</h1>
-	<h2>Users</h2>
+	<h2 class="browse-heading content-odd">Users</h2>
 	<div class="row">
-		<div class="col-xs-12 col-sm-4">
+		<div class="content-box content-purple col-xs-12 col-sm-4">
 			<h3>Newest</h3>
 			<div ng-repeat="user in usersNewest | limitTo: 6">
 			<a ng-href="/#/profile/{{user.username}}"><b>{{user.username}}</b></a><br>Joined {{user.dateJoined | date:"MMMM d 'at' h:mm a" }}
 			<hr>
 			</div>
 		</div>
-		<div class="col-xs-12 col-sm-4">
+		<div class="content-even content-box col-xs-12 col-sm-4">
 			<h3>Prolific</h3>
 			<div ng-repeat="user in usersProlific | limitTo: 6">
 			<a ng-href="/#/profile/{{user.username}}"><b>{{user.username}}</b></a><br>
@@ -17,7 +16,7 @@
 			<hr>
 			</div>
 		</div>
-		<div class="col-xs-12 col-sm-4">
+		<div class="content-purple content-box col-xs-12 col-sm-4">
 			<h3>Random</h3>
 			<div ng-repeat="user in usersRandom | limitTo: 6">
 			<a ng-href="/#/profile/{{user.username}}"><b>{{user.username}}</b></a><br>
@@ -26,16 +25,16 @@
 			</div>
 		</div>
 	</div>
-	<h2>Stories</h2>
+	<h2 class="browse-heading content-even">Stories</h2>
 	<div class="row">
-		<div class="col-xs-12 col-sm-4">
+		<div class="content-box content-odd col-xs-12 col-sm-4">
 			<h3>Newest</h3>
 			<div ng-repeat="story in storiesNewest | limitTo: 6">
 			<a ng-href="/#/stories/{{story._id}}"><b>{{story.title}}</b></a><br>Added {{story.dateAdded |  date:"MMMM d 'at' h:mm a" }}
 			<hr>
 			</div>
 		</div>
-		<div class="col-xs-12 col-sm-4">
+		<div class="content-box content-purple col-xs-12 col-sm-4">
 			<h3>Popular</h3>
 			<div ng-repeat="story in storiesPopular | limitTo: 6">
 			<a ng-href="/#/stories/{{story._id}}"><b>{{story.title}}</b></a><br>
@@ -43,60 +42,60 @@
 			<hr>
 			</div>
 		</div>
-		<div class="col-xs-12 col-sm-4">
+		<div class="content-box content-odd col-xs-12 col-sm-4">
 			<h3>Random</h3>
 			<div ng-repeat="story in storiesRandom | limitTo: 6">
 			<a ng-href="/#/stories/{{story._id}}"><b>{{story.title}}</b></a><br>
-			by {{story.username}}
+			{{story.description}}
 		<hr>
 		</div>
 	</div>
 
 	</div>
-	<h2>Poems</h2>
+	<h2 class="browse-heading content-odd">Poems</h2>
 	<div class="row">
-		<div class="col-xs-12 col-sm-4">
+		<div class="content-box content-purple col-xs-12 col-sm-4">
 			<h3>Newest</h3>
 			<div ng-repeat="poem in poemsNewest | limitTo: 6">
 			<a ng-href="/#/poems/{{poem._id}}"><b>{{poem.title}}</b></a><br>Added {{poem.dateAdded |  date:"MMMM d 'at' h:mm a" }}
 			<hr>
 			</div>
 		</div>
-		<div class="col-xs-12 col-sm-4">
+		<div class="content-box content-even col-xs-12 col-sm-4">
 			<h3>Popular</h3>
 			<div ng-repeat="poem in poemsPopular | limitTo: 6">
 			<a ng-href="/#/poems/{{poem._id}}"><b>{{poem.title}}</b></a><br>{{poem.numComments}} comments
 			<hr>
 			</div>
 		</div>
-		<div class="col-xs-12 col-sm-4">
+		<div class="content-box content-purple col-xs-12 col-sm-4">
 			<h3>Random</h3>
 			<div ng-repeat="poem in poemsRandom | limitTo: 6">
-			<a ng-href="/#/poems/{{poem._id}}"><b>{{poem.title}}</b></a><br>by {{poem.username}}
+			<a ng-href="/#/poems/{{poem._id}}"><b>{{poem.title}}</b></a><br>{{poem.description}}
 			<hr>
 			</div>
 		</div>
 	</div>
-	<h2>Essays</h2>
+	<h2 class="browse-heading content-even">Essays</h2>
 	<div class="row">
-		<div class="col-xs-12 col-sm-4">
+		<div class="content-box content-odd col-xs-12 col-sm-4">
 			<h3>Newest</h3>
 			<div ng-repeat="essay in essaysNewest | limitTo: 6">
 			<a ng-href="/#/essays/{{essay._id}}"><b>{{essay.title}}</b></a><br>Added {{essay.dateAdded |  date:"MMMM d 'at' h:mm a" }}
 			<hr>
 			</div>
 		</div>
-		<div class="col-xs-12 col-sm-4">
+		<div class="content-box content-purple col-xs-12 col-sm-4">
 			<h3>Popular</h3>
 			<div ng-repeat="essay in essaysPopular | limitTo: 6">
 			<a ng-href="/#/essays/{{essay._id}}"><b>{{essay.title}}</b></a><br>{{essay.numComments}} comments
 			<hr>
 			</div>
 		</div>
-		<div class="col-xs-12 col-sm-4">
+		<div class="content-box content-odd col-xs-12 col-sm-4">
 			<h3>Random</h3>
 			<div ng-repeat="essay in essaysRandom | limitTo: 6">
-			<a ng-href="/#/essays/{{essay._id}}"><b>{{essay.title}}</b></a><br>by {{essay.username}}
+			<a ng-href="/#/essays/{{essay._id}}"><b>{{essay.title}}</b></a><br>{{essay.description}}
 			<hr>
 			</div>	
 		</div>

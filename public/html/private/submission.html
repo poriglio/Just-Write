@@ -22,9 +22,10 @@
 		<textarea class="medium-area" placeholder="Add a comment..." ng-model="$parent.comment"></textarea>
 		<input class="btn btn-default" type="submit">
 	</form>
-	<div ng-repeat="comment in comments">
-		<h3>{{comment.username}}</h3>
-		<div><b>{{comment.date | date:"MMMM d 'at' h:mm a"}}</b></div>
+	<hr>
+	<div class="content-box" ng-class-odd="'content-odd'" ng-class-even="'content-even'" ng-repeat="comment in comments">
+		<h3>{{comment.username}}</h3> 
+		<b>{{comment.date | date:"MMMM d 'at' h:mm a"}}</b>
 		<div>{{comment.comment}}</div>
 	</div>
 </div>

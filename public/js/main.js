@@ -73,13 +73,11 @@ angular.module("storyApp").controller("mainController",["$scope","$http","badgeF
 				return true
 			}
 			else{
-				$scope.loggedIn = true
+				$scope.loggedIn = false
 				// $location.path("/")
-				return true
+				return false
 			}
 		})
-
-	// CHANGE THE ABOVE CODE!
 }])
 
 angular.module("storyApp").controller("userController",["$scope","$http",function($scope,$http){
