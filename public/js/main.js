@@ -73,11 +73,13 @@ angular.module("storyApp").controller("mainController",["$scope","$http","badgeF
 				return true
 			}
 			else{
-				$scope.loggedIn = false
+				$scope.loggedIn = true
 				// $location.path("/")
-				return false
+				return true
 			}
 		})
+
+	// CHANGE THE ABOVE CODE!
 }])
 
 angular.module("storyApp").controller("userController",["$scope","$http",function($scope,$http){
@@ -149,10 +151,10 @@ angular.module("storyApp").controller("submissionController",["$scope","$http","
 		$scope.comments = []
 		angular.copy(returnData.data,$scope.comments)
 		$scope.comments.sort(function(a,b){
-			if(a.date>b.date){
+			if(b.date>a.date){
 				return 1
 			}
-			else if(a.date<b.date){
+			else if(a.date>b.date){
 				return -1
 			}
 			else{
@@ -190,17 +192,19 @@ angular.module("storyApp").controller("submissionController",["$scope","$http","
 		var submissionId = window.location.hash.split("/")[2]
 
 		var newComment = new Comment(type,comment,submissionId)
-
-		$scope.comment = ""
 	    
+		$scope.$parent.comment = ""
+
 	    $http({
 	            method : 'POST',
 	            url    : '/api/comment',
 	            data   : newComment
 	        }).success(
+	        	
 	        	$location.path("/confirm/comment")
 	    )
 	}
+
 }])
 
 angular.module("storyApp").controller("browseController",["$scope","$http",function($scope,$http){
@@ -233,7 +237,15 @@ angular.module("storyApp").controller("browseController",["$scope","$http",funct
 				return b.numSubmissions - a.numSubmissions
 			})
 			$scope.usersNewest.sort(function(a,b){
-				return b.dateJoined - a.dateJoined
+				if(a.dateJoined == undefined){
+					return 1
+				}
+				else if(b.dateJoined == undefined){
+					return -1
+				}
+				else{
+					return b.dateJoined - a.dateJoined
+				}
 			})
 		})
 
@@ -248,7 +260,15 @@ angular.module("storyApp").controller("browseController",["$scope","$http",funct
 				return b.numComments - a.numComments
 			})
 			$scope.storiesNewest.sort(function(a,b){
-				return b.dateAdded - a.dateAdded
+				if(a.dateAdded == undefined){
+					return 1
+				}
+				else if(b.dateAdded == undefined){
+					return -1
+				}
+				else{
+					return b.dateAdded - a.dateAdded
+				}
 			})
 		})
 
@@ -263,7 +283,15 @@ angular.module("storyApp").controller("browseController",["$scope","$http",funct
 				return b.numComments - a.numComments
 			})
 			$scope.poemsNewest.sort(function(a,b){
-				return b.dateAdded - a.dateAdded
+				if(a.dateAdded == undefined){
+					return 1
+				}
+				else if(b.dateAdded == undefined){
+					return -1
+				}
+				else{
+					return b.dateAdded - a.dateAdded
+				}
 			})
 		})
 
@@ -278,7 +306,15 @@ angular.module("storyApp").controller("browseController",["$scope","$http",funct
 				return b.numComments - a.numComments
 			})
 			$scope.essaysNewest.sort(function(a,b){
-				return b.dateAdded - a.dateAdded
+				if(a.dateAdded == undefined){
+					return 1
+				}
+				else if(b.dateAdded == undefined){
+					return -1
+				}
+				else{
+					return b.dateAdded - a.dateAdded
+				}
 			})
 		})
 	}
