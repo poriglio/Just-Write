@@ -5,19 +5,21 @@
 		<div class="col-xs-12 col-sm-4">
 			<h3>Newest</h3>
 			<div ng-repeat="user in usersNewest | limitTo: 6">
-			<a ng-href="/#/profile/{{user.username}}"><b>{{user.username}}</b></a>
+			<a ng-href="/#/profile/{{user.username}}"><b>{{user.username}}</b></a><br>Joined {{user.dateJoined | date:"MMMM d 'at' h:mm a" }}
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-4">
 			<h3>Prolific</h3>
 			<div ng-repeat="user in usersProlific | limitTo: 6">
-			<a ng-href="/#/profile/{{user.username}}"><b>{{user.username}}</b></a>
+			<a ng-href="/#/profile/{{user.username}}"><b>{{user.username}}</b></a><br>
+			{{user.numSubmissions}} submissions
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-4">
 			<h3>Random</h3>
 			<div ng-repeat="user in usersRandom | limitTo: 6">
-			<a ng-href="/#/profile/{{user.username}}"><b>{{user.username}}</b></a>
+			<a ng-href="/#/profile/{{user.username}}"><b>{{user.username}}</b></a><br>
+			{{user.numSubmissions}} submissions
 			</div>
 		</div>
 	</div>
@@ -26,19 +28,21 @@
 		<div class="col-xs-12 col-sm-4">
 			<h3>Newest</h3>
 			<div ng-repeat="story in storiesNewest | limitTo: 6">
-			<a ng-href="/#/stories/{{story._id}}"><b>{{story.title}}</b></a>
+			<a ng-href="/#/stories/{{story._id}}"><b>{{story.title}}</b></a><br>Added {{story.dateAdded |  date:"MMMM d 'at' h:mm a" }}
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-4">
 			<h3>Popular</h3>
 			<div ng-repeat="story in storiesPopular | limitTo: 6">
-			<a ng-href="/#/stories/{{story._id}}"><b>{{story.title}}</b></a>
+			<a ng-href="/#/stories/{{story._id}}"><b>{{story.title}}</b></a><br>
+			{{story.numComments}} comments
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-4">
 			<h3>Random</h3>
 			<div ng-repeat="story in storiesRandom | limitTo: 6">
-			<a ng-href="/#/stories/{{story._id}}"><b>{{story.title}}</b></a>
+			<a ng-href="/#/stories/{{story._id}}"><b>{{story.title}}</b></a><br>
+			by {{story.username}}
 		</div>
 	</div>
 
@@ -48,19 +52,19 @@
 		<div class="col-xs-12 col-sm-4">
 			<h3>Newest</h3>
 			<div ng-repeat="poem in poemsNewest | limitTo: 6">
-			<a ng-href="/#/poems/{{poem._id}}"><b>{{poem.title}}</b></a>
+			<a ng-href="/#/poems/{{poem._id}}"><b>{{poem.title}}</b></a><br>Added {{poem.dateAdded |  date:"MMMM d 'at' h:mm a" }}
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-4">
 			<h3>Popular</h3>
 			<div ng-repeat="poem in poemsPopular | limitTo: 6">
-			<a ng-href="/#/poems/{{poem._id}}"><b>{{poem.title}}</b></a>
+			<a ng-href="/#/poems/{{poem._id}}"><b>{{poem.title}}</b></a><br>{{poem.numComments}} comments
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-4">
 			<h3>Random</h3>
 			<div ng-repeat="poem in poemsRandom | limitTo: 6">
-			<a ng-href="/#/poems/{{poem._id}}"><b>{{poem.title}}</b></a>
+			<a ng-href="/#/poems/{{poem._id}}"><b>{{poem.title}}</b></a><br>by {{poem.username}}
 			</div>
 		</div>
 	</div>
@@ -69,19 +73,19 @@
 		<div class="col-xs-12 col-sm-4">
 			<h3>Newest</h3>
 			<div ng-repeat="essay in essaysNewest | limitTo: 6">
-			<a ng-href="/#/essays/{{essay._id}}"><b>{{essay.title}}</b></a>
+			<a ng-href="/#/essays/{{essay._id}}"><b>{{essay.title}}</b></a><br>Added {{essay.dateAdded |  date:"MMMM d 'at' h:mm a" }}
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-4">
 			<h3>Popular</h3>
 			<div ng-repeat="essay in essaysPopular | limitTo: 6">
-			<a ng-href="/#/essays/{{essay._id}}"><b>{{essay.title}}</b></a>
+			<a ng-href="/#/essays/{{essay._id}}"><b>{{essay.title}}</b></a><br>{{essay.numComments}} comments
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-4">
 			<h3>Random</h3>
 			<div ng-repeat="essay in essaysRandom | limitTo: 6">
-			<a ng-href="/#/essays/{{essay._id}}"><b>{{essay.title}}</b></a>
+			<a ng-href="/#/essays/{{essay._id}}"><b>{{essay.title}}</b></a><br>by {{essay.username}}
 			</div>	
 		</div>
 	</div>

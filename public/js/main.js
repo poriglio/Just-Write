@@ -133,15 +133,25 @@ angular.module("storyApp").controller("userController",["$scope","$http",functio
 angular.module("storyApp").controller("submissionController",["$scope","$http","$location",function($scope,$http,$location){
 
 	$scope.submissions = []
-	$scope.comments = []
-
 
 	var type = window.location.hash.split("/")[1]
 
 	var id = window.location.hash.split("/")[2]
 
 	$http.get("/api/comments/"+type+"/"+id).then(function(returnData){
-		$scope.comments.push(returnData.data)
+		$scope.comments = []
+		angular.copy(returnData.data,$scope.comments)
+		$scope.comments.sort(function(a,b){
+			if(a.date>b.date){
+				return 1
+			}
+			else if(a.date<b.date){
+				return -1
+			}
+			else{
+				return 0 
+			}
+		})
 	})
 
 	if(type==="stories"){
