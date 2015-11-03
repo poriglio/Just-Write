@@ -45,7 +45,7 @@ app.get("/api/me",function(request,response){
 })
 
 
-app.use(passportConfig.ensureAuthenticated)
+// app.use(passportConfig.ensureAuthenticated)
 
 var userController = require("./controllers/usercontroller.js")
 var poemController = require("./controllers/poemcontroller.js")

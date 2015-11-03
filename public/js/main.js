@@ -46,7 +46,7 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 		})
 		.when("/browse",{
 			templateUrl : "/html/private/browse.html",
-			controller  : "userController"
+			controller  : "browseController"
 		})
 		.when("/stories/:submission",{
 			templateUrl : "/html/private/submission.html",
@@ -86,8 +86,8 @@ angular.module("storyApp").controller("userController",["$scope","$http",functio
 
 	$scope.users = []
 	$scope.poems   = []
-	$scope.stories = []
-	$scope.essays  = []
+	$scope.stories   = []
+	$scope.essays   = []
 	$scope.badges = []
 
 	var buildProfile = function(user){
@@ -117,11 +117,7 @@ angular.module("storyApp").controller("userController",["$scope","$http",functio
 		})
 	}
 
-	if(window.location.hash.split("/")[1]==="browse"){
-		var user = "returnAll"
-		buildProfile(user)
-	}
-	else if(window.location.hash.split("/")[2]==undefined){
+	if(window.location.hash.split("/")[2]==undefined){
 		$http.get("api/me").then(function(returnData){
 			var user = returnData.data.username
 			buildProfile(user)
@@ -146,7 +142,6 @@ angular.module("storyApp").controller("submissionController",["$scope","$http","
 
 	$http.get("/api/comments/"+type+"/"+id).then(function(returnData){
 		$scope.comments.push(returnData.data)
-		console.log($scope.comments)
 	})
 
 	if(type==="stories"){
@@ -189,4 +184,89 @@ angular.module("storyApp").controller("submissionController",["$scope","$http","
 	        	$location.path("/confirm/comment")
 	    )
 	}
+}])
+
+angular.module("storyApp").controller("browseController",["$scope","$http",function($scope,$http){
+
+	$scope.usersProlific = []
+	$scope.usersRandom = []
+	$scope.usersNewest = []
+
+	$scope.poemsPopular = []
+	$scope.poemsRandom = []
+	$scope.poemsNewest = []
+
+	$scope.storiesPopular = []
+	$scope.storiesRandom = []
+	$scope.storiesNewest = []
+
+	$scope.essaysPopular = []
+	$scope.essaysRandom = []
+	$scope.essaysNewest = []
+
+	var buildProfile = function(user){
+		$http.get("/api/users/" + user).then(function(returnData){
+			angular.copy(returnData.data,$scope.usersProlific)
+			angular.copy(returnData.data,$scope.usersRandom)
+			angular.copy(returnData.data,$scope.usersNewest)
+			$scope.usersRandom.sort(function(a,b){
+				return Math.random() - Math.random()
+			})
+			$scope.usersProlific.sort(function(a,b){
+				return b.numSubmissions - a.numSubmissions
+			})
+			$scope.usersNewest.sort(function(a,b){
+				return b.dateJoined - a.dateJoined
+			})
+		})
+
+		$http.get("/api/stories/" + user).then(function(returnData){
+			angular.copy(returnData.data,$scope.storiesPopular)
+			angular.copy(returnData.data,$scope.storiesRandom)
+			angular.copy(returnData.data,$scope.storiesNewest)
+			$scope.storiesRandom.sort(function(a,b){
+				return Math.random() - Math.random()
+			})
+			$scope.storiesPopular.sort(function(a,b){
+				return b.numComments - a.numComments
+			})
+			$scope.storiesNewest.sort(function(a,b){
+				return b.dateAdded - a.dateAdded
+			})
+		})
+
+		$http.get("/api/poems/" + user).then(function(returnData){
+			angular.copy(returnData.data,$scope.poemsPopular)
+			angular.copy(returnData.data,$scope.poemsRandom)
+			angular.copy(returnData.data,$scope.poemsNewest)
+			$scope.poemsRandom.sort(function(a,b){
+				return Math.random() - Math.random()
+			})
+			$scope.poemsPopular.sort(function(a,b){
+				return b.numComments - a.numComments
+			})
+			$scope.poemsNewest.sort(function(a,b){
+				return b.dateAdded - a.dateAdded
+			})
+		})
+
+		$http.get("/api/essays/" + user).then(function(returnData){
+			angular.copy(returnData.data,$scope.essaysPopular)
+			angular.copy(returnData.data,$scope.essaysRandom)
+			angular.copy(returnData.data,$scope.essaysNewest)
+			$scope.essaysRandom.sort(function(a,b){
+				return Math.random() - Math.random()
+			})
+			$scope.essaysPopular.sort(function(a,b){
+				return b.numComments - a.numComments
+			})
+			$scope.essaysNewest.sort(function(a,b){
+				return b.dateAdded - a.dateAdded
+			})
+		})
+	}
+
+	var user = "returnAll"
+	buildProfile(user)
+
 }])
