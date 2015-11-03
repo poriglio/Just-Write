@@ -13,6 +13,12 @@ h1{
 	font-size: 3rem;
 }
 
+hr{
+	width: 100%; 
+	border-color: #100535;
+	height: 3px;
+}
+
 .title{
 	font-family: 'Shadows Into Light', cursive;
 	font-size: 4.5rem;
@@ -24,6 +30,10 @@ h1{
 	border-radius: 5px;
 	text-align: center;
 	display: inline-block;
+}
+
+.col-sm-4{
+	max-width: 33%;
 }
 
 
@@ -90,5 +100,10 @@ textarea{
 }
 
 @media screen and (max-width: 500px){
+
+	.intro-page{
+		width: 90vw;
+		margin: 0.5rem;
+	}
 
 }

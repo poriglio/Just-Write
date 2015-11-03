@@ -1,4 +1,4 @@
-<div class="view" ng-repeat="user in users">
+<div class="view container" ng-repeat="user in users">
 	<h1>{{user.username}}</h1>
 	<p>{{user.bio}}</p>
 	<h2>Favorites</h2>
@@ -14,29 +14,40 @@
 		<li><b>Total submissions: </b>{{user.numSubmissions}}</li>
 		<li><b>Total comments: </b>{{user.numComments}}</li>
 	</ul>
-	<h2>Badges</h2>
+<!-- 	<h2>Badges</h2>
 		<div class="badge col-lg-2 col-md-3 col-sm-4 col-xs-6" ng-repeat="badge in user.badges">
 			<h2>{{badge.name}}</h2>
 			<div>{{badge.description}}</div>
 			<img ng-src="{{badge.image}}">
-		</div>
+		</div> -->
 	<h2>Submissions</h2>
-	<h3>Stories</h3>
-		<div>{{storyMessage}}</div>
-		<div ng-repeat="story in stories[0]">
-			<h4><a ng-href="/#/stories/{{story._id}}">{{story.title}}</a></h4>
-			<p>{{story.description}}</p>
+		<div class="row">
+			<div class="col-xs-12 col-sm-4">
+				<h3>Stories</h3>
+				<div>{{storyMessage}}</div>
+				<div ng-repeat="story in stories | limitTo: 8">
+					<h4><a ng-href="/#/stories/{{story._id}}"><b>{{story.title}}</b></a></h4>
+					<p>{{story.description}}</p>
+					<hr>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-4">
+				<h3>Essays</h3>
+				<div>{{essayMessage}}</div>
+				<div ng-repeat="essay in essays | limitTo: 8">
+					<h4><a ng-href="/#/essays/{{essay._id}}"><b>{{essay.title}}</b></a></h4>
+					<p>{{essay.description}}</p>
+					<hr>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-4">
+				<h3>Poems</h3>
+				<div>{{poemMessage}}</div>
+				<div ng-repeat="poem in poems | limitTo: 8">
+					<h4><a ng-href="/#/poems/{{poem._id}}"><b>{{poem.title}}</b></a></h4>
+					<p>{{poem.description}}</p>
+					<hr>
+				</div>
+			</div>
 		</div>
-	<h3>Essays</h3>
-		<div>{{essayMessage}}</div>
-		<div ng-repeat="essay in essays[0]">
-			<h4><a ng-href="/#/essays/{{essay._id}}">{{essay.title}}</a></h4>
-			<p>{{essay.description}}</p>
-		</div>
-	<h3>Poems</h3>
-		<div>{{poemMessage}}</div>
-		<div ng-repeat="poem in poems[0]">
-			<h4><a ng-href="/#/poems/{{poem._id}}">{{poem.title}}</a></h4>
-			<p>{{poem.description}}</p>
-		</div>
-</div>
+	</div>

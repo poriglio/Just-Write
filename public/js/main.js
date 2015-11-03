@@ -30,41 +30,38 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 		templateUrl : "/html/confirmation/submission.html",
 		controller  : "mainController"
 	})
-
-	// var viewFullSite = function(){
-		$routeProvider.when("/submit",{
-			templateUrl : "/html/private/submissionform.html",
-			controller  : "mainController",
-		})
-		.when("/profile/:username",{
-			templateUrl : "/html/private/profile.html",
-			controller  : "userController"
-		})
-		.when("/profile",{
-			templateUrl : "/html/private/profile.html",
-			controller  : "userController"
-		})
-		.when("/browse",{
-			templateUrl : "/html/private/browse.html",
-			controller  : "browseController"
-		})
-		.when("/stories/:submission",{
-			templateUrl : "/html/private/submission.html",
-			controller  : "submissionController"
-		})
-		.when("/essays/:submission",{
-			templateUrl : "/html/private/submission.html",
-			controller  : "submissionController"
-		})
-		.when("/poems/:submission",{
-			templateUrl : "/html/private/submission.html",
-			controller  : "submissionController"
-		})
-	// }
+	.when("/submit",{
+		templateUrl : "/html/private/submissionform.html",
+		controller  : "mainController",
+	})
+	.when("/profile/:username",{
+		templateUrl : "/html/private/profile.html",
+		controller  : "userController"
+	})
+	.when("/profile",{
+		templateUrl : "/html/private/profile.html",
+		controller  : "userController"
+	})
+	.when("/browse",{
+		templateUrl : "/html/private/browse.html",
+		controller  : "browseController"
+	})
+	.when("/stories/:submission",{
+		templateUrl : "/html/private/submission.html",
+		controller  : "submissionController"
+	})
+	.when("/essays/:submission",{
+		templateUrl : "/html/private/submission.html",
+		controller  : "submissionController"
+	})
+	.when("/poems/:submission",{
+		templateUrl : "/html/private/submission.html",
+		controller  : "submissionController"
+	})
 
 }])
 
-angular.module("storyApp").controller("mainController",["$scope","$http","badgeFactory",function($scope,$http,badgeFactory){
+angular.module("storyApp").controller("mainController",["$scope","$http","badgeFactory","$location",function($scope,$http,badgeFactory,$location){
 
 	$scope.badges = badgeFactory.badges
 
@@ -77,6 +74,7 @@ angular.module("storyApp").controller("mainController",["$scope","$http","badgeF
 			}
 			else{
 				$scope.loggedIn = false
+				// $location.path("/")
 				return false
 			}
 		})
@@ -96,22 +94,31 @@ angular.module("storyApp").controller("userController",["$scope","$http",functio
 		})
 
 		$http.get("/api/stories/" + user).then(function(returnData){
-			$scope.stories.push(returnData.data)
-			if($scope.stories[0].length===0){
+			angular.copy(returnData.data,$scope.stories)
+			$scope.stories.sort(function(a,b){
+				return b.dateAdded - a.dateAdded
+			})
+			if($scope.stories.length===0){
 				$scope.storyMessage = "This user has not yet submitted a story."
 			}
 		})
 
 		$http.get("/api/poems/" + user).then(function(returnData){
-			$scope.poems.push(returnData.data)
-			if($scope.poems[0].length===0){
+			$scope.poems = returnData.data
+			$scope.poems.sort(function(a,b){
+				return a.dateAdded - b.dateAdded
+			})
+			if($scope.poems.length===0){
 				$scope.poemMessage = "This user has not yet submitted a poem."
 			}
 		})
 
 		$http.get("/api/essays/" + user).then(function(returnData){
-			$scope.essays.push(returnData.data)
-			if($scope.essays[0].length===0){
+			$scope.essays = returnData.data
+			$scope.essays.sort(function(a,b){
+				return a.dateAdded - b.dateAdded
+			})
+			if($scope.essays.length===0){
 				$scope.essayMessage = "This user has not yet submitted a story."
 			}
 		})

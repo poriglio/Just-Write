@@ -47,6 +47,7 @@ var createStory = function(request,response){
 		else{
 			console.log("Error!",error)
 		}
+		response.redirect("/#/confirm/submission")
 	})
 
 }

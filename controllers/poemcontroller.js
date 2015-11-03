@@ -8,10 +8,6 @@ var createPoem = function(request,response){
 
 	var username = request.user.username
 
-	var content = request.body.content.split("[p]")
-
-	// console.log(content[0].split("[l]"))
-
 	var title
 
 	if(request.body.title===""){
@@ -28,9 +24,9 @@ var createPoem = function(request,response){
 		dateAdded       : request.body.added,
 		lastRevised     : "not yet revised",
 		matureContent   : request.body.mature,
-		content         : content,
+		content         : request.body.content.split("[p]"),
 		type            : "poem",
-		dateAdded       : d,
+		dateAdded       : n,
 		numComments     : +0,
 	})
 
