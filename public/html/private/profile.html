@@ -1,49 +1,46 @@
 <div class="view container" ng-repeat="user in users">
-	<h1>{{user.username}}</h1>
-	<p>{{user.bio}}</p>
-	<h2>Favorites</h2>
+	<h1 class="browse-heading content-purple">{{user.username}}</h1>
+	<div class="info-box content-odd">
+		<p>{{user.bio}}</p>
+		<h2>Favorites</h2>
 		<ul>
-		<li><b>Books: </b><span ng-repeat="book in user.favBooks">{{book}}, </span></li>
-		<li><b>Writers: </b><span ng-repeat="writer in user.favWriters">{{writer}}, </span></li>
-	</ul>
-	<h2>Stats</h2>
-	<ul>
-		<li><b>Stories: </b>{{user.numStories}}</li>
-		<li><b>Poems: </b>{{user.numPoems}}</li>
-		<li><b>Essays: </b>{{user.numEssays}}</li>
-		<li><b>Total submissions: </b>{{user.numSubmissions}}</li>
-		<li><b>Total comments: </b>{{user.numComments}}</li>
-	</ul>
-<!-- 	<h2>Badges</h2>
-		<div class="badge col-lg-2 col-md-3 col-sm-4 col-xs-6" ng-repeat="badge in user.badges">
-			<h2>{{badge.name}}</h2>
-			<div>{{badge.description}}</div>
-			<img ng-src="{{badge.image}}">
-		</div> -->
-	<h2>Submissions</h2>
+			<li><b>Books: </b><span ng-repeat="book in user.favBooks">{{book}}, </span></li>
+			<li><b>Writers: </b><span ng-repeat="writer in user.favWriters">{{writer}}, </span></li>
+		</ul>
+		<h2>Stats</h2>
+		<ul>
+			<li><b>Stories: </b>{{user.numStories}}</li>
+			<li><b>Poems: </b>{{user.numPoems}}</li>
+			<li><b>Essays: </b>{{user.numEssays}}</li>
+			<li><b>Total submissions: </b>{{user.numSubmissions}}</li>
+			<li><b>Total comments: </b>{{user.numComments}}</li>
+		</ul>
+	</div>
+	<br>
+	<h2 class="browse-heading content-purple">Submissions</h2>
 		<div class="row">
-			<div class="col-xs-12 col-sm-4">
+			<div class="content-box content-odd col-xs-12 col-sm-4">
 				<h3>Stories</h3>
 				<div>{{storyMessage}}</div>
-				<div ng-repeat="story in stories | limitTo: 8">
+				<div ng-repeat="story in stories">
 					<h4><a ng-href="/#/stories/{{story._id}}"><b>{{story.title}}</b></a></h4>
 					<p>{{story.description}}</p>
 					<hr>
 				</div>
 			</div>
-			<div class="col-xs-12 col-sm-4">
+			<div class="content-box content-odd col-xs-12 col-sm-4">
 				<h3>Essays</h3>
 				<div>{{essayMessage}}</div>
-				<div ng-repeat="essay in essays | limitTo: 8">
+				<div ng-repeat="essay in essays">
 					<h4><a ng-href="/#/essays/{{essay._id}}"><b>{{essay.title}}</b></a></h4>
 					<p>{{essay.description}}</p>
 					<hr>
 				</div>
 			</div>
-			<div class="col-xs-12 col-sm-4">
+			<div class="content-box content-odd col-xs-12 col-sm-4">
 				<h3>Poems</h3>
 				<div>{{poemMessage}}</div>
-				<div ng-repeat="poem in poems | limitTo: 8">
+				<div ng-repeat="poem in poems">
 					<h4><a ng-href="/#/poems/{{poem._id}}"><b>{{poem.title}}</b></a></h4>
 					<p>{{poem.description}}</p>
 					<hr>

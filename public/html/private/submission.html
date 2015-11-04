@@ -1,27 +1,30 @@
 <div class="view">
 	<div ng-repeat="submission in submissions">
-		<h1>{{submission.title}}</h1>
-		<h2 style="text-align: center;">{{submission.type}} by {{submission.username}}</h2>
-		<p>
-			{{submission.description}}
-		</p>
-		<br>
-		<hr>
-		<br>
-		<div ng-repeat="paragraph in submission.content">
+		<div class="content-purple content-box">	
+			<h1 class="browse-heading">{{submission.title}}</h1>
+			<p style="text-align: center;"><b>{{submission.type}} by {{submission.username}}</b></p>
 			<p>
-			{{paragraph}}
+				{{submission.description}}
 			</p>
-			<br>
+		</div>
+		<hr>
+		<div class="submission-content container">
+			<div ng-repeat="paragraph in submission.content">
+				<p>
+				{{paragraph}}
+				</p>
+			</div>
 		</div>
 	</div>
 	<hr>
-	<h2>Comments</h2>
-	<form ng-submit="submitComment()">
-		<div>Let the author know what you think!</div><br>
-		<textarea class="medium-area" placeholder="Add a comment..." ng-model="$parent.comment"></textarea>
-		<input class="btn btn-default" type="submit">
-	</form>
+	<div class="content-purple info-box">
+		<h2>Comments</h2>
+		<form ng-submit="submitComment()">
+			<div>Let the author know what you think!</div><br>
+			<textarea class="medium-area" placeholder="Add a comment..." ng-model="$parent.comment"></textarea>
+			<input class="btn btn-default" type="submit">
+		</form>
+	</div>
 	<hr>
 	<div class="content-box" ng-class-odd="'content-odd'" ng-class-even="'content-even'" ng-repeat="comment in comments">
 		<h3>{{comment.username}}</h3> 

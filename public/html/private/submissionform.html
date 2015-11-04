@@ -1,9 +1,9 @@
 <div class="view">
-	<h1>Submission Form</h1>
-	<form method="POST" action="/api/submission">
-		<h3>Title</h3>
+	<h1 class="content-purple browse-heading">Submission Form</h1>
+	<form class="content-odd info-box" method="POST" action="/api/submission">
+		<div class="form-heading">Title</div>
 		<input type="text" name="title" placeholder="title...">
-		<h3>Type <span style="color: red; font-size: 0.8rem;">Required!</span></h3>
+		<div class="form-heading">Type <span style="color: red; font-size: 1.5rem;"> Required!</span></div>
 		<div class="radio">
 			<input type="radio" name="submissionType" value="story">
 			<span>Story   </span>
@@ -16,9 +16,9 @@
 			<input type="radio" name="submissionType" value="essay">
 			<span>Essay   </span>
 		</div>
-		<h3>Description</h3>
+		<div class="form-heading">Description</div>
 		<textarea class="medium-area" name="description"></textarea>
-		<h3>Share your writing below! Type a [p] wherever you would like to insert a line break.<span style="color: red; font-size: 0.8rem;">Required!</span></h3>
+		<div class="form-heading">Share your writing below! Type a [p] wherever you would like to insert a line break.<span style="color: red; font-size: 1.5rem;"> Required!</span></div>
 		<textarea class="large-area" name="content" placeholder="Your writing goes here!"></textarea>
 		<input class="btn btn-default" type="submit" value="submit">
 	</form>
