@@ -66,10 +66,6 @@ hr{
 	display: inline-block;
 }
 
-.col-sm-4{
-	max-width: 28%;
-}
-
 .view{
 	max-width: 900px;
 	margin: auto;
@@ -82,7 +78,12 @@ hr{
 }
 
 .login-form{
-	width: 500px;
+	max-width: 600px;
+}
+
+.login-form *{
+	display: inline-block;
+	margin:0.2rem;
 }
 
 .nav-list li{
@@ -208,7 +209,7 @@ COMMENTS
 
 .content-box{
 	margin: 2rem;
-	padding: 1rem;	
+	padding: 1rem;
 }
 
 .content-box h3{
@@ -232,4 +233,16 @@ COMMENTS
 	line-height: 2.75rem;
 	box-shadow: 3px 3px 30px 0px #100535;
 	border-radius: 4px;
+}
+
+.dynamic-box{
+	max-width: 28%;
+}
+
+@media screen and (max-width: 768px){
+
+	.dynamic-box{
+		max-width: 90%;
+	}
+
 }
