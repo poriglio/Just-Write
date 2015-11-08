@@ -61,9 +61,7 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 
 }])
 
-angular.module("storyApp").controller("mainController",["$scope","$http","badgeFactory","$location",function($scope,$http,badgeFactory,$location){
-
-	$scope.badges = badgeFactory.badges
+angular.module("storyApp").controller("mainController",["$scope","$http","$location",function($scope,$http,$location){
 
 	$scope.loggedIn = false
 
@@ -86,7 +84,6 @@ angular.module("storyApp").controller("userController",["$scope","$http",functio
 	$scope.poems   = []
 	$scope.stories   = []
 	$scope.essays   = []
-	$scope.badges = []
 
 	var buildProfile = function(user){
 		$http.get("/api/users/" + user).then(function(returnData){
@@ -98,9 +95,6 @@ angular.module("storyApp").controller("userController",["$scope","$http",functio
 			$scope.stories.sort(function(a,b){
 				return b.dateAdded - a.dateAdded
 			})
-			if($scope.stories.length===0){
-				$scope.storyMessage = "This user has not yet submitted a story."
-			}
 		})
 
 		$http.get("/api/poems/" + user).then(function(returnData){
@@ -108,9 +102,6 @@ angular.module("storyApp").controller("userController",["$scope","$http",functio
 			$scope.poems.sort(function(a,b){
 				return a.dateAdded - b.dateAdded
 			})
-			if($scope.poems.length===0){
-				$scope.poemMessage = "This user has not yet submitted a poem."
-			}
 		})
 
 		$http.get("/api/essays/" + user).then(function(returnData){
@@ -118,9 +109,6 @@ angular.module("storyApp").controller("userController",["$scope","$http",functio
 			$scope.essays.sort(function(a,b){
 				return a.dateAdded - b.dateAdded
 			})
-			if($scope.essays.length===0){
-				$scope.essayMessage = "This user has not yet submitted a story."
-			}
 		})
 	}
 

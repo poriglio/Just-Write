@@ -2,7 +2,7 @@
 	<div ng-repeat="submission in submissions">
 		<div class="content-purple content-box">	
 			<h1 class="browse-heading">{{submission.title}}</h1>
-			<p style="text-align: center;"><b>{{submission.type}} by {{submission.username}}</b></p>
+			<p style="text-align: center;"><b>{{submission.type}} by <a href="/#/profile/{{submissions.username}}">{{submission.username}}</a></b></p>
 			<p>
 				{{submission.description}}
 			</p>
@@ -22,12 +22,12 @@
 		<form ng-submit="submitComment()">
 			<div>Let the author know what you think!</div><br>
 			<textarea class="medium-area" placeholder="Add a comment..." ng-model="$parent.comment"></textarea>
-			<input class="btn btn-default" type="submit">
+			<input class="btn btn-default" type="submit" value="Add comment!">
 		</form>
 	</div>
 	<hr>
 	<div class="content-box" ng-class-odd="'content-odd'" ng-class-even="'content-even'" ng-repeat="comment in comments">
-		<h3>{{comment.username}}</h3> 
+		<h3><a href="/#/profile/{{comment.username}}">{{comment.username}}</a></h3> 
 		<b>{{comment.date | date:"MMMM d 'at' h:mm a"}}</b>
 		<div>{{comment.comment}}</div>
 	</div>

@@ -44,7 +44,6 @@ var createComment = function (request,response){
 
 	newComment.save(function(error){
 		if(!error){
-			console.log("it works")
 			User.update({username: username},{$inc:{numComments : 1}},function(error){
 				if(error){
 					return error
@@ -80,9 +79,6 @@ var createComment = function (request,response){
 
 var getComments = function(request,response){
 
-	console.log(request.params.type)
-	console.log(request.params.submissionID)
-
 	var type = request.params.type
 	var id = request.params.submissionID
 
@@ -92,7 +88,7 @@ var getComments = function(request,response){
 				response.send(docs)
 			}
 			else{
-				console.log("Error!")
+				console.log("Error!",error)
 			}
 		})
 	}
@@ -102,7 +98,7 @@ var getComments = function(request,response){
 				response.send(docs)
 			}
 			else{
-				console.log("Error!")
+				console.log("Error!",error)
 			}
 		})
 	}
@@ -112,7 +108,7 @@ var getComments = function(request,response){
 				response.send(docs)
 			}
 			else{
-				console.log("Error!")
+				console.log("Error!",error)
 			}
 		})
 	}

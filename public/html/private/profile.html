@@ -4,8 +4,8 @@
 		<p>{{user.bio}}</p>
 		<h2>Favorites</h2>
 		<ul>
-			<li><b>Books: </b><span ng-repeat="book in user.favBooks">{{book}}, </span></li>
-			<li><b>Writers: </b><span ng-repeat="writer in user.favWriters">{{writer}}, </span></li>
+			<li><b>Books: </b><span ng-repeat="book in user.favBooks">{{book}}<span ng-hide="$last">,</span> </span></li>
+			<li><b>Writers: </b><span ng-repeat="writer in user.favWriters">{{writer}}<span ng-hide="$last">,</span> </span></li>
 		</ul>
 		<h2>Stats</h2>
 		<ul>
@@ -21,29 +21,38 @@
 		<div class="row">
 			<div class="dynamic-box content-box content-odd col-xs-12 col-sm-6 col-md-4">
 				<h3>Stories</h3>
-				<div>{{storyMessage}}</div>
+				<hr>
+				<div ng-if="stories.length===0">This user has not submitted any stories.</div>
 				<div ng-repeat="story in stories">
-					<h4><a ng-href="/#/stories/{{story._id}}"><b>{{story.title}}</b></a></h4>
-					<p>{{story.description}}</p>
-					<hr>
+					<a ng-href="/#/stories/{{story._id}}"><b>{{story.title}}</b></a><br>
+					<i>Added {{story.dateAdded |  date:"MMM d 'at' h:mm a" }}</i></b></a><br>
+					<div ng-hide="!story.description">{{story.description | limitTo: 175}}<span ng-show="story.description.length>175">&#133;</span><br></div>
+					<i>{{story.numComments}} comment<span ng-hide="story.numComments===1">s</span></i>
+					<hr ng-hide="$last">
 				</div>
 			</div>
 			<div class="dynamic-box content-box content-odd col-xs-12 col-sm-6 col-md-4">
 				<h3>Essays</h3>
-				<div>{{essayMessage}}</div>
+				<hr>
+				<div ng-if="essays.length===0">This user has not submitted any essays.</div>
 				<div ng-repeat="essay in essays">
-					<h4><a ng-href="/#/essays/{{essay._id}}"><b>{{essay.title}}</b></a></h4>
-					<p>{{essay.description}}</p>
-					<hr>
+					<a ng-href="/#/essays/{{essay._id}}"><b>{{essay.title}}</b></a><br>
+					<i>Added {{essay.dateAdded |  date:"MMM d 'at' h:mm a" }}</i></b></a><br>
+					<div ng-hide="!essay.description">{{essay.description | limitTo: 175}}<span ng-show="essay.description.length>175">&#133;</span><br></div>
+					<i>{{essay.numComments}} comment<span ng-hide="essay.numComments===1">s</span></i>
+					<hr ng-hide="$last">
 				</div>
 			</div>
 			<div class="dynamic-box content-box content-odd col-xs-12 col-sm-12 col-md-4">
 				<h3>Poems</h3>
-				<div>{{poemMessage}}</div>
+				<hr>
+				<div ng-if="stories.length===0">This user has not submitted any stories.</div>
 				<div ng-repeat="poem in poems">
-					<h4><a ng-href="/#/poems/{{poem._id}}"><b>{{poem.title}}</b></a></h4>
-					<p>{{poem.description}}</p>
-					<hr>
+					<a ng-href="/#/poems/{{poem._id}}"><b>{{poem.title}}</b></a><br>
+					<i>Added {{poem.dateAdded |  date:"MMM d 'at' h:mm a" }}</i></b></a><br>
+					<div ng-hide="!poem.description">{{poem.description | limitTo: 175}}<span ng-show="poem.description.length>175">&#133;</span><br></div>
+					<i>{{poem.numComments}} comment<span ng-hide="poem.numComments===1">s</span></i>
+					<hr ng-hide="$last">
 				</div>
 			</div>
 		</div>
