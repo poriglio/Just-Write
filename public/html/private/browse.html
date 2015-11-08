@@ -57,7 +57,7 @@
 		<div class="dynamic-box content-box content-odd col-xs-12 col-sm-4">
 			<h3>Random</h3>
 			<hr>
-			<div ng-repeat="story in storiesRandom">
+			<div ng-repeat="story in storiesRandom | limitTo: 6">
 				<a ng-href="/#/stories/{{story._id}}"><b>{{story.title}}</b></a><br>
 				by <a ng-href="/#/profile/{{story.username}}">{{story.username}}</a><br>
 				<i>Added {{story.dateAdded |  date:"MMM d 'at' h:mm a" }}</i></b></a><br>
@@ -142,7 +142,7 @@
 				<i>Added {{essay.dateAdded |  date:"MMM d 'at' h:mm a" }}</i></b></a><br>
 				<div ng-hide="!essay.description">{{essay.description | limitTo: 175}}<span ng-show="essay.description.length>175">&#133;</span><br></div>
 				<i>{{essay.numComments}} comment<span ng-hide="essay.numComments===1">s</span></i>
-				<hr ng-hide="$last">
+				<hr ng-hide="$last"> 
 			</div>	
 		</div>
 	</div>
