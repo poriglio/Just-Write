@@ -46,7 +46,7 @@
 			<div class="dynamic-box content-box content-odd col-xs-12 col-sm-12 col-md-4">
 				<h3>Poems</h3>
 				<hr>
-				<div ng-if="stories.length===0">This user has not submitted any stories.</div>
+				<div ng-if="poems.length===0">This user has not submitted any poems.</div>
 				<div ng-repeat="poem in poems">
 					<a ng-href="/#/poems/{{poem._id}}"><b>{{poem.title}}</b></a><br>
 					<i>Added {{poem.dateAdded |  date:"MMM d 'at' h:mm a" }}</i></b></a><br>
