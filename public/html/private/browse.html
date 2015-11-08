@@ -137,7 +137,7 @@
 			<h3>Random</h3>
 			<hr>
 			<div ng-repeat="essay in essaysRandom | limitTo: 6">
-				<a ng-href="/#/essay/{{essay._id}}"><b>{{essay.title}}</b></a><br>
+				<a ng-href="/#/essays/{{essay._id}}"><b>{{essay.title}}</b></a><br>
 				by <a ng-href="/#/profile/{{essay.username}}">{{essay.username}}</a><br>
 				<i>Added {{essay.dateAdded |  date:"MMM d 'at' h:mm a" }}</i></b></a><br>
 				<div ng-hide="!essay.description">{{essay.description | limitTo: 175}}<span ng-show="essay.description.length>175">&#133;</span><br></div>
