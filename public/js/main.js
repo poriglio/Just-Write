@@ -10,12 +10,12 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 		templateUrl : "/html/public/newuser.html",
 		controller  : "mainController"
 	})
-	.when("/confirm/comment",{
-		templateUrl : "/html/confirmation/comment.html",
+	.when("/loginerror",{
+		templateUrl : "/html/confirmation/loginerror.html",
 		controller  : "mainController"
 	})
-	.when("/confirm/logout",{
-		templateUrl : "/html/confirmation/logout.html",
+	.when("/confirm/comment",{
+		templateUrl : "/html/confirmation/comment.html",
 		controller  : "mainController"
 	})
 	.when("/confirm/registration",{
@@ -25,10 +25,6 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 	.when("/confirm/submission",{
 		templateUrl : "/html/confirmation/submission.html",
 		controller  : "mainController"
-	})
-	.when("/:type/:submission/edit",{
-		templateUrl : "/html/private/editsubmission.html",
-		controller  : "submissionController"
 	})
 	.when("/submit",{
 		templateUrl : "/html/private/submissionform.html",
@@ -45,6 +41,14 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 	.when("/browse",{
 		templateUrl : "/html/private/browse.html",
 		controller  : "browseController"
+	})
+	.when("/browse/users",{
+		templateUrl : "/html/private/browseusers.html",
+		controllers : "browseController"
+	})
+	.when("/browse/:type",{
+		templateUrl : "/html/private/browsesubmissions.html",
+		controllers : "browseController"
 	})
 	.when("/stories/:submission",{
 		templateUrl : "/html/private/submission.html",

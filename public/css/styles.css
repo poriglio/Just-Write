@@ -100,8 +100,6 @@ hr{
 	color: white;
 }
 
-/*intro page*/
-
 .intro-page{
 	text-align: center;
 }
@@ -121,8 +119,6 @@ textarea{
 textarea,input{
 	margin-bottom: 3rem;
 }
-
-
 
 .small-area{
 	height: 5rem;
@@ -151,9 +147,6 @@ textarea{
 		border-radius: 0px;
 	}
 }
-/*-=-=-=
-BROWSE
--=-=-=*/
 
 .browse-content{
 	background-color: purple;
@@ -167,44 +160,33 @@ BROWSE
 	margin: 0px;	
 }
 
-.content-purple{
-	border: dashed 3px #100535;
-	background-color: hsl(254,32%,63%);
-	color: #04000E;
-	border-radius: 10px 10px 10px 10px;
+.box{
+	border-style: dashed;
+	border-width: 2px;
+	border-radius: 5px;
 }
 
-.content-purple h3{
+.box h3{
 	font-family: 'Shadows Into Light', cursive;
 	letter-spacing: 2px;
 }
 
-.content-odd h3{
-	font-family: 'Shadows Into Light', cursive;
-	letter-spacing: 2px;
-}
-
-.content-even h3{
-	font-family: 'Shadows Into Light', cursive;
-	letter-spacing: 2px;
-}
-
-/*-=-=-=-=
-COMMENTS
--=-=-=-=*/
-
-.content-odd{
-	border: dashed 3px #013B46;
+.blue-box{
+	border-color: #013B46;
 	background-color: hsl(189,46%,69%);
 	color: #000505;
-	border-radius: 10px 10px 10px 10px;
 }
 
-.content-even{
-	border: dashed 3px #790A58;
+.pink-box{
+	border-color: #790A58;
 	background-color: hsl(317,68%,78%);
 	color: #29001E;
-	border-radius: 10px 10px 10px 10px;
+}
+
+.purple-box{
+	border-color: #100535;
+	background-color: hsl(254,32%,63%);
+	color: #04000E;
 }
 
 .content-box{

@@ -1,6 +1,6 @@
 <div class="view">
 	<div>
-		<div class="content-purple content-box">	
+		<div class="purple-box box content-box">	
 			<h1 class="browse-heading">{{submissions.title}}</h1>
 			<p style="text-align: center;"><b>{{submissions.type}} by <a href="/#/profile/{{submissions.username}}">{{submissions.username}}</a></b></p>
 			<p>
@@ -18,7 +18,7 @@
 		</div>
 	</div>
 	<hr>
-	<div class="content-purple info-box">
+	<div class="purple-box box info-box">
 		<h2>Comments</h2>
 		<form ng-submit="submitComment()">
 			<div>Let the author know what you think!</div><br>
@@ -27,7 +27,7 @@
 		</form>
 	</div>
 	<hr>
-	<div class="content-box" ng-class-odd="'content-odd'" ng-class-even="'content-even'" ng-repeat="comment in comments">
+	<div class="content-box box" ng-class-odd="'blue-box'" ng-class-even="'pink-box'" ng-repeat="comment in comments">
 		<h3><a href="/#/profile/{{comment.username}}">{{comment.username}}</a></h3> 
 		<b>{{comment.date | date:"MMMM d 'at' h:mm a"}}</b>
 		<div>{{comment.comment}}</div>

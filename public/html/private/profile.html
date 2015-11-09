@@ -1,6 +1,6 @@
 <div class="view container" ng-repeat="user in users">
-	<h1 class="browse-heading content-purple">{{user.username}}</h1>
-	<div class="info-box content-odd">
+	<h1 class="browse-heading purple-box box">{{user.username}}</h1>
+	<div class="info-box blue-box box">
 		<p>{{user.bio}}</p>
 		<h2>Favorites</h2>
 		<ul>
@@ -17,9 +17,9 @@
 		</ul>
 	</div>
 	<br>
-	<h2 class="browse-heading content-purple">Submissions</h2>
+	<h2 class="browse-heading purple-box box">Submissions</h2>
 		<div class="row">
-			<div class="dynamic-box content-box content-odd col-xs-12 col-sm-6 col-md-4">
+			<div class="dynamic-box content-box blue-box box col-xs-12 col-sm-6 col-md-4">
 				<h3>Stories</h3>
 				<hr>
 				<div ng-if="stories.length===0">This user has not submitted any stories.</div>
@@ -31,7 +31,7 @@
 					<hr ng-hide="$last">
 				</div>
 			</div>
-			<div class="dynamic-box content-box content-odd col-xs-12 col-sm-6 col-md-4">
+			<div class="dynamic-box content-box blue-box box col-xs-12 col-sm-6 col-md-4">
 				<h3>Essays</h3>
 				<hr>
 				<div ng-if="essays.length===0">This user has not submitted any essays.</div>
@@ -43,7 +43,7 @@
 					<hr ng-hide="$last">
 				</div>
 			</div>
-			<div class="dynamic-box content-box content-odd col-xs-12 col-sm-12 col-md-4">
+			<div class="dynamic-box content-box blue-box box col-xs-12 col-sm-12 col-md-4">
 				<h3>Poems</h3>
 				<hr>
 				<div ng-if="poems.length===0">This user has not submitted any poems.</div>
