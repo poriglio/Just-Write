@@ -14,10 +14,6 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 		templateUrl : "/html/confirmation/comment.html",
 		controller  : "mainController"
 	})
-	.when("/confirm/login",{
-		templateUrl : "/html/confirmation/login.html",
-		controller  : "mainController"
-	})
 	.when("/confirm/logout",{
 		templateUrl : "/html/confirmation/logout.html",
 		controller  : "mainController"
@@ -29,6 +25,10 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 	.when("/confirm/submission",{
 		templateUrl : "/html/confirmation/submission.html",
 		controller  : "mainController"
+	})
+	.when("/:type/:submission/edit",{
+		templateUrl : "/html/private/editsubmission.html",
+		controller  : "submissionController"
 	})
 	.when("/submit",{
 		templateUrl : "/html/private/submissionform.html",
@@ -127,9 +127,14 @@ angular.module("storyApp").controller("userController",["$scope","$http",functio
 
 angular.module("storyApp").controller("submissionController",["$scope","$http","$location",function($scope,$http,$location){
 
+	var loggedInUser = ""
+	$scope.submissionAuthor = ""
+
 	$scope.submissions = []
 
 	var type = window.location.hash.split("/")[1]
+
+	$scope.type = type
 
 	var id = window.location.hash.split("/")[2]
 
@@ -149,21 +154,32 @@ angular.module("storyApp").controller("submissionController",["$scope","$http","
 		})
 	})
 
+	var checkAuthor = function(){
+		$http.get("/api/me").then(function(returnData){
+			loggedInUser = returnData.data.username
+			return loggedInUser
+		}).then(function(){
+			return loggedInUser == $scope.submissions.username
+	})
+	}
+
 	if(type==="stories"){
 		$http.get("/api/story/" + id).then(function(returnData){
-			$scope.submissions.push(returnData.data)
-		})
+			$scope.submissions = returnData.data
+		}).then(function(){$scope.submissionAuthor = checkAuthor();return $scope.submissionAuthor})
 	}
 	else if(type==="poems"){
 		$http.get("/api/poem/" + id).then(function(returnData){
-			$scope.submissions.push(returnData.data)
-		})
+			$scope.submissions = returnData.data
+		}).then(function(){$scope.submissionAuthor = checkAuthor();return $scope.submissionAuthor})
 	}
 	else if(type==="essays"){
 		$http.get("/api/essay/" + id).then(function(returnData){
-			$scope.submissions.push(returnData.data)
-		})
+			$scope.submissions = returnData.data
+		}).then(function(){$scope.submissionAuthor = checkAuthor();return $scope.submissionAuthor})
+	console.log($scope.submissionAuthor)
 	}
+
 
 	var Comment = function (type,comment,submissionId) {
 		this.type         = type

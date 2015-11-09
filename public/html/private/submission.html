@@ -1,15 +1,16 @@
 <div class="view">
-	<div ng-repeat="submission in submissions">
+	<div>
 		<div class="content-purple content-box">	
-			<h1 class="browse-heading">{{submission.title}}</h1>
-			<p style="text-align: center;"><b>{{submission.type}} by <a href="/#/profile/{{submissions.username}}">{{submission.username}}</a></b></p>
+			<h1 class="browse-heading">{{submissions.title}}</h1>
+			<p style="text-align: center;"><b>{{submissions.type}} by <a href="/#/profile/{{submissions.username}}">{{submissions.username}}</a></b></p>
 			<p>
-				{{submission.description}}
+				{{submissions.description}}
 			</p>
+			<a ng-href="/#/{{type}}/{{submission._id}}/edit"><button type="button" ng-if="submissionAuthor">Edit</button></a>
 		</div>
 		<hr>
 		<div class="submission-content container">
-			<div ng-repeat="paragraph in submission.content">
+			<div ng-repeat="paragraph in submissions.content">
 				<p>
 				{{paragraph}}
 				</p>

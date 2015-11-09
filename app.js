@@ -45,7 +45,7 @@ app.get("/api/me",function(request,response){
 })
 
 
-app.use(passportConfig.ensureAuthenticated)
+// app.use(passportConfig.ensureAuthenticated)
 
 var userController = require("./controllers/usercontroller.js")
 var poemController = require("./controllers/poemcontroller.js")
@@ -112,7 +112,7 @@ app.post("/api/comment",function(request,response){
 	commentController.createComment(request,response)
 })
 
-var port = 80
+var port = 3000
 
 app.listen(port, function(){
 	console.log("The server is listening on port " + port + "...")
