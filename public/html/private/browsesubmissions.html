@@ -1,3 +1,7 @@
 <div class="view">
 	This is a page for viewing all submissions.
+	<h1 class="box purple-box">Submissions</h1>
+	<div ng-class-odd="'blue-box'" ng-class-even="'pink-box'" class="box" ng-repeat="submission in storiesNewest">
+		<h2>submission.title</h2>
+	</div>
 </div>

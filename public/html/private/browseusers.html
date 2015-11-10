@@ -1,3 +1,17 @@
-<div class="view">
-	This is a page for viewing all users.
+<div class="view container">
+	<div class="row" style="margin: auto;">
+		<h1 class="box purple-box">Users</h1>
+		<div ng-class-odd="'blue-box'" ng-class-even="'pink-box'" class="box col-xs-10 col-sm-3" ng-repeat="user in usersNewest">
+			<div style="width: 100%; margin: auto;">
+				<h2><a ng-href="/#/profile/{{user.username}}">{{user.username}}</a></h2>
+				<div>Joined {{user.dateJoined | date:"MMMM d 'at' h:mm a" }}</div>
+				<div>{{user.numSubmissions}} submissions</div>
+				<div>{{user.numStories}} stories</div>
+				<div>{{user.numPoems}} poems</div>
+				<div>{{user.numEssays}} essays</div>
+				<div>{{user.numComments}} comments</div>
+				<div>{{user.bio | limitTo: 150}}</div>
+			</div>
+		</div>
+	</div>
 </div>

@@ -44,11 +44,11 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 	})
 	.when("/browse/users",{
 		templateUrl : "/html/private/browseusers.html",
-		controllers : "browseController"
+		controller : "browseController"
 	})
 	.when("/browse/:type",{
 		templateUrl : "/html/private/browsesubmissions.html",
-		controllers : "browseController"
+		controller : "browseController"
 	})
 	.when("/stories/:submission",{
 		templateUrl : "/html/private/submission.html",
@@ -215,23 +215,24 @@ angular.module("storyApp").controller("submissionController",["$scope","$http","
 
 angular.module("storyApp").controller("browseController",["$scope","$http",function($scope,$http){
 
-	$scope.usersProlific = []
-	$scope.usersRandom = []
-	$scope.usersNewest = []
-
-	$scope.poemsPopular = []
-	$scope.poemsRandom = []
-	$scope.poemsNewest = []
-
-	$scope.storiesPopular = []
-	$scope.storiesRandom = []
-	$scope.storiesNewest = []
-
-	$scope.essaysPopular = []
-	$scope.essaysRandom = []
-	$scope.essaysNewest = []
-
 	var buildProfile = function(user){
+
+		$scope.usersProlific = []
+		$scope.usersRandom = []
+		$scope.usersNewest = []
+
+		$scope.poemsPopular = []
+		$scope.poemsRandom = []
+		$scope.poemsNewest = []
+
+		$scope.storiesPopular = []
+		$scope.storiesRandom = []
+		$scope.storiesNewest = []
+
+		$scope.essaysPopular = []
+		$scope.essaysRandom = []
+		$scope.essaysNewest = []
+
 		$http.get("/api/users/" + user).then(function(returnData){
 			angular.copy(returnData.data,$scope.usersProlific)
 			angular.copy(returnData.data,$scope.usersRandom)
@@ -327,5 +328,7 @@ angular.module("storyApp").controller("browseController",["$scope","$http",funct
 
 	var user = "returnAll"
 	buildProfile(user)
+
+	console.log($scope.usersNewest)
 
 }])
