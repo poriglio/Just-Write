@@ -340,90 +340,102 @@ angular.module("storyApp").controller("browseController",["$scope","$http",funct
 
 	$scope.sortUsers = function(query){
 
-		console.log(query)
+		switch(query){
+			case "date":
+				$scope.users.sort(function(a,b){
+					if(a.dateJoined == undefined){
+						return 1
+					}
+					else if(b.dateJoined == undefined){
+						return -1
+					}
+					else{
+						return b.dateJoined - a.dateJoined
+					}
+				})
+				break;
+			case "submissions":
+				$scope.users.sort(function(a,b){
+					if(a.numSubmissions == undefined){
+						return 1
+					}
+					else if(b.numSubmissions == undefined){
+						return -1
+					}
+					else{
+						return b.numSubmissions - a.numSubmissions
+					}
+				})
+				break;
+			case "stories":
+				$scope.users.sort(function(a,b){
+					if(a.numStories == undefined){
+						return 1
+					}
+					else if(b.numStories == undefined){
+						return -1
+					}
+					else{
+						return b.numStories - a.numStories
+					}
+				})
+				break;
+			case "poems":
+				$scope.users.sort(function(a,b){
+					if(a.numPoems == undefined){
+						return 1
+					}
+					else if(b.numPoems == undefined){
+						return -1
+					}
+					else{
+						return b.numPoems - a.numPoems
+					}
+				})
+				break;
+			case "essays":
+				$scope.users.sort(function(a,b){
+					if(a.numEssays == undefined){
+						return 1
+					}
+					else if(b.numEssays == undefined){
+						return -1
+					}
+					else{
+						return b.numEssays - a.numEssays
+					}
+				})
+				break;
+			case "comments":
+				$scope.users.sort(function(a,b){
+					if(a.numComments == undefined){
+						return 1
+					}
+					else if(b.numComments == undefined){
+						return -1
+					}
+					else{
+						return b.numComments - a.numComments
+					}
+				})
+				break;
+			case "alpha":
+				$scope.users.sort(function(a,b){
+					for(var i = 0; i<a.usernameLower.length;i++){
+						var sort =  a.usernameLower.charCodeAt(i) - b.usernameLower.charCodeAt(i)
+						if(sort!=0){
+							return sort
+							break
+						}
+					}
+				})
+				break;
+		}
+	}
 
-		if(query==="date"){
-			$scope.users.sort(function(a,b){
-				if(a.dateJoined == undefined){
-					return 1
-				}
-				else if(b.dateJoined == undefined){
-					return -1
-				}
-				else{
-					return b.dateJoined - a.dateJoined
-				}
-			})
-		}
-		else if(query==="submissions"){
-			$scope.users.sort(function(a,b){
-				if(a.numSubmissions == undefined){
-					return 1
-				}
-				else if(b.numSubmissions == undefined){
-					return -1
-				}
-				else{
-					return b.numSubmissions - a.numSubmissions
-				}
-			})
-		}
-		else if(query==="stories"){
-			$scope.users.sort(function(a,b){
-				if(a.numStories == undefined){
-					return 1
-				}
-				else if(b.numStories == undefined){
-					return -1
-				}
-				else{
-					return b.numStories - a.numStories
-				}
-			})
-		}
-		else if(query==="poems"){
-			$scope.users.sort(function(a,b){
-				if(a.numPoems == undefined){
-					return 1
-				}
-				else if(b.numPoems == undefined){
-					return -1
-				}
-				else{
-					return b.numPoems - a.numPoems
-				}
-			})
-		}
-		else if(query==="essays"){
-			$scope.users.sort(function(a,b){
-				if(a.numEssays == undefined){
-					return 1
-				}
-				else if(b.numEssays == undefined){
-					return -1
-				}
-				else{
-					return b.numEssays - a.numEssays
-				}
-			})
-		}
-		else if(query==="comments"){
-			$scope.users.sort(function(a,b){
-				if(a.numComments == undefined){
-					return 1
-				}
-				else if(b.numComments == undefined){
-					return -1
-				}
-				else{
-					return b.numComments - a.numComments
-				}
-			})
-		}
-		else{
-			return "error"
-		}
 
+	$scope.sortSubmissions = function(query){
+	
 	}
 
 	var user = "returnAll"
@@ -431,5 +443,24 @@ angular.module("storyApp").controller("browseController",["$scope","$http",funct
 	$scope.getUsers(user)
 	$scope.getPoems(user)
 	$scope.getEssays(user)
+
+	if(window.location.hash.split("/")[2]){
+		$scope.browseType = window.location.hash.split("/")[2]
+		$scope.browseType = $scope.browseType[0].toUpperCase() + $scope.browseType.slice(1,7)
+		switch($scope.browseType){
+			case "Stories":
+				$scope.submissions = $scope.storiesPopular;
+				break;
+			case "Poems":
+				$scope.submissions = $scope.poemsPopular;
+				break;
+			case "Essays":
+				$scope.submissions = $scope.essaysPopular;
+				break;
+
+		}
+	}
+
+
 
 }])

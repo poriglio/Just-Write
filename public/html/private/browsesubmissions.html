@@ -1,7 +1,33 @@
-<div class="view">
-	This is a page for viewing all submissions.
-	<h1 class="box purple-box">Submissions</h1>
-	<div ng-class-odd="'blue-box'" ng-class-even="'pink-box'" class="box" ng-repeat="submission in storiesNewest">
-		<h2>submission.title</h2>
+<div class="view container">
+	
+<!-- SORTING BUTTONS and HEADING-->
+
+	<div class="box purple-box">
+		<h1 class="browse-heading">{{browseType}}</h1>
 	</div>
+
+	<ul class="nav-list browse-heading">
+		<li><button class="btn" type="button" ng-click="sortSubmissions('newest')">Newest</button></li>
+		<li><button class="btn" type="button" ng-click="sortSubmissions('oldest')">Oldest</button></li>
+		<li><button class="btn" type="button" ng-click="sortSubmissions('popular')">Popular</button></li>
+		<li><button class="btn" type="button" ng-click="sortSubmissions('title')">Title</button></li>
+		<li><button class="btn" type="button" ng-click="sortSubmissions('username')">Username</button></li>
+	</ul>
+
+<!-- USERS LIST -->
+	
+	<div class="row">
+		<div class="col-xs-12 col-sm-4 col-md-3" ng-repeat="submission in submissions">
+			<div ng-class-odd="'blue-box'" ng-class-even="'pink-box'" class="item box">
+				<a ng-href="/#/profile/{{user.username}}"><h2 style="font-size: 2.5rem;">{{submission.title}}</h2></a>
+				<div>Joined {{user.dateJoined | date:"M/d/yyyy" }}</div>
+				<div>{{user.numSubmissions}} submissions</div>
+				<div>{{user.numStories}} stories</div>
+				<div>{{user.numPoems}} poems</div>
+				<div>{{user.numEssays}} essays</div>
+				<div>{{user.numComments}} comments</div>
+			</div>
+		</div>
+	</div>
+	
 </div>
