@@ -64,6 +64,7 @@ hr{
 	border-radius: 5px;
 	text-align: center;
 	display: inline-block;
+	margin-bottom: 0px;
 }
 
 .view{
@@ -79,6 +80,7 @@ hr{
 
 .login-form{
 	max-width: 600px;
+	margin-top: 1rem;
 }
 
 .login-form *{
@@ -87,7 +89,8 @@ hr{
 }
 
 .nav-list li{
-	display: inline;
+	display: inline-block;
+	margin-top: 1rem;
 }
 
 .btn{
@@ -221,6 +224,29 @@ textarea{
 	max-width: 28%;
 }
 
+/*-=-=-=-=-=-=-=-=-
+BROWSE USERS PAGE
+-=-=-=-=-=-=-=-=-*/
+
+.item{
+	height: 240px;
+	display: inline-block;
+	width: 100%;
+	margin-top: 2rem;
+}
+
+.item div{
+	padding-left: 2rem;
+}
+
+.item h2{
+	text-align: center;
+}
+
+/*-=-=-=-=-=-=-
+MEDIA QUERIES
+-=-=-=-=-=-=-
+*/
 @media screen and (max-width: 768px){
 
 	.dynamic-box{

@@ -215,28 +215,18 @@ angular.module("storyApp").controller("submissionController",["$scope","$http","
 
 angular.module("storyApp").controller("browseController",["$scope","$http",function($scope,$http){
 
-	var buildProfile = function(user){
-
+	$scope.getUsers = function(user){
+		
+		$scope.users = []
 		$scope.usersProlific = []
 		$scope.usersRandom = []
 		$scope.usersNewest = []
-
-		$scope.poemsPopular = []
-		$scope.poemsRandom = []
-		$scope.poemsNewest = []
-
-		$scope.storiesPopular = []
-		$scope.storiesRandom = []
-		$scope.storiesNewest = []
-
-		$scope.essaysPopular = []
-		$scope.essaysRandom = []
-		$scope.essaysNewest = []
 
 		$http.get("/api/users/" + user).then(function(returnData){
 			angular.copy(returnData.data,$scope.usersProlific)
 			angular.copy(returnData.data,$scope.usersRandom)
 			angular.copy(returnData.data,$scope.usersNewest)
+			angular.copy(returnData.data,$scope.users)
 			$scope.usersRandom.sort(function(a,b){
 				return Math.random() - Math.random()
 			})
@@ -255,6 +245,13 @@ angular.module("storyApp").controller("browseController",["$scope","$http",funct
 				}
 			})
 		})
+	}
+
+	$scope.getStories = function(user){
+
+		$scope.storiesPopular = []
+		$scope.storiesRandom = []
+		$scope.storiesNewest = []
 
 		$http.get("/api/stories/" + user).then(function(returnData){
 			angular.copy(returnData.data,$scope.storiesPopular)
@@ -278,29 +275,13 @@ angular.module("storyApp").controller("browseController",["$scope","$http",funct
 				}
 			})
 		})
+	}
 
-		$http.get("/api/poems/" + user).then(function(returnData){
-			angular.copy(returnData.data,$scope.poemsPopular)
-			angular.copy(returnData.data,$scope.poemsRandom)
-			angular.copy(returnData.data,$scope.poemsNewest)
-			$scope.poemsRandom.sort(function(a,b){
-				return Math.random() - Math.random()
-			})
-			$scope.poemsPopular.sort(function(a,b){
-				return b.numComments - a.numComments
-			})
-			$scope.poemsNewest.sort(function(a,b){
-				if(a.dateAdded == undefined){
-					return 1
-				}
-				else if(b.dateAdded == undefined){
-					return -1
-				}
-				else{
-					return b.dateAdded - a.dateAdded
-				}
-			})
-		})
+	$scope.getEssays = function(user){
+
+		$scope.essaysPopular = []
+		$scope.essaysRandom = []
+		$scope.essaysNewest = []
 
 		$http.get("/api/essays/" + user).then(function(returnData){
 			angular.copy(returnData.data,$scope.essaysPopular)
@@ -324,11 +305,131 @@ angular.module("storyApp").controller("browseController",["$scope","$http",funct
 				}
 			})
 		})
+		
+	}
+
+	$scope.getPoems = function(user){
+
+		$scope.poemsPopular = []
+		$scope.poemsRandom = []
+		$scope.poemsNewest = []
+
+		$http.get("/api/poems/" + user).then(function(returnData){
+			angular.copy(returnData.data,$scope.poemsPopular)
+			angular.copy(returnData.data,$scope.poemsRandom)
+			angular.copy(returnData.data,$scope.poemsNewest)
+			$scope.poemsRandom.sort(function(a,b){
+				return Math.random() - Math.random()
+			})
+			$scope.poemsPopular.sort(function(a,b){
+				return b.numComments - a.numComments
+			})
+			$scope.poemsNewest.sort(function(a,b){
+				if(a.dateAdded == undefined){
+					return 1
+				}
+				else if(b.dateAdded == undefined){
+					return -1
+				}
+				else{
+					return b.dateAdded - a.dateAdded
+				}
+			})
+		})		
+	}
+
+	$scope.sortUsers = function(query){
+
+		console.log(query)
+
+		if(query==="date"){
+			$scope.users.sort(function(a,b){
+				if(a.dateJoined == undefined){
+					return 1
+				}
+				else if(b.dateJoined == undefined){
+					return -1
+				}
+				else{
+					return b.dateJoined - a.dateJoined
+				}
+			})
+		}
+		else if(query==="submissions"){
+			$scope.users.sort(function(a,b){
+				if(a.numSubmissions == undefined){
+					return 1
+				}
+				else if(b.numSubmissions == undefined){
+					return -1
+				}
+				else{
+					return b.numSubmissions - a.numSubmissions
+				}
+			})
+		}
+		else if(query==="stories"){
+			$scope.users.sort(function(a,b){
+				if(a.numStories == undefined){
+					return 1
+				}
+				else if(b.numStories == undefined){
+					return -1
+				}
+				else{
+					return b.numStories - a.numStories
+				}
+			})
+		}
+		else if(query==="poems"){
+			$scope.users.sort(function(a,b){
+				if(a.numPoems == undefined){
+					return 1
+				}
+				else if(b.numPoems == undefined){
+					return -1
+				}
+				else{
+					return b.numPoems - a.numPoems
+				}
+			})
+		}
+		else if(query==="essays"){
+			$scope.users.sort(function(a,b){
+				if(a.numEssays == undefined){
+					return 1
+				}
+				else if(b.numEssays == undefined){
+					return -1
+				}
+				else{
+					return b.numEssays - a.numEssays
+				}
+			})
+		}
+		else if(query==="comments"){
+			$scope.users.sort(function(a,b){
+				if(a.numComments == undefined){
+					return 1
+				}
+				else if(b.numComments == undefined){
+					return -1
+				}
+				else{
+					return b.numComments - a.numComments
+				}
+			})
+		}
+		else{
+			return "error"
+		}
+
 	}
 
 	var user = "returnAll"
-	buildProfile(user)
-
-	console.log($scope.usersNewest)
+	$scope.getStories(user)
+	$scope.getUsers(user)
+	$scope.getPoems(user)
+	$scope.getEssays(user)
 
 }])
