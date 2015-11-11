@@ -20,7 +20,7 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-4 col-md-3" ng-repeat="user in users">
 			<div ng-class-odd="'blue-box'" ng-class-even="'pink-box'" class="item box">
-				<a ng-href="/#/profile/{{user.username}}"><h2>{{user.username}}</h2></a>
+				<a ng-href="/#/profile/{{user.username}}"><h2 style="font-size: 2.5rem;">{{user.username}}</h2></a>
 				<div>Joined {{user.dateJoined | date:"M/d/yyyy" }}</div>
 				<div>{{user.numSubmissions}} submissions</div>
 				<div>{{user.numStories}} stories</div>
