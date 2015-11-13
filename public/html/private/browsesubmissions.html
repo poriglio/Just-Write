@@ -14,18 +14,16 @@
 		<li><button class="btn" type="button" ng-click="sortSubmissions('username')">Username</button></li>
 	</ul>
 
-<!-- USERS LIST -->
+<!-- SUBMISSIONS LIST -->
 	
 	<div class="row">
-		<div class="col-xs-12 col-sm-4 col-md-3" ng-repeat="submission in submissions">
-			<div ng-class-odd="'blue-box'" ng-class-even="'pink-box'" class="item box">
-				<a ng-href="/#/profile/{{user.username}}"><h2 style="font-size: 2.5rem;">{{submission.title}}</h2></a>
-				<div>Joined {{user.dateJoined | date:"M/d/yyyy" }}</div>
-				<div>{{user.numSubmissions}} submissions</div>
-				<div>{{user.numStories}} stories</div>
-				<div>{{user.numPoems}} poems</div>
-				<div>{{user.numEssays}} essays</div>
-				<div>{{user.numComments}} comments</div>
+		<div class="col-xs-12 col-sm-4 col-md-3" ng-repeat="submission in submissions" style="padding: 7px;">
+			<div ng-class-odd="'blue-box'" ng-class-even="'pink-box'" class="item item-submission box">
+				<a ng-href="/#/{{browseType.toLowerCase()}}/{{submission._id}}"><h2 style="font-size: 2.5rem;">{{submission.title | limitTo: 35}}<span ng-show="submission.title.length>35">&#133;</span></h2></a>
+				<div>by <a ng-href="/#/profile/{{submission.username}}"><b>{{submission.username}}</b></a></div>
+				<div>Created {{submission.dateAdded | date:"M/d/yyyy" }}</div>
+				<div><i>{{submission.description | limitTo: 100}}</i><span ng-show="submission.description.length>120">&#133;</span></div>
+				<div>{{submission.numComments}} comments</div>
 			</div>
 		</div>
 	</div>

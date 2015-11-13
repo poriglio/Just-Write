@@ -435,7 +435,45 @@ angular.module("storyApp").controller("browseController",["$scope","$http",funct
 
 
 	$scope.sortSubmissions = function(query){
-	
+		switch(query){
+			case "newest":
+				$scope.submissions.sort(function(a,b){
+					return b.dateAdded - a.dateAdded
+				});
+				break;
+			case "oldest":
+				$scope.submissions.sort(function(a,b){
+					return a.dateAdded - b.dateAdded
+				});
+				break;
+			case "popular":
+				$scope.submissions.sort(function(a,b){
+					return b.numComments - a.numComments
+				});
+				break;
+			case "username":
+				$scope.submissions.sort(function(a,b){
+					for(var i = 0; i<a.username.length;i++){
+						var sort =  a.username.toLowerCase().charCodeAt(i) - b.username.toLowerCase().charCodeAt(i)
+						if(sort!=0){
+							return sort
+							break
+						}
+					}
+				});
+				break;
+			case "title":
+				$scope.submissions.sort(function(a,b){
+					for(var i=0;i<a.title.length;i++){
+						var sort = a.title.toLowerCase().charCodeAt(i)-b.title.toLowerCase().charCodeAt(i)
+						if(sort!=0){
+							return sort
+							break
+						}
+					}
+				});
+				break;
+		}
 	}
 
 	var user = "returnAll"
