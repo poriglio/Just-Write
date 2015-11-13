@@ -451,7 +451,15 @@ angular.module("storyApp").controller("browseController",["$scope","$http",funct
 				break;
 			case "oldest":
 				$scope.submissions.sort(function(a,b){
-					return a.dateAdded - b.dateAdded
+					if(a.dateAdded == undefined){
+						return -1
+					}
+					else if(b.dateAdded == undefined){
+						return 1
+					}
+					else{
+						return a.dateAdded - b.dateAdded
+					}
 				});
 				break;
 			case "popular":
@@ -506,7 +514,5 @@ angular.module("storyApp").controller("browseController",["$scope","$http",funct
 
 		}
 	}
-
-
 
 }])
