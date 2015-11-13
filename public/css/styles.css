@@ -101,13 +101,27 @@ hr{
 }
 
 .btn{
-	background: linear-gradient(#EDA2D8 20%,#C853A8 100%,#EDA2D8 20%);
 	color: white;
 }
 
 .btn:hover{
-	background: linear-gradient(hsl(254,32%,80%) 20%,#9082BE 100%,hsl(254,32%,80%) 20%);
 	color: white;
+}
+
+.btn-pink{
+	background: linear-gradient(#EDA2D8 20%,#C853A8 100%,#EDA2D8 20%);
+}
+
+.btn-pink:hover{
+	background: linear-gradient(hsl(254,32%,80%) 20%,#9082BE 100%,hsl(254,32%,80%) 20%);
+}
+
+.btn-blue{
+	background: linear-gradient(hsl(189,46%,50%),hsl(189,46%,69%),hsl(189,46%,50%));
+}
+
+.btn-blue:hover{
+	background: linear-gradient(hsl(254,32%,80%) 20%,#9082BE 100%,hsl(254,32%,80%) 20%);
 }
 
 .intro-page{

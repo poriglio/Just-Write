@@ -7,11 +7,11 @@
 	</div>
 
 	<ul class="nav-list browse-heading">
-		<li><button class="btn" type="button" ng-click="sortSubmissions('newest')">Newest</button></li>
-		<li><button class="btn" type="button" ng-click="sortSubmissions('oldest')">Oldest</button></li>
-		<li><button class="btn" type="button" ng-click="sortSubmissions('popular')">Popular</button></li>
-		<li><button class="btn" type="button" ng-click="sortSubmissions('title')">Title</button></li>
-		<li><button class="btn" type="button" ng-click="sortSubmissions('username')">Username</button></li>
+		<li><button class="btn btn-blue" type="button" ng-click="sortSubmissions('newest')">Newest</button></li>
+		<li><button class="btn btn-blue" type="button" ng-click="sortSubmissions('oldest')">Oldest</button></li>
+		<li><button class="btn btn-blue" type="button" ng-click="sortSubmissions('popular')">Popular</button></li>
+		<li><button class="btn btn-blue" type="button" ng-click="sortSubmissions('title')">Title</button></li>
+		<li><button class="btn btn-blue" type="button" ng-click="sortSubmissions('username')">Username</button></li>
 	</ul>
 
 <!-- SUBMISSIONS LIST -->
@@ -23,7 +23,7 @@
 				<div>by <a ng-href="/#/profile/{{submission.username}}"><b>{{submission.username}}</b></a></div>
 				<div>Created {{submission.dateAdded | date:"M/d/yyyy" }}</div>
 				<div><i>{{submission.description | limitTo: 100}}</i><span ng-show="submission.description.length>120">&#133;</span></div>
-				<div>{{submission.numComments}} comments</div>
+				<div>{{submission.numComments}} comment<span ng-show="submission.numComments!=1">s</span></div>
 			</div>
 		</div>
 	</div>

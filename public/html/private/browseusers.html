@@ -7,13 +7,13 @@
 	</div>
 
 	<ul class="nav-list browse-heading">
-		<li><button class="btn" type="button" ng-click="sortUsers('date')">Recently joined</button></li>
-		<li><button class="btn" type="button" ng-click="sortUsers('alpha')">Alphabetical</button></li>
-		<li><button class="btn" type="button" ng-click="sortUsers('submissions')">Most submissions</button></li>
-		<li><button class="btn" type="button" ng-click="sortUsers('stories')">Most stories</button></li>
-		<li><button class="btn" type="button" ng-click="sortUsers('poems')">Most poems</button></li>
-		<li><button class="btn" type="button" ng-click="sortUsers('essays')">Most essays</button></li>
-		<li><button class="btn" type="button" ng-click="sortUsers('comments')">Most comments</button></li>
+		<li><button class="btn btn-blue" type="button" ng-click="sortUsers('date')">Recently joined</button></li>
+		<li><button class="btn btn-blue" type="button" ng-click="sortUsers('alpha')">Alphabetical</button></li>
+		<li><button class="btn btn-blue" type="button" ng-click="sortUsers('submissions')">Most submissions</button></li>
+		<li><button class="btn btn-blue" type="button" ng-click="sortUsers('stories')">Most stories</button></li>
+		<li><button class="btn btn-blue" type="button" ng-click="sortUsers('poems')">Most poems</button></li>
+		<li><button class="btn btn-blue" type="button" ng-click="sortUsers('essays')">Most essays</button></li>
+		<li><button class="btn btn-blue" type="button" ng-click="sortUsers('comments')">Most comments</button></li>
 	</ul>
 
 <!-- USERS LIST -->
@@ -23,11 +23,11 @@
 			<div ng-class-odd="'blue-box'" ng-class-even="'pink-box'" class="item item-user box">
 				<a ng-href="/#/profile/{{user.username}}"><h2 style="font-size: 2.5rem;">{{user.username}}</h2></a>
 				<div>Created {{user.dateJoined | date:"M/d/yyyy" }}</div>
-				<div>{{user.numSubmissions}} submissions</div>
-				<div>{{user.numStories}} stories</div>
-				<div>{{user.numPoems}} poems</div>
-				<div>{{user.numEssays}} essays</div>
-				<div>{{user.numComments}} comments</div>
+				<div>{{user.numSubmissions}} submission<span ng-show="user.numSubmissions!=1">s</span></div>
+				<div>{{user.numStories}} <span ng-hide="user.numStories==1">stories</span><span ng-show="user.numStories==1">story</span></div>
+				<div>{{user.numPoems}} poem<span ng-show="user.numPoems!=1">s</span></div>
+				<div>{{user.numEssays}} essay<span ng-show="user.numEssays!=1">s</span></div>
+				<div>{{user.numComments}} comment<span ng-show="user.numComments!=1">s</span></div>
 			</div>
 		</div>
 	</div>

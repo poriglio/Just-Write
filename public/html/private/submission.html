@@ -6,7 +6,6 @@
 			<p>
 				{{submissions.description}}
 			</p>
-			<!-- <a ng-href="/#/{{type}}/{{submission._id}}/edit"><button type="button" ng-if="submissionAuthor">Edit</button></a> -->
 		</div>
 		<hr>
 		<div class="submission-content container">
@@ -23,7 +22,7 @@
 		<form ng-submit="submitComment()">
 			<div>Let the author know what you think!</div><br>
 			<textarea class="medium-area" placeholder="Add a comment..." ng-model="$parent.comment"></textarea>
-			<input class="btn btn-default" type="submit" value="Add comment!">
+			<input class="btn btn-default btn-pink" type="submit" value="Add comment!">
 		</form>
 	</div>
 	<hr>
