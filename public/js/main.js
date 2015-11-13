@@ -438,7 +438,15 @@ angular.module("storyApp").controller("browseController",["$scope","$http",funct
 		switch(query){
 			case "newest":
 				$scope.submissions.sort(function(a,b){
-					return b.dateAdded - a.dateAdded
+					if(a.dateAdded == undefined){
+						return 1
+					}
+					else if(b.dateAdded == undefined){
+						return -1
+					}
+					else{
+						return b.dateAdded - a.dateAdded
+					}
 				});
 				break;
 			case "oldest":
