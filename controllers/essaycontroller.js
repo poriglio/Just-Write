@@ -21,7 +21,6 @@ var createEssay = function(request,response){
 		username        : request.user.username,
 		title           : title,
 		description     : request.body.description,
-		dateAdded       : request.body.added,
 		lastRevised     : "not yet revised",
 		matureContent   : request.body.mature,
 		content         : request.body.content.split("[p]"),

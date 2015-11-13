@@ -1,5 +1,6 @@
 html * {
-	font-family: 'Khula', sans-serif;
+	/*font-family: 'Khula', sans-serif;*/
+	font-family: sans-serif;
 	list-style-type: none;
 	font-size: 18px;
 }
@@ -7,6 +8,11 @@ html * {
 
 a{
 	color: #790A5B;
+	text-decoration: none;
+}
+
+a:hover{
+	text-decoration: none;
 }
 
 input a{
@@ -33,6 +39,7 @@ body{
 
 h1,h2,h3{
 	font-family: "Shadows Into Light", cursive;
+	/*font-family: sans-serif;*/
 }
 
 h1{
@@ -55,6 +62,7 @@ hr{
 
 .title{
 	font-family: 'Shadows Into Light', cursive;
+	/*font-family: sans-serif;*/
 	font-size: 4.5rem;
 	background: linear-gradient(#EDA2D8 20%,#C853A8 100%,#EDA2D8 20%);
 	height: 7rem;
@@ -159,6 +167,7 @@ textarea{
 .browse-heading{
 	padding: 0.5rem 0rem 1rem 2rem;
 	font-family: 'Shadows Into Light', cursive;
+	/*font-family: sans-serif;*/
 	text-align: center;
 	margin: 0px;	
 }
@@ -171,6 +180,7 @@ textarea{
 
 .box h3{
 	font-family: 'Shadows Into Light', cursive;
+	/*font-family: sans-serif;*/
 	letter-spacing: 2px;
 }
 
@@ -224,19 +234,36 @@ textarea{
 	max-width: 28%;
 }
 
-/*-=-=-=-=-=-=-=-=-
-BROWSE USERS PAGE
--=-=-=-=-=-=-=-=-*/
+/*-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=
+BROWSE USERS and BROWSE SUBMISSIONS pages
+-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=*/
 
 .item{
-	height: 240px;
 	display: inline-block;
 	width: 100%;
 	margin-top: 2rem;
 }
 
-.item div{
+.item-submission div{
+	line-height: 2.25rem;
+}
+
+.item-user{
+	height: 240px;
+}
+
+.item-submission{
+	height: 275px;
+	padding-left: 0.3rem;
+	padding-right: 0.3rem;
+}
+
+.item-user div{
 	padding-left: 2rem;
+}
+
+.item-submission div{
+	text-align: center;
 }
 
 .item h2{
@@ -247,6 +274,7 @@ BROWSE USERS PAGE
 MEDIA QUERIES
 -=-=-=-=-=-=-
 */
+
 @media screen and (max-width: 768px){
 
 	.dynamic-box{

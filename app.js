@@ -38,12 +38,13 @@ app.post("/auth/signup",function(request,response){
 
 app.post("/auth/login",authenticationController.processLogin)
 
+app.use(passportConfig.ensureAuthenticated)
+
 app.get("/auth/logout",authenticationController.logout)
 
 app.get("/api/me",function(request,response){
 	response.send(request.user)
 })
-
 
 app.use(passportConfig.ensureAuthenticated)
 

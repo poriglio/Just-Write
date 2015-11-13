@@ -8,6 +8,7 @@
 
 	<ul class="nav-list browse-heading">
 		<li><button class="btn" type="button" ng-click="sortUsers('date')">Recently joined</button></li>
+		<li><button class="btn" type="button" ng-click="sortUsers('alpha')">Alphabetical</button></li>
 		<li><button class="btn" type="button" ng-click="sortUsers('submissions')">Most submissions</button></li>
 		<li><button class="btn" type="button" ng-click="sortUsers('stories')">Most stories</button></li>
 		<li><button class="btn" type="button" ng-click="sortUsers('poems')">Most poems</button></li>
@@ -19,9 +20,9 @@
 	
 	<div class="row">
 		<div class="col-xs-12 col-sm-4 col-md-3" ng-repeat="user in users">
-			<div ng-class-odd="'blue-box'" ng-class-even="'pink-box'" class="item box">
+			<div ng-class-odd="'blue-box'" ng-class-even="'pink-box'" class="item item-user box">
 				<a ng-href="/#/profile/{{user.username}}"><h2 style="font-size: 2.5rem;">{{user.username}}</h2></a>
-				<div>Joined {{user.dateJoined | date:"M/d/yyyy" }}</div>
+				<div>Created {{user.dateJoined | date:"M/d/yyyy" }}</div>
 				<div>{{user.numSubmissions}} submissions</div>
 				<div>{{user.numStories}} stories</div>
 				<div>{{user.numPoems}} poems</div>
