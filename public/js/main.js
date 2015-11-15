@@ -62,10 +62,14 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 		templateUrl : "/html/private/submission.html",
 		controller  : "submissionController"
 	})
+	.when("/account",{
+		templateUrl : "/html/private/myaccount.html",
+		controller : "accountController"
+	})
 
 }])
 
-angular.module("storyApp").controller("mainController",["$scope","$http","$location",function($scope,$http,$location){
+angular.module("storyApp").controller("mainController",["$scope","$http","$location","callFactory",function($scope,$http,$location,callFactory){
 
 	$scope.loggedIn = false
 
@@ -82,7 +86,7 @@ angular.module("storyApp").controller("mainController",["$scope","$http","$locat
 		})
 }])
 
-angular.module("storyApp").controller("userController",["$scope","$http",function($scope,$http){
+angular.module("storyApp").controller("userController",["$scope","$http","callFactory",function($scope,$http,callFactory){
 
 	$scope.users = []
 	$scope.poems   = []
@@ -129,7 +133,7 @@ angular.module("storyApp").controller("userController",["$scope","$http",functio
 
 }])
 
-angular.module("storyApp").controller("submissionController",["$scope","$http","$location",function($scope,$http,$location){
+angular.module("storyApp").controller("submissionController",["$scope","$http","$location","callFactory",function($scope,$http,$location,callFactory){
 
 	var loggedInUser = ""
 	$scope.submissionAuthor = ""
@@ -213,7 +217,7 @@ angular.module("storyApp").controller("submissionController",["$scope","$http","
 
 }])
 
-angular.module("storyApp").controller("browseController",["$scope","$http",function($scope,$http){
+angular.module("storyApp").controller("browseController",["$scope","$http","callFactory",function($scope,$http,callFactory){
 
 	$scope.getUsers = function(user){
 		
@@ -514,5 +518,18 @@ angular.module("storyApp").controller("browseController",["$scope","$http",funct
 
 		}
 	}
+
+}])
+
+angular.module("storyApp").controller("accountController",["$scope","$http","callFactory",function($scope,$http,callFactory){
+
+	$http.get("/api/me").then(function(returnData){
+		$scope.me = returnData.data
+		var user = returnData.data.username
+		callFactory.getStories($http,$scope,user)
+		callFactory.getPoems($http,$scope,user)
+		callFactory.getEssays($http,$scope,user)
+	})
+
 
 }])

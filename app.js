@@ -46,8 +46,6 @@ app.get("/api/me",function(request,response){
 	response.send(request.user)
 })
 
-app.use(passportConfig.ensureAuthenticated)
-
 var userController = require("./controllers/usercontroller.js")
 var poemController = require("./controllers/poemcontroller.js")
 var storyController = require("./controllers/storycontroller.js")
@@ -93,6 +91,14 @@ app.get("/api/essays/:username",essayController.findEssays)
 
 app.get("/api/poems/:username",poemController.findPoems)
 
+app.put("/api/profile/:username",userController.editUser)
+
+app.put("/api/stories/:submission",storyController.editStory)
+
+app.put("/api/poems/:submission",poemController.editPoem)
+
+app.put("/api/essays/:submission",essayController.editEssay)
+
 app.post("/api/submission",function(request,response){
 	if(request.body.submissionType==="story"){
 		storyController.createStory(request,response)
@@ -113,7 +119,7 @@ app.post("/api/comment",function(request,response){
 	commentController.createComment(request,response)
 })
 
-var port = 80
+var port = 3000
 
 app.listen(port, function(){
 	console.log("The server is listening on port " + port + "...")

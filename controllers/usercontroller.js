@@ -54,7 +54,12 @@ var findUser = function(request,response){
 	
 }
 
+var editUser = function(request,response){
+	
+}
+
 module.exports = {
 	createUser  : createUser,
 	findUser    : findUser,
+	editUser    : editUser,
 }

@@ -72,8 +72,18 @@ var findStories = function(request,response){
 	}
 }
 
+var editStory = function(request,response){
+	console.log(request.body)
+}
+
+var deleteStory = function(request,response){
+	console.log(request.body)
+}
+
 module.exports = {
 	findStory    : findStory,
 	createStory  : createStory,
 	findStories  : findStories,
+	editStory    : editStory,
+	deleteStory  : deleteStory,
 }

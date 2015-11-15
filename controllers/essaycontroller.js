@@ -71,8 +71,18 @@ var findEssays = function(request,response){
 	}
 }
 
+var editEssay = function(request,response){
+	console.log(request.body)
+}
+
+var deleteEssay = function(request,response){
+	console.log(request.body)
+}
+
 module.exports = {
 	findEssay    : findEssay,
 	createEssay  : createEssay,
 	findEssays   : findEssays,
+	editEssay    : editEssay,
+	deleteEssay  : deleteEssay,
 }

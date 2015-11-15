@@ -71,8 +71,18 @@ var findPoems = function(request,response){
 	}
 }
 
+var editPoem = function(request,response){
+		console.log(request.body)
+}
+
+var deletePoem = function(request,response){
+	console.log(request.body)
+}
+
 module.exports = {
 	findPoem    : findPoem,
 	createPoem  : createPoem,
 	findPoems   : findPoems,
+	editPoem    : editPoem,
+	deletePoem  : deletePoem,
 }
