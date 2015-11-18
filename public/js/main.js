@@ -105,7 +105,6 @@ angular.module("storyApp").controller("mainController",["$scope","$http","$locat
 			}
 			else{
 				$scope.loggedIn = false
-				// $location.path("/")
 				return false
 			}
 		})

@@ -38,13 +38,6 @@ app.post("/auth/signup",function(request,response){
 
 app.post("/auth/login",authenticationController.processLogin)
 
-app.use(passportConfig.ensureAuthenticated)
-
-app.get("/auth/logout",authenticationController.logout)
-
-app.get("/api/me",function(request,response){
-	response.send(request.user)
-})
 
 var userController = require("./controllers/usercontroller.js")
 var poemController = require("./controllers/poemcontroller.js")
@@ -54,7 +47,7 @@ var commentController = require("./controllers/commentcontroller.js")
 
 
 // -=-=-=-=-=-=-=-=-=-=
-// LOGGED IN ROUTES
+// LOGGED OUT ROUTES
 // -=-=-=-=-=-=-=-=-=-=
 
 app.get("/#/profile/:username",function(request,response){
@@ -73,9 +66,10 @@ app.get("/#/essays/:submission",function(request,response){
 	response.sendFile("/html/private/submission.html",{root:"./public"})
 })
 
-// -=-=-=-=-=
-// API ROUTES
-// -=-=-=-=-=
+
+// -=-=-=-=-=-=-=-=-=-=-=-
+// API ROUTES - logged out
+// -=-=-=-=-=-=-=-=-=-=-=-
 
 app.get("/api/story/:submission",storyController.findStory)
 
@@ -90,6 +84,26 @@ app.get("/api/stories/:username",storyController.findStories)
 app.get("/api/essays/:username",essayController.findEssays)
 
 app.get("/api/poems/:username",poemController.findPoems)
+
+app.get("/api/comments/:type/:submissionID",function(request,response){
+	commentController.getComments(request,response)
+})
+
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// BELOW THIS, MUST BE AUTHENTICATED!
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+app.use(passportConfig.ensureAuthenticated)
+
+app.get("/auth/logout",authenticationController.logout)
+
+app.get("/api/me",function(request,response){
+	response.send(request.user)
+})
+
+// -=-=-=-=-=-=-=-=-=-=-=
+// API ROUTES - logged in
+// -=-=-=-=-=-=-=-=-=-=-=
 
 app.put("/api/profile/:username",userController.editUser)
 
@@ -111,15 +125,11 @@ app.post("/api/submission",function(request,response){
 	}
 })
 
-app.get("/api/comments/:type/:submissionID",function(request,response){
-	commentController.getComments(request,response)
-})
-
 app.post("/api/comment",function(request,response){
 	commentController.createComment(request,response)
 })
 
-var port = 80
+var port = 3000
 
 app.listen(port, function(){
 	console.log("The server is listening on port " + port + "...")

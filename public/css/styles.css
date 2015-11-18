@@ -4,6 +4,9 @@ html * {
 	font-size: 18px;
 }
 
+body{
+	background-color: hsl(254,32%,81%);
+}
 
 a{
 	color: #790A5B;
@@ -32,13 +35,60 @@ button a:hover{
 	text-decoration: none;
 }
 
-body{
-	background-color: hsl(254,32%,81%);
+
+/*TITLE AND NAVIGATION*/
+
+.fixed-header{
+	width: 100%;
+	background-color: hsl(317, 68%, 65%);
 }
+
+.fixed-header h1{
+	margin-top: 0px;
+	padding: 2rem;
+	padding-bottom: 0rem;
+	display: inline-block;
+}
+
+.fixed-header form{
+	padding: 0.75rem 2rem;
+	float: right;
+}
+
+.fixed-header form,ul{
+	display: inline-block;
+}
+
+.fixed-header ul{
+	width: 100%;
+	text-align: center;
+}
+
+.fixed-header > ul > li{
+	display: inline-block;
+	padding: 0.5rem 1rem;
+}
+
+.fixed-header a,h1{
+	color: white;
+}
+
+.fixed-header a:hover{
+	color: #100535;
+}
+
+.fixed-header input{
+	max-width: 150px;
+	margin: 0.25rem;
+}
+
+
+/*END TITLE AND NAVIGATION*/
 
 /*DROPDOWN*/
 
 .dropdown-menu > li{
+	text-align: left;
 	width: 100%;
 }
 
@@ -76,20 +126,6 @@ hr{
 	width: 100%; 
 	height: 4px;
 	border-top: 2px dashed #100535;
-}
-
-.title{
-	font-family: 'Shadows Into Light', cursive;
-	font-size: 4.5rem;
-	background: linear-gradient(#EDA2D8 20%,#C853A8 100%,#EDA2D8 20%);
-	height: 7rem;
-	width: 425px;
-	color: white;
-	line-height: 7rem;
-	border-radius: 5px;
-	text-align: center;
-	display: inline-block;
-	margin-bottom: 0px;
 }
 
 .view{
@@ -141,6 +177,14 @@ hr{
 
 .btn-blue:hover{
 	background: linear-gradient(#EDA2D8 20%,#C853A8 100%,#EDA2D8 20%);
+}
+
+.btn-blue-2{
+	background: linear-gradient(hsl(189,46%,50%),hsl(189,46%,69%),hsl(189,46%,50%));	
+}
+
+.btn-blue-2:hover{
+	background: linear-gradient(hsl(254,32%,80%) 20%,#9082BE 100%,hsl(254,32%,80%) 20%);	
 }
 
 .intro-page{
@@ -311,6 +355,18 @@ MEDIA QUERIES
 
 	.dynamic-box{
 		max-width: 90%;
+	}
+
+	.fixed-header {
+		text-align: center;
+	}
+
+	.fixed-header form{
+		float: none;
+	}
+
+	.fixed-header ul{
+		padding-left: 0px;
 	}
 
 }

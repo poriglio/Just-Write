@@ -19,11 +19,12 @@
 	<hr>
 	<div class="purple-box box info-box">
 		<h2>Comments</h2>
-		<form ng-submit="submitComment()">
+		<form ng-show="loggedIn" ng-submit="submitComment()">
 			<div>Let the author know what you think!</div><br>
 			<textarea class="medium-area" placeholder="Add a comment..." ng-model="$parent.comment"></textarea>
 			<input class="btn btn-default btn-pink" type="submit" value="Add comment!">
 		</form>
+		<p ng-show="!loggedIn">To post a comment, you'll need to log in or <a href="/#/signup">sign up</a>!</p>
 	</div>
 	<hr>
 	<div class="content-box box" ng-class-odd="'blue-box'" ng-class-even="'pink-box'" ng-repeat="comment in comments">
