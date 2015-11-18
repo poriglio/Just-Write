@@ -41,6 +41,7 @@ button a:hover{
 .fixed-header{
 	width: 100%;
 	background-color: hsl(317, 68%, 65%);
+	border-bottom: dotted 4px hsl(317, 68%, 40%);
 }
 
 .fixed-header h1{
@@ -62,6 +63,8 @@ button a:hover{
 .fixed-header ul{
 	width: 100%;
 	text-align: center;
+	border-top: dotted 4px hsl(317, 68%, 40%);
+	margin-bottom: 0px;
 }
 
 .fixed-header > ul > li{
