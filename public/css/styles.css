@@ -36,6 +36,25 @@ body{
 	background-color: hsl(254,32%,81%);
 }
 
+/*DROPDOWN*/
+
+.dropdown-menu > li{
+	width: 100%;
+}
+
+.dropdown-menu > li > a{
+	color: white;
+}
+
+.dropdown-menu > li > a:hover {
+	color: white;
+	background-color: hsl(254,32%,63%);
+	width: 100%;
+	transition: background-color 0.75s;
+}
+
+/*END DROPDOWN*/
+
 h1,h2,h3{
 	font-family: "Shadows Into Light", cursive;
 	/*font-family: sans-serif;*/
@@ -61,7 +80,6 @@ hr{
 
 .title{
 	font-family: 'Shadows Into Light', cursive;
-	/*font-family: sans-serif;*/
 	font-size: 4.5rem;
 	background: linear-gradient(#EDA2D8 20%,#C853A8 100%,#EDA2D8 20%);
 	height: 7rem;
@@ -122,7 +140,7 @@ hr{
 }
 
 .btn-blue:hover{
-	background: linear-gradient(hsl(254,32%,80%) 20%,#9082BE 100%,hsl(254,32%,80%) 20%);
+	background: linear-gradient(#EDA2D8 20%,#C853A8 100%,#EDA2D8 20%);
 }
 
 .intro-page{

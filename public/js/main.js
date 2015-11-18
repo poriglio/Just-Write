@@ -1,4 +1,29 @@
-angular.module("storyApp",["ngRoute"])
+angular.module("storyApp",["ngRoute","ui.bootstrap"])
+
+angular.module("storyApp").controller("dropdownController",["$scope","$log",function($scope,$log){
+
+  $scope.items = [
+  		"users",
+  		"stories",
+  		"poems",
+  		"essays"
+  ];
+
+  $scope.status = {
+    isopen: false
+  };
+
+  $scope.toggled = function(open) {
+    $log.log('Dropdown is now: ', open);
+  };
+
+  $scope.toggleDropdown = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.status.isopen = !$scope.status.isopen;
+  };
+
+}])
 
 angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 

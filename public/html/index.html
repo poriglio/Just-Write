@@ -7,6 +7,7 @@
 		<link href="/css/styles.css" rel="stylesheet" type="text/css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap.min.js"></script>
 		<script src="/js/main.js"></script>
 		<script src="/js/factory.js"></script>
 	</head>
@@ -14,9 +15,28 @@
 		<div class="view container text-center nav-list">
 			<h1 class="title">Just Write</h1>
 		</div>
-		<ul ng-show="loggedIn" class="view container text-center nav-list">
+
+<!--     <span uib-dropdown on-toggle="toggled(open)">
+      <a href id="simple-dropdown" uib-dropdown-toggle>
+        Click me for a dropdown, yo!
+      </a>
+      <ul class="uib-dropdown-menu" aria-labelledby="simple-dropdown">
+        <li ng-repeat="choice in items">
+          <a href>{{choice}}</a>
+        </li>
+      </ul>
+    </span> -->
+
+		<ul ng-controller="dropdownController" ng-show="loggedIn" class="view container text-center nav-list">
 			<li><a class="btn btn-pink" href="/#/">home</a></li>
-			<li><a class="btn btn-pink" href="/#/browse">browse</a></li>
+			<li uib-dropdown on-toggle="toggled(open)">
+				<a id="simple-dropdown" uib-dropdown-toggle class="btn btn-pink" href="/#/browse">browse...</a>
+				<ul class="blue-box uib-dropdown-menu" aria-labelledby="simple-dropdown">
+					<li class="dropdown-item" ng-repeat="choice in items">
+						<a href="/#/browse/{{choice}}">{{choice}}</a>
+					</li>
+				</ul>
+			</li>
 			<li><a class="btn btn-pink" href="/#/profile">profile</a></li>
 			<li><a class="btn btn-pink" href="/#/submit">submit</a></li>
 			<li><a class="btn btn-pink" href="/#/account">account</a></li>

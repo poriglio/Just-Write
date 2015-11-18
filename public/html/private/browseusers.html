@@ -4,17 +4,17 @@
 
 	<div class="box purple-box">
 		<h1 class="browse-heading">Users</h1>
+		<ul class="nav-list browse-heading">
+			<li><button class="btn btn-blue" type="button" ng-click="sortUsers('date')">Recently joined</button></li>
+			<li><button class="btn btn-blue" type="button" ng-click="sortUsers('alpha')">Alphabetical</button></li>
+			<li><button class="btn btn-blue" type="button" ng-click="sortUsers('submissions')">Most submissions</button></li>
+<!-- 			<li><button class="btn btn-blue" type="button" ng-click="sortUsers('stories')">Most stories</button></li>
+			<li><button class="btn btn-blue" type="button" ng-click="sortUsers('poems')">Most poems</button></li>
+			<li><button class="btn btn-blue" type="button" ng-click="sortUsers('essays')">Most essays</button></li> -->
+			<li><button class="btn btn-blue" type="button" ng-click="sortUsers('comments')">Most comments</button></li>
+		</ul>
 	</div>
 
-	<ul class="nav-list browse-heading">
-		<li><button class="btn btn-blue" type="button" ng-click="sortUsers('date')">Recently joined</button></li>
-		<li><button class="btn btn-blue" type="button" ng-click="sortUsers('alpha')">Alphabetical</button></li>
-		<li><button class="btn btn-blue" type="button" ng-click="sortUsers('submissions')">Most submissions</button></li>
-		<li><button class="btn btn-blue" type="button" ng-click="sortUsers('stories')">Most stories</button></li>
-		<li><button class="btn btn-blue" type="button" ng-click="sortUsers('poems')">Most poems</button></li>
-		<li><button class="btn btn-blue" type="button" ng-click="sortUsers('essays')">Most essays</button></li>
-		<li><button class="btn btn-blue" type="button" ng-click="sortUsers('comments')">Most comments</button></li>
-	</ul>
 
 <!-- USERS LIST -->
 	
