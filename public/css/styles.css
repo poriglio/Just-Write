@@ -40,7 +40,7 @@ button a:hover{
 
 .fixed-header{
 	width: 100%;
-	background-color: hsl(317, 68%, 65%);
+	background-color: hsl(317, 55%, 65%);
 	border-bottom: dotted 4px hsl(317, 68%, 40%);
 }
 
@@ -63,7 +63,7 @@ button a:hover{
 .fixed-header ul{
 	width: 100%;
 	text-align: center;
-	border-top: dotted 4px hsl(317, 68%, 40%);
+	border-top: dotted 4px hsl(317, 55%, 40%);
 	margin-bottom: 0px;
 }
 
