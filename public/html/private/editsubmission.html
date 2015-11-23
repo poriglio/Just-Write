@@ -1,17 +1,21 @@
-<div class="view" ng-repeat="submission in submissions">
-	<form>
-		<label>Title</label>
-		<textarea ng-model="submission.title" type="text" name="title"></textarea>
-		<label>Description</label>
-		<textarea ng-model="submission.description" type="text" name="description"></textarea>
-		<label>Content</label>
-		<textarea ng-model="submission.content" type="text" name="content"></textarea>
-		<input ng-model="submission.type" type="radio" name="type" value="story">
-		<label>Story</label>
-		<input ng-model="submission.type" type="radio" name="type" value="poem">
-		<label>Poem</label>
-		<input ng-model="submission.type" type="radio" name="type" value="essay">
-		<label>Essay</label>
-		<input type="submit" value="Save changes!">
-	</form>
+<div class="view container">
+	<div>{{message}}</div>
+	<div ng-repeat="submission in submission">
+		<h1>Submission Editor</h1>
+		<form ng-submit="editSubmission(submission.type)">
+			<label>Title</label>
+			<input ng-model="submission.title" type="text" name="title">
+			<label>Description</label>
+			<textarea ng-model="submission.description" type="text" name="description"></textarea>
+			<label>Content</label>
+			<textarea ng-model="submission.content" type="text" name="content"></textarea>
+<!-- 			<input ng-model="submission.type" type="radio" name="type" value="story">
+			<label>Story</label>
+			<input ng-model="submission.type" type="radio" name="type" value="poem">
+			<label>Poem</label>
+			<input ng-model="submission.type" type="radio" name="type" value="essay">
+			<label>Essay</label> -->
+			<input type="submit" value="Save changes!">
+		</form>
+	</div>
 </div>

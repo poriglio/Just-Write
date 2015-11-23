@@ -1,7 +1,4 @@
 <div class="view container">
-	<div>	
-		<h1>My Account</h1>
-	</div>
 
 	<div>
 		<h2>Edit Profile</h2>
@@ -21,7 +18,7 @@
 			<input type="submit" value="submit changes">
 		</form>
 	</div>
-	
+
 	<div>
 		<h2>Change Password</h2>
 		<label>Old password:</label>
@@ -33,44 +30,4 @@
 		<input type="submit" value="change password">
 	</div>
 	
-	<div>
-		<h2>Edit/Delete Submissions</h2>
-		<div>
-			<h3>My Stories</h3>
-			<div ng-repeat="story in stories">
-				<span>{{story.title}}</span>
-				<button type="button">
-					edit
-				</button>
-				<button type="button">
-					delete
-				</button>
-			</div>
-		</div>
-		<div>
-			<h3>My Poems</h3>
-			<div ng-repeat="poem in poems">
-				<span>{{poem.title}}</span>
-				<button type="button">
-					edit
-				</button>
-				<button type="button">
-					delete
-				</button>
-			</div>
-		</div>
-		<div>
-			<h3>My Essays</h3>
-			<div ng-repeat="essay in essays">
-				<span>{{essay.title}}</span>
-				<button type="button">
-					edit
-				</button>
-				<button type="button">
-					delete
-				</button>
-			</div>
-		</div>
-	</div>
-
 </div>

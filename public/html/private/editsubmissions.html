@@ -1,0 +1,48 @@
+<div class="view container">
+	<div>
+		<h2>Edit/Delete Submissions</h2>
+		<div>
+			<h3>My Stories</h3>
+			<div ng-repeat="story in stories">
+				<span>{{story.title}}</span>
+				<a href="/#/account/{{story.type}}/{{story._id}}">
+					<button type="button">
+						edit
+					</button>
+				</a>
+				<form ng-submit="deleteSubmission(story.type)">
+					<input ng-model="story._id">
+					<input type="submit" value="delete">
+				</form>
+			</div>
+		</div>
+		<div>
+			<h3>My Poems</h3>
+			<div ng-repeat="poem in poems">
+				<span>{{poem.title}}</span>
+				<a href="/#/account/{{poem.type}}/{{poem._id}}">
+					<button type="button">
+						edit
+					</button>
+				</a>
+				<form ng-submit="deleteSubmission(poem.type)">
+					<input type="submit" value="delete">
+				</form>
+			</div>
+		</div>
+		<div>
+			<h3>My Essays</h3>
+			<div ng-repeat="essay in essays">
+				<span>{{essay.title}}</span>
+				<a href="/#/account/{{essay.type}}/{{essay._id}}">
+					<button type="button">
+						edit
+					</button>
+				</a>
+				<form ng-submit="deleteSubmission(essay.type)">
+					<input type="submit" value="delete">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

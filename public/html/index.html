@@ -28,14 +28,21 @@
 				<li uib-dropdown on-toggle="toggled(open)">
 					<a id="simple-dropdown" uib-dropdown-toggle href="/#/browse">browse...</a>
 					<ul class="blue-box uib-dropdown-menu" aria-labelledby="simple-dropdown">
-						<li class="dropdown-item" ng-repeat="choice in items">
+						<li class="dropdown-item" ng-repeat="choice in browseItems">
 							<a href="/#/browse/{{choice}}">{{choice}}</a>
 						</li>
 					</ul>
 				</li>
 				<li ng-show="loggedIn"><a href="/#/profile">profile</a></li>
 				<li ng-show="loggedIn"><a href="/#/submit">submit</a></li>
-				<!-- <li><a href="/#/account">account</a></li> -->
+				<li ng-show="loggedIn" uib-dropdown on-toggle="toggled(open)">
+					<a id="simple-dropdown" uib-dropdown-toggle href="/#/browse">my account...</a>
+					<ul class="blue-box uib-dropdown-menu" aria-labelledby="simple-dropdown">
+						<li class="dropdown-item" ng-repeat="choice in accountItems">
+							<a href="/#/account/{{choice}}">{{choice}}</a>
+						</li>
+					</ul>
+				</li>
 				<li><a href="/#/signup">sign up</a></li>
 				<li ng-show="loggedIn"><a href="/auth/logout">log out</a></li>
 			</ul>

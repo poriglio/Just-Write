@@ -2,12 +2,17 @@ angular.module("storyApp",["ngRoute","ui.bootstrap"])
 
 angular.module("storyApp").controller("dropdownController",["$scope","$log",function($scope,$log){
 
-  $scope.items = [
+  $scope.browseItems = [
   		"users",
   		"stories",
   		"poems",
   		"essays"
   ];
+
+  $scope.accountItems = [
+  		"profile",
+  		"submissions"
+  ]
 
   $scope.status = {
     isopen: false
@@ -87,9 +92,17 @@ angular.module("storyApp").config(["$routeProvider",function($routeProvider){
 		templateUrl : "/html/private/submission.html",
 		controller  : "submissionController"
 	})
-	.when("/account",{
+	.when("/account/profile",{
 		templateUrl : "/html/private/myaccount.html",
 		controller : "accountController"
+	})
+	.when("/account/submissions",{
+		templateUrl : "/html/private/editsubmissions.html",
+		controller  : "accountController"
+	})
+	.when("/account/:type/:id",{
+		templateUrl : "/html/private/editsubmission.html",
+		controller  : "accountController"
 	})
 
 }])
@@ -209,7 +222,6 @@ angular.module("storyApp").controller("submissionController",["$scope","$http","
 		$http.get("/api/essay/" + id).then(function(returnData){
 			$scope.submissions = returnData.data
 		}).then(function(){$scope.submissionAuthor = checkAuthor();return $scope.submissionAuthor})
-	console.log($scope.submissionAuthor)
 	}
 
 
@@ -546,14 +558,87 @@ angular.module("storyApp").controller("browseController",["$scope","$http","call
 }])
 
 angular.module("storyApp").controller("accountController",["$scope","$http","callFactory",function($scope,$http,callFactory){
-
+	
 	$http.get("/api/me").then(function(returnData){
 		$scope.me = returnData.data
 		var user = returnData.data.username
-		callFactory.getStories($http,$scope,user)
-		callFactory.getPoems($http,$scope,user)
-		callFactory.getEssays($http,$scope,user)
+		if(window.location.hash.split("/")[3]==undefined){
+			callFactory.getStories($http,$scope,user)
+			callFactory.getPoems($http,$scope,user)
+			callFactory.getEssays($http,$scope,user)
+		}
+		else{
+			var type = window.location.hash.split("/")[2]
+			var id = window.location.hash.split("/")[3]
+			callFactory.getSubmission($http,$scope,type,id,user)
+		}
 	})
 
+	$scope.editSubmission = function(type){
+		switch(type){
+			case "story":
+				$http({
+		            method : 'POST',
+		            url    : '/api/story',
+		            data   : $scope.submission
+	        	}).success(
+	        	console.log("success")
+	    		);
+				break;
+			case "poem":
+				$http({
+		            method : 'POST',
+		            url    : '/api/poem',
+		            data   : $scope.submission
+	        	}).success(
+	        	console.log("success")
+	    		);
+				break;
+			case "essay":
+				$http({
+		            method : 'POST',
+		            url    : '/api/essay',
+		            data   : $scope.submission
+	        	}).success(
+	        	console.log("success")
+	    		);
+				break;
+		}
+	}
+
+	$scope.deleteSubmission = function(type){
+		console.log("function called")
+		console.log(type)
+		switch(type){
+			case "story":
+			console.log($scope.story)
+				$http({
+		            method : 'POST',
+		            url    : '/api/story/delete',
+		            data   : $scope.story
+	        	}).success(
+	        	console.log("success")
+	    		);
+				break;
+			case "poem":
+				$http({
+		            method : 'POST',
+		            url    : '/api/poem/delete',
+		            data   : $scope.poem
+	        	}).success(
+	        	console.log("success")
+	    		);
+				break;
+			case "essay":
+				$http({
+		            method : 'POST',
+		            url    : '/api/essay/delete',
+		            data   : $scope.essay
+	        	}).success(
+	        	console.log("success")
+	    		);
+				break;
+		}
+	}
 
 }])

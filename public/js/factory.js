@@ -18,10 +18,24 @@ angular.module("storyApp").factory("callFactory",function(){
 		})	
 	}
 
+	var getSubmission = function($http,$scope,type,id,user){
+		$http.get("/api/" + type + "/" + id).then(function(returnData){
+			$scope.submission = []
+			if(user === returnData.data.username){
+				$scope.submission.push(returnData.data)
+			}
+			else{
+				$scope.message = "You are not allowed to view this page."
+				console.log($scope.message)
+			}
+		})
+	}
+
 	return {
-		getStories : getStories,
-		getPoems   : getPoems,
-		getEssays  : getEssays,
+		getStories    : getStories,
+		getPoems      : getPoems,
+		getEssays     : getEssays,
+		getSubmission : getSubmission,
 	}
 
 })

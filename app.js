@@ -107,11 +107,17 @@ app.get("/api/me",function(request,response){
 
 app.put("/api/profile/:username",userController.editUser)
 
-app.put("/api/stories/:submission",storyController.editStory)
+app.post("/api/story",storyController.editStory)
 
-app.put("/api/poems/:submission",poemController.editPoem)
+app.post("/api/poem",poemController.editPoem)
 
-app.put("/api/essays/:submission",essayController.editEssay)
+app.post("/api/essay",essayController.editEssay)
+
+app.post("/api/story/delete",storyController.deleteStory)
+
+app.post("/api/poem/delete",poemController.deletePoem)
+
+app.post("/api/essay/delete",essayController.deleteEssay)
 
 app.post("/api/submission",function(request,response){
 	if(request.body.submissionType==="story"){
@@ -129,7 +135,7 @@ app.post("/api/comment",function(request,response){
 	commentController.createComment(request,response)
 })
 
-var port = 80
+var port = 3000
 
 app.listen(port, function(){
 	console.log("The server is listening on port " + port + "...")

@@ -60,7 +60,7 @@ button a:hover{
 	display: inline-block;
 }
 
-.fixed-header ul{
+.fixed-header > ul{
 	width: 100%;
 	text-align: center;
 	border-top: dotted 4px hsl(317, 55%, 40%);
@@ -90,6 +90,10 @@ button a:hover{
 
 /*DROPDOWN*/
 
+li ul{
+	border: none;
+}
+
 .dropdown-menu > li{
 	text-align: left;
 	width: 100%;
@@ -110,7 +114,6 @@ button a:hover{
 
 h1,h2,h3{
 	font-family: "Shadows Into Light", cursive;
-	/*font-family: sans-serif;*/
 }
 
 h1{
@@ -245,8 +248,6 @@ textarea{
 
 .browse-heading{
 	padding: 0.5rem 0rem 1rem 2rem;
-	font-family: 'Shadows Into Light', cursive;
-	/*font-family: sans-serif;*/
 	text-align: center;
 	margin: 0px;	
 }
@@ -258,8 +259,6 @@ textarea{
 }
 
 .box h3{
-	font-family: 'Shadows Into Light', cursive;
-	/*font-family: sans-serif;*/
 	letter-spacing: 2px;
 }
 

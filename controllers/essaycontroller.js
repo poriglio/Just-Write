@@ -72,11 +72,16 @@ var findEssays = function(request,response){
 }
 
 var editEssay = function(request,response){
-	console.log(request.body)
+	Essay.update({_id: request.body[0]._id},{$set:{title:request.body[0].title,content:request.body[0].content,description:request.body[0].description}},function(error,docs){
+
+	})
 }
 
 var deleteEssay = function(request,response){
-	console.log(request.body)
+	Essay.remove({_id: request.body._id},function(error,docs){
+
+	})
+	console.log("ping")
 }
 
 module.exports = {
