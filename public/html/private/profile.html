@@ -2,19 +2,23 @@
 	<h1 class="browse-heading purple-box box">{{user.username}}</h1>
 	<div class="info-box blue-box box">
 		<p>{{user.bio}}</p>
-		<h2>Favorites</h2>
-		<ul>
-			<li><b>Books: </b><span ng-repeat="book in user.favBooks">{{book}}<span ng-hide="$last">,</span> </span></li>
-			<li><b>Writers: </b><span ng-repeat="writer in user.favWriters">{{writer}}<span ng-hide="$last">,</span> </span></li>
-		</ul>
-		<h2>Stats</h2>
-		<ul>
-			<li><b>Stories: </b>{{user.numStories}}</li>
-			<li><b>Poems: </b>{{user.numPoems}}</li>
-			<li><b>Essays: </b>{{user.numEssays}}</li>
-			<li><b>Total submissions: </b>{{user.numSubmissions}}</li>
-			<li><b>Total comments: </b>{{user.numComments}}</li>
-		</ul>
+		<div class="inline-block">
+			<h2>Favorites</h2>
+			<ul>
+				<li><b>Books: </b><span ng-repeat="book in user.favBooks">{{book}}<span ng-hide="$last">,</span> </span></li>
+				<li><b>Writers: </b><span ng-repeat="writer in user.favWriters">{{writer}}<span ng-hide="$last">,</span> </span></li>
+			</ul>
+		</div>
+		<div class="inline-block">
+			<h2>Stats</h2>
+			<ul>
+				<li><b>Stories: </b>{{user.numStories}}</li>
+				<li><b>Poems: </b>{{user.numPoems}}</li>
+				<li><b>Essays: </b>{{user.numEssays}}</li>
+				<li><b>Total submissions: </b>{{user.numSubmissions}}</li>
+				<li><b>Total comments: </b>{{user.numComments}}</li>
+			</ul>
+		</div>
 	</div>
 	<br>
 	<h2 class="browse-heading purple-box box">Submissions</h2>

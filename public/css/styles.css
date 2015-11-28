@@ -1,3 +1,9 @@
+.inline-block{
+	display: inline-block;
+	width: 48%;
+	vertical-align: top;
+}
+
 html * {
 	font-family: 'Khula', sans-serif;
 	list-style-type: none;
@@ -369,6 +375,10 @@ MEDIA QUERIES
 
 	.fixed-header ul{
 		padding-left: 0px;
+	}
+
+	.inline-block{
+		display: block;
 	}
 
 }
