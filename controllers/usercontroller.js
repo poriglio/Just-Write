@@ -55,7 +55,12 @@ var findUser = function(request,response){
 }
 
 var editUser = function(request,response){
-	
+	console.log(request.body)
+	User.update({username:request.body.username},{$set:{email:request.body.email,age:request.body.age,birthday:request.body.birthday,favBooks:request.body.favBooks.split(", "),favWriters:request.body.favWriters.split(", "),bio:request.body.bio}},function(error,docs){
+		if(!error){
+			response.redirect("/#/profile")
+		}
+	})
 }
 
 module.exports = {

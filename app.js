@@ -105,7 +105,7 @@ app.get("/api/me",function(request,response){
 // API ROUTES - logged in
 // -=-=-=-=-=-=-=-=-=-=-=
 
-app.put("/api/profile/:username",userController.editUser)
+app.post("/api/profile",userController.editUser)
 
 app.post("/api/story",storyController.editStory)
 

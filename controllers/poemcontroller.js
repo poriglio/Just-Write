@@ -77,9 +77,19 @@ var editPoem = function(request,response){
 }
 
 var deletePoem = function(request,response){
-	console.log(request.body)
 	Poem.remove({_id: request.body._id},function(error,docs){
-
+		if(!error){
+			User.update({username: request.body.username},{$inc:{numPoems : -1}},function(error,docs){
+				if(error){
+					return error
+				}
+			})
+			User.update({username: request.body.username},{$inc:{numSubmissions : -1}},function(error,docs){
+				if(error){
+					return error
+				}
+			})
+		}
 	})
 }
 

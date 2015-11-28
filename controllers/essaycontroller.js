@@ -77,9 +77,19 @@ var editEssay = function(request,response){
 }
 
 var deleteEssay = function(request,response){
-	console.log(request.body)
 	Essay.remove({_id: request.body._id},function(error,docs){
-		
+		if(!error){
+			User.update({username: request.body.username},{$inc:{numEssays : -1}},function(error,docs){
+				if(error){
+					return error
+				}
+			})
+			User.update({username: request.body.username},{$inc:{numSubmissions : -1}},function(error,docs){
+				if(error){
+					return error
+				}
+			})
+		}		
 	})
 }
 

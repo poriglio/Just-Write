@@ -78,9 +78,19 @@ var editStory = function(request,response){
 }
 
 var deleteStory = function(request,response){
-	console.log(request.body)
 	Story.remove({_id: request.body._id},function(error,docs){
-
+		if(!error){
+			User.update({username: request.body.username},{$inc:{numStories : -1}},function(error,docs){
+				if(error){
+					return error
+				}
+			})
+			User.update({username: request.body.username},{$inc:{numSubmissions : -1}},function(error,docs){
+				if(error){
+					return error
+				}
+			})
+		}
 	})
 }
 
