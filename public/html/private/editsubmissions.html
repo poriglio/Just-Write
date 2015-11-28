@@ -10,7 +10,7 @@
 						edit
 					</button>
 				</a>
-				<form ng-submit="deleteSubmission(story.type)">
+				<form ng-submit="deleteSubmission(story.type,$index)">
 					<input ng-model="story._id">
 					<input type="submit" value="delete">
 				</form>
@@ -25,7 +25,8 @@
 						edit
 					</button>
 				</a>
-				<form ng-submit="deleteSubmission(poem.type)">
+				<form ng-submit="deleteSubmission(poem.type,$index)">
+					<input ng-model="poem._id">
 					<input type="submit" value="delete">
 				</form>
 			</div>
@@ -39,7 +40,8 @@
 						edit
 					</button>
 				</a>
-				<form ng-submit="deleteSubmission(essay.type)">
+				<form ng-submit="deleteSubmission(essay.type,$index)">
+					<input ng-model="essay._id">
 					<input type="submit" value="delete">
 				</form>
 			</div>

@@ -557,7 +557,7 @@ angular.module("storyApp").controller("browseController",["$scope","$http","call
 
 }])
 
-angular.module("storyApp").controller("accountController",["$scope","$http","callFactory",function($scope,$http,callFactory){
+angular.module("storyApp").controller("accountController",["$scope","$http","callFactory","$location","$window",function($scope,$http,callFactory,$location,$window){
 	
 	$http.get("/api/me").then(function(returnData){
 		$scope.me = returnData.data
@@ -582,7 +582,7 @@ angular.module("storyApp").controller("accountController",["$scope","$http","cal
 		            url    : '/api/story',
 		            data   : $scope.submission
 	        	}).success(
-	        	console.log("success")
+	        		$location.path("/account/submissions")
 	    		);
 				break;
 			case "poem":
@@ -591,7 +591,7 @@ angular.module("storyApp").controller("accountController",["$scope","$http","cal
 		            url    : '/api/poem',
 		            data   : $scope.submission
 	        	}).success(
-	        	console.log("success")
+	        		$location.path("/account/submissions")
 	    		);
 				break;
 			case "essay":
@@ -600,43 +600,42 @@ angular.module("storyApp").controller("accountController",["$scope","$http","cal
 		            url    : '/api/essay',
 		            data   : $scope.submission
 	        	}).success(
-	        	console.log("success")
+	        		$location.path("/account/submissions")
 	    		);
 				break;
 		}
 	}
 
-	$scope.deleteSubmission = function(type){
-		console.log("function called")
-		console.log(type)
+	$scope.deleteSubmission = function(type,$index){
+		$window.alert("Your submission has been deleted. Refresh to see changes.")
 		switch(type){
 			case "story":
-			console.log($scope.story)
+				$scope.data = $scope.stories[$index];
 				$http({
 		            method : 'POST',
 		            url    : '/api/story/delete',
-		            data   : $scope.story
+		            data   : $scope.data
 	        	}).success(
-	        	console.log("success")
-	    		);
+
+	        	)
 				break;
 			case "poem":
+				$scope.data = $scope.poems[$index];
 				$http({
 		            method : 'POST',
 		            url    : '/api/poem/delete',
-		            data   : $scope.poem
+		            data   : $scope.data
 	        	}).success(
-	        	console.log("success")
-	    		);
+
+	        	)
 				break;
 			case "essay":
+				$scope.data = $scope.essays[$index];
 				$http({
 		            method : 'POST',
 		            url    : '/api/essay/delete',
-		            data   : $scope.essay
-	        	}).success(
-	        	console.log("success")
-	    		);
+		            data   : $scope.data
+	        	})
 				break;
 		}
 	}
