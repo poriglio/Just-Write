@@ -1,33 +1,36 @@
-<div class="view container">
-
+<div class="view">
 	<div>
-		<h2>Edit Profile</h2>
-		<form>
-			<label>E-mail address</label>
-			<input ng-model="me.email" type="text">
-			<label>Age</label>
-			<input ng-model="me.age" type="text">
-			<label>Birthday</label>
-			<input ng-model="me.birthday" type="text">
-			<label>Favorite Books</label>
-			<textarea ng-model="me.favBooks"></textarea>
-			<label>Favorite Writers</label>
-			<textarea ng-model="me.favWriters"></textarea>
-			<label>Biography</label>
-			<textarea ng-model="me.bio"></textarea>
-			<input type="submit" value="submit changes">
+		<h2 class="purple-box box browse-heading">Edit Profile</h2>
+		<form class="blue-box box info-box" method="POST" action="/api/profile">
+			<div ng-hide="true">
+				<div>User</div>
+				<input ng-model="me.username" name="username" type="text">
+			</div>
+			<div>E-mail address:</div>
+			<input ng-model="me.email" name="email" type="text">
+			<div>Age:</div>
+			<input ng-model="me.age" name="age" type="text">
+			<div>Birthday:</div>
+			<input ng-model="me.birthday" name="birthday" type="text">
+			<div>Favorite Books, separated by a comma and space:</div>
+			<textarea class="small-area" ng-model="me.favBooks" name="favBooks"></textarea>
+			<div>Favorite Writers, separated by a comma and space:</div>
+			<textarea class="small-area" name="favWriters" ng-model="me.favWriters"></textarea>
+			<div>Biography:</div>
+			<textarea class="medium-area" ng-model="me.bio" name="bio"></textarea>
+			<input class="btn btn-default btn-pink" type="submit" value="submit changes">
 		</form>
 	</div>
 
-	<div>
+<!-- 	<div>
 		<h2>Change Password</h2>
-		<label>Old password:</label>
+		<div>Old password:</div>
 		<input type="password">
-		<label>New password:</label>
+		<div>New password:</div>
 		<input type="password">
-		<label>Verify new password:</label>
+		<div>Verify new password:</div>
 		<input type="password">
 		<input type="submit" value="change password">
-	</div>
+	</div> -->
 	
 </div>

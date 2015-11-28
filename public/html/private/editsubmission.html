@@ -1,21 +1,21 @@
 <div class="view container">
 	<div>{{message}}</div>
 	<div ng-repeat="submission in submission">
-		<h1>Submission Editor</h1>
-		<form ng-submit="editSubmission(submission.type)">
-			<label>Title</label>
+		<h1 class="purple-box box browse-heading">Submission Editor</h1>
+		<form class="blue-box box info-box" ng-submit="editSubmission(submission.type)">
+			<div>Title</div>
 			<input ng-model="submission.title" type="text" name="title">
-			<label>Description</label>
-			<textarea ng-model="submission.description" type="text" name="description"></textarea>
-			<label>Content</label>
-			<textarea ng-model="submission.content" type="text" name="content"></textarea>
+			<div>Description</div>
+			<textarea class="medium-area" ng-model="submission.description" type="text" name="description"></textarea>
+			<div>Content</div>
+			<textarea class="large-area" ng-model="submission.content" type="text" name="content"></textarea>
 <!-- 			<input ng-model="submission.type" type="radio" name="type" value="story">
-			<label>Story</label>
+			<div>Story</div>
 			<input ng-model="submission.type" type="radio" name="type" value="poem">
-			<label>Poem</label>
+			<div>Poem</div>
 			<input ng-model="submission.type" type="radio" name="type" value="essay">
-			<label>Essay</label> -->
-			<input type="submit" value="Save changes!">
+			<div>Essay</div> -->
+			<input class="btn btn-default btn-pink" type="submit" value="Save changes!">
 		</form>
 	</div>
 </div>

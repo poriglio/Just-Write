@@ -1,45 +1,48 @@
 <div class="view container">
 	<div>
-		<h2>Edit/Delete Submissions</h2>
-		<div>
+		<h2 class="box purple-box browse-heading">Edit/Delete Submissions</h2>
+		<div class="content-box box blue-box">
 			<h3>My Stories</h3>
-			<div ng-repeat="story in stories">
-				<span>{{story.title}}</span>
-				<a href="/#/account/{{story.type}}/{{story._id}}">
-					<button type="button">
-						edit
-					</button>
-				</a>
-				<form ng-submit="deleteSubmission(story.type,$index)">
-					<input type="submit" value="delete">
-				</form>
+			<div style="padding-bottom: 1rem;" ng-repeat="story in stories">
+				<span style="padding-right: 2rem;"><a ng-href="/#/stories/{{story._id}}">{{story.title}}</a></span>
+				<div style="display: inline-block;">
+					<a href="/#/account/{{story.type}}/{{story._id}}">
+						<button class="btn btn-pink" type="button">
+							edit
+						</button>
+					</a>
+					<form style="display: inline-block;" ng-submit="deleteSubmission(story.type,$index)">
+						<input class="btn btn-pink" type="submit" value="delete">
+					</form>
+				</div>
+				<br>
 			</div>
 		</div>
-		<div>
+		<div class="content-box box pink-box">
 			<h3>My Poems</h3>
-			<div ng-repeat="poem in poems">
-				<span>{{poem.title}}</span>
+			<div style="padding-bottom: 1rem;" ng-repeat="poem in poems">
+				<span style="padding-right: 2rem;"><a ng-href="/#/poems/{{poem._id}}">{{poem.title}}</a></span>
 				<a href="/#/account/{{poem.type}}/{{poem._id}}">
-					<button type="button">
+					<button class="btn btn-blue-2" type="button">
 						edit
 					</button>
 				</a>
-				<form ng-submit="deleteSubmission(poem.type,$index)">
-					<input type="submit" value="delete">
+				<form style="display: inline-block;" ng-submit="deleteSubmission(poem.type,$index)">
+					<input class="btn btn-blue-2" type="submit" value="delete">
 				</form>
 			</div>
 		</div>
-		<div>
+		<div class="content-box box blue-box">
 			<h3>My Essays</h3>
-			<div ng-repeat="essay in essays">
-				<span>{{essay.title}}</span>
+			<div style="padding-bottom: 1rem;" ng-repeat="essay in essays">
+				<span style="padding-right: 2rem;"><a ng-href="/#/essays/{{essay._id}}">{{essay.title}}</a></span>
 				<a href="/#/account/{{essay.type}}/{{essay._id}}">
-					<button type="button">
+					<button class="btn btn-pink" type="button">
 						edit
 					</button>
 				</a>
-				<form ng-submit="deleteSubmission(essay.type,$index)">
-					<input type="submit" value="delete">
+				<form style="display: inline-block;" ng-submit="deleteSubmission(essay.type,$index)">
+					<input class="btn btn-pink" type="submit" value="delete">
 				</form>
 			</div>
 		</div>

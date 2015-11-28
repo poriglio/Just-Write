@@ -26,7 +26,6 @@ angular.module("storyApp").factory("callFactory",function(){
 			}
 			else{
 				$scope.message = "You are not allowed to view this page."
-				console.log($scope.message)
 			}
 		})
 	}

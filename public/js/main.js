@@ -561,6 +561,8 @@ angular.module("storyApp").controller("accountController",["$scope","$http","cal
 	
 	$http.get("/api/me").then(function(returnData){
 		$scope.me = returnData.data
+		$scope.me.favWriters = $scope.me.favWriters.join(", ")
+		$scope.me.favBooks = $scope.me.favBooks.join(", ")
 		var user = returnData.data.username
 		if(window.location.hash.split("/")[3]==undefined){
 			callFactory.getStories($http,$scope,user)
