@@ -1,13 +1,12 @@
 <div class="view">
 	<div>
-		<div class="purple-box box content-box">	
+		<div class="purple-box box browse-heading">	
 			<h2 class="browse-heading">{{submissions.title}}</h2>
 			<p style="text-align: center;"><b>{{submissions.type}} by <a href="/#/profile/{{submissions.username}}">{{submissions.username}}</a></b></p>
 			<p>
 				{{submissions.description}}
 			</p>
 		</div>
-		<hr>
 		<div class="submission-content container">
 			<div ng-repeat="paragraph in submissions.content">
 				<p>
@@ -16,7 +15,6 @@
 			</div>
 		</div>
 	</div>
-	<hr>
 	<div class="purple-box box info-box">
 		<h2>Comments</h2>
 		<form ng-show="loggedIn" ng-submit="submitComment()">
@@ -26,7 +24,6 @@
 		</form>
 		<p ng-show="!loggedIn">To post a comment, you'll need to log in or <a href="/#/signup">sign up</a>!</p>
 	</div>
-	<hr>
 	<div class="content-box box" ng-class-odd="'blue-box'" ng-class-even="'pink-box'" ng-repeat="comment in comments">
 		<h3><a href="/#/profile/{{comment.username}}">{{comment.username}}</a></h3> 
 		<b>{{comment.date | date:"MMMM d 'at' h:mm a"}}</b>

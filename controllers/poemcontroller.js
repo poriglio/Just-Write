@@ -72,7 +72,7 @@ var findPoems = function(request,response){
 }
 
 var editPoem = function(request,response){
-	Poem.update({_id: request.body[0]._id},{$set:{title:request.body[0].title,content:request.body[0].content,description:request.body[0].description}},function(error){
+	Poem.update({_id: request.body[0]._id},{$set:{title:request.body[0].title,content:request.body[0].content.split("[p]"),description:request.body[0].description}},function(error){
 	})
 }
 

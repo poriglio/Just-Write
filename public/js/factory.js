@@ -23,6 +23,7 @@ angular.module("storyApp").factory("callFactory",function(){
 			$scope.submission = []
 			if(user === returnData.data.username){
 				$scope.submission.push(returnData.data)
+				$scope.submission[0].content = $scope.submission[0].content.join("[p]")
 			}
 			else{
 				$scope.message = "You are not allowed to view this page."

@@ -320,6 +320,8 @@ textarea{
 	line-height: 2.75rem;
 	box-shadow: 3px 3px 30px 0px #100535;
 	border-radius: 4px;
+	margin-top: 4rem;
+	margin-bottom: 4rem;
 }
 
 .dynamic-box{

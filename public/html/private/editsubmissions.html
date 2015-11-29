@@ -1,7 +1,10 @@
 <div class="view container">
 	<div>
 		<h2 class="box purple-box browse-heading">Edit/Delete Submissions</h2>
-		<div class="content-box box blue-box">
+		<div ng-show="stories.length == 0 && essays.length ==0 && poems.length ==0" class="content-box box blue-box">
+			You have not submitted anything.
+		</div>
+		<div ng-show="stories.length != 0" class="content-box box blue-box">
 			<h3>My Stories</h3>
 			<div style="padding-bottom: 1rem;" ng-repeat="story in stories">
 				<span style="padding-right: 2rem;"><a ng-href="/#/stories/{{story._id}}">{{story.title}}</a></span>
@@ -18,7 +21,7 @@
 				<br>
 			</div>
 		</div>
-		<div class="content-box box pink-box">
+		<div ng-show="poems.length != 0" class="content-box box pink-box">
 			<h3>My Poems</h3>
 			<div style="padding-bottom: 1rem;" ng-repeat="poem in poems">
 				<span style="padding-right: 2rem;"><a ng-href="/#/poems/{{poem._id}}">{{poem.title}}</a></span>
@@ -32,7 +35,7 @@
 				</form>
 			</div>
 		</div>
-		<div class="content-box box blue-box">
+		<div ng-show="essays.length != 0" class="content-box box blue-box">
 			<h3>My Essays</h3>
 			<div style="padding-bottom: 1rem;" ng-repeat="essay in essays">
 				<span style="padding-right: 2rem;"><a ng-href="/#/essays/{{essay._id}}">{{essay.title}}</a></span>

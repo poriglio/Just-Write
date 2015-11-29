@@ -72,7 +72,7 @@ var findEssays = function(request,response){
 }
 
 var editEssay = function(request,response){
-	Essay.update({_id: request.body[0]._id},{$set:{title:request.body[0].title,content:request.body[0].content,description:request.body[0].description}},function(error){
+	Essay.update({_id: request.body[0]._id},{$set:{title:request.body[0].title,content:request.body[0].content.split("[p]"),description:request.body[0].description}},function(error){
 	})
 }
 
