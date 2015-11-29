@@ -3,16 +3,18 @@
 <!-- SORTING BUTTONS and HEADING-->
 
 	<div class="box purple-box">
-		<h1 class="browse-heading">{{browseType}}</h1>
-		<ul class="nav-list browse-heading">
-			<li><button class="btn btn-blue" type="button" ng-click="sortSubmissions('newest')">Newest</button></li>
-			<li><button class="btn btn-blue" type="button" ng-click="sortSubmissions('oldest')">Oldest</button></li>
-			<li><button class="btn btn-blue" type="button" ng-click="sortSubmissions('popular')">Popular</button></li>
-			<li><button class="btn btn-blue" type="button" ng-click="sortSubmissions('title')">Title</button></li>
-			<li><button class="btn btn-blue" type="button" ng-click="sortSubmissions('username')">Username</button></li>
-		</ul>
+		<h2 class="browse-heading">{{browseType}}</h2>
 	</div>
 
+<div class="sort-buttons">
+	<ul class="nav-list">
+		<li><button class="btn btn-blue" type="button" ng-click="sortSubmissions('newest')">Newest</button></li>
+		<li><button class="btn btn-blue" type="button" ng-click="sortSubmissions('oldest')">Oldest</button></li>
+		<li><button class="btn btn-blue" type="button" ng-click="sortSubmissions('popular')">Popular</button></li>
+		<li><button class="btn btn-blue" type="button" ng-click="sortSubmissions('title')">Title</button></li>
+		<li><button class="btn btn-blue" type="button" ng-click="sortSubmissions('username')">Username</button></li>
+	</ul>
+</div>
 
 <!-- SUBMISSIONS LIST -->
 	
